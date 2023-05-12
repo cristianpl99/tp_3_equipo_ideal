@@ -1,353 +1,453 @@
 [
   {
-    "id": 84526,
-    "firstName": "Jack",
-    "lastName": "Dorsey",
-    "role": "Project Leader",
-    "rating": 4
-  },
-  {
-    "id": 36789,
-    "firstName": "Ada",
-    "lastName": "Lovelace",
-    "role": "Architect",
-    "rating": 3
-  },
-  {
-    "id": 91645,
-    "firstName": "John",
-    "lastName": "Smith",
-    "role": "Programmer",
-    "rating": 2
-  },
-  {
-    "id": 10823,
-    "firstName": "Alan",
-    "lastName": "Turing",
-    "role": "Tester",
-    "rating": 5
-  },
-  {
-    "id": 45267,
-    "firstName": "Steve",
-    "lastName": "Wozniak",
-    "role": "Programmer",
-    "rating": 4
-  },
-  {
-    "id": 58274,
-    "firstName": "Eric",
-    "lastName": "Stevenson",
-    "role": "Programmer",
-    "rating": 3
-  },
-  {
-    "id": 99315,
-    "firstName": "John",
-    "lastName": "Carmack",
-    "role": "Architect",
-    "rating": 4
-  },
-  {
-    "id": 41792,
-    "firstName": "Margaret",
-    "lastName": "Hillbay",
-    "role": "Tester",
-    "rating": 5
-  },
-  {
-    "id": 70825,
-    "firstName": "Larry",
-    "lastName": "Danson",
-    "role": "Programmer",
-    "rating": 3
-  },
-  {
-    "id": 56789,
-    "firstName": "Sergey",
-    "lastName": "Brin",
-    "role": "Programmer",
-    "rating": 4
-  },
-  {
-    "id": 52670,
-    "firstName": "Grace",
-    "lastName": "Liu",
-    "role": "Programmer",
-    "rating": 2
-  },
-  {
-    "id": 34987,
-    "firstName": "Shawn",
-    "lastName": "Fanning",
-    "role": "Architect",
-    "rating": 4
-  },
-  {
-    "id": 45928,
-    "firstName": "Tim",
-    "lastName": "Berne",
-    "role": "Programmer",
-    "rating": 5
-  },
-  {
-    "id": 65370,
-    "firstName": "Richard",
-    "lastName": "Stallman",
-    "role": "Programmer",
-    "rating": 3
-  },
-  {
-    "id": 81532,
-    "firstName": "Mark",
-    "lastName": "Zuckerberg",
-    "role": "Programmer",
-    "rating": 4
-  },
-  {
-    "id": 95487,
-    "firstName": "Jeff",
-    "lastName": "Bezos",
-    "role": "Project Leader",
-    "rating": 4
-  },
-  {
-    "id": 79321,
-    "firstName": "Alan",
-    "lastName": "Kay",
-    "role": "Programmer",
-    "rating": 5
-  },
-  {
-    "id": 17652,
-    "firstName": "Donald",
-    "lastName": "Knuth",
-    "role": "Programmer",
-    "rating": 4
-  },
-  {
-    "id": 23549,
-    "firstName": "Melinda",
-    "lastName": "Tubbs",
-    "role": "Tester",
-    "rating": 3
-  },
-  {
-    "id": 42638,
-    "firstName": "Larry",
-    "lastName": "Ellison",
-    "role": "Architect",
-    "rating": 4
-  },
-  {
-    "id": 61894,
-    "firstName": "Grace",
-    "lastName": "Garrison",
-    "role": "Tester",
-    "rating": 5
-  },
-  {
-    "id": 82345,
-    "firstName": "Steve",
-    "lastName": "Jobs",
-    "role": "Programmer",
-    "rating": 4
-  },
-  {
-    "id": 90210,
-    "firstName": "Mike",
-    "lastName": "Harrison",
-    "role": "Programmer",
-    "rating": 3
-  },
-  {
-    "id": 33765,
-    "firstName": "Andy",
-    "lastName": "Hertzfield",
-    "role": "Architect",
-    "rating": 4
-  },
-  {
-    "id": 49782,
-    "firstName": "Martina",
-    "lastName": "Richards",
-    "role": "Tester",
-    "rating": 5
-  },
-  {
-    "id": 63920,
-    "firstName": "Larry",
-    "lastName": "Hill",
-    "role": "Programmer",
-    "rating": 3
-  },
-{
-  "id": 58274,
-  "firstName": "Henry",
-  "lastName": "Lennon",
-  "role": "Programmer",
-  "rating": 3
-},
-{
-  "id": 99315,
-  "firstName": "Dennis",
-  "lastName": "Ritchie",
-  "role": "Architect",
-  "rating": 4
-},
-{
-  "id": 41792,
-  "firstName": "Margaret",
-  "lastName": "Hamil",
-  "role": "Tester",
-  "rating": 5
-},
-{
-  "id": 70825,
-  "firstName": "Larry",
-  "lastName": "Page",
-  "role": "Programmer",
-  "rating": 3
-},
-{
-  "id": 56789,
-  "firstName": "Carl",
-  "lastName": "Simmons",
-  "role": "Programmer",
-  "rating": 4
-},
-{
-  "id": 52670,
-  "firstName": "Hillary",
-  "lastName": "Bush",
-  "role": "Programmer",
-  "rating": 2
-},
-{
-  "id": 34987,
-  "firstName": "Larry",
-  "lastName": "Ellis",
-  "role": "Architect",
-  "rating": 4
-},
-{
-  "id": 45928,
-  "firstName": "Tim",
-  "lastName": "Berners-Lee",
-  "role": "Programmer",
-  "rating": 5
-},
-{
-  "id": 65370,
-  "firstName": "Richard",
-  "lastName": "Stallman",
-  "role": "Programmer",
-  "rating": 3
-},
-{
-  "id": 81532,
-  "firstName": "Mark",
-  "lastName": "Zuckerberg",
-  "role": "Programmer",
-  "rating": 4
-},
-{
-  "id": 95487,
-  "firstName": "Jeff",
-  "lastName": "Bezos",
-  "role": "Project Leader",
-  "rating": 4
-},
-{
-  "id": 79321,
-  "firstName": "Alan",
-  "lastName": "Kay",
-  "role": "Programmer",
-  "rating": 5
-},
-{
-  "id": 17652,
-  "firstName": "Donald",
-  "lastName": "Knuth",
-  "role": "Programmer",
-  "rating": 4
-},
-{
-  "id": 23549,
-  "firstName": "Melinda",
-  "lastName": "Ackman",
-  "role": "Tester",
-  "rating": 3
-},
-{
-  "id": 42638,
-  "firstName": "Larry",
-  "lastName": "Gadot",
-  "role": "Architect",
-  "rating": 4
-},
-{
-  "id": 61894,
-  "firstName": "Grace",
-  "lastName": "Murray",
-  "role": "Tester",
-  "rating": 5
-},
-{
-  "id": 82345,
-  "firstName": "Vince",
-  "lastName": "Cerf",
-  "role": "Programmer",
-  "rating": 4
-},
-{
-  "id": 90210,
-  "firstName": "Grace",
-  "lastName": "Clinton",
-  "role": "Programmer",
-  "rating": 3
-},
-{
-  "id": 33765,
-  "firstName": "Linus",
-  "lastName": "Torvalds",
-  "role": "Architect",
-  "rating": 4
-},
-{
-  "id": 49782,
-  "firstName": "Margaret",
-  "lastName": "Johnson",
-  "role": "Tester",
-  "rating": 5
-},
-  {
-    "id": 84526,
+    "id": 1001,
     "firstName": "Bill",
     "lastName": "Gates",
-    "role": "Project Leader",
-    "rating": 4
+    "role": "Project_Leader",
+    "rating": 4,
+    "IdsConflicted": [1012, 1038, 1033],
+    "photo":""
   },
   {
-    "id": 91645,
-    "firstName": "Stephen",
-    "lastName": "Wick",
-    "role": "Programmer",
-    "rating": 2
+    "id": 1002,
+    "firstName": "Steve",
+    "lastName": "Jobs",
+    "role": "Project_Leader",
+    "rating": 3,
+    "IdsConflicted": [1005, 1045, 1015, 1022],
+    "photo":""
   },
   {
-    "id": 10823,
-    "firstName": "Alan",
-    "lastName": "Turing",
-    "role": "Tester",
-    "rating": 5
+    "id": 1003,
+    "firstName": "Linus",
+    "lastName": "Torvalds",
+    "role": "Project_Leader",
+    "rating": 2,
+    "IdsConflicted": [1006, 1017],
+    "photo":""
   },
   {
-    "id": 36789,
+    "id": 1004,
+    "firstName": "Tim",
+    "lastName": "Berners-Lee",
+    "role": "Project_Leader",
+    "rating": 5,
+    "IdsConflicted": [1036, 1001, 1013, 1032],
+    "photo":""
+  },
+  {
+    "id": 1005,
     "firstName": "Ada",
     "lastName": "Lovelace",
+    "role": "Project_Leader",
+    "rating": 4,
+    "IdsConflicted": [1007, 1015],
+    "photo":""
+  },
+  {
+    "id": 1006,
+    "firstName": "Alan",
+    "lastName": "Turing",
     "role": "Architect",
-    "rating": 3
+    "rating": 3,
+    "IdsConflicted": [1010, 1040, 1017, 1022, 1046],
+    "photo":""
+  },
+  {
+    "id": 1007,
+    "firstName": "Grace",
+    "lastName": "Hopper",
+    "role": "Architect",
+    "rating": 4,
+    "IdsConflicted": [1021, 1037, 1042, 1045],
+    "photo":""
+  },
+  {
+    "id": 1008,
+    "firstName": "Mark",
+    "lastName": "Zuckerberg",
+    "role": "Architect",
+    "rating": 5,
+    "IdsConflicted": [1003, 1010, 1013],
+    "photo":""
+  },
+  {
+    "id": 1009,
+    "firstName": "Larry",
+    "lastName": "Page",
+    "role": "Architect",
+    "rating": 3,
+    "IdsConflicted": [1039, 1011],
+    "photo":""
+  },
+  {
+    "id": 1010,
+    "firstName": "Sergey",
+    "lastName": "Brin",
+    "role": "Architect",
+    "rating": 4,
+    "IdsConflicted": [1014, 1027, 1033, 1040],
+    "photo":""
+  },
+  {
+    "id": 1011,
+    "firstName": "Jeff",
+    "lastName": "Bezos",
+    "role": "Architect",
+    "rating": 2,
+     "IdsConflicted": [1022, 1038],
+    "photo":""
+  },
+  {
+    "id": 1012,
+    "firstName": "Elon",
+    "lastName": "Musk",
+    "role": "Architect",
+    "rating": 4,
+    "IdsConflicted": [1036, 1030, 1025, 1015],
+    "photo":""
+  },
+  {
+    "id": 1013,
+    "firstName": "Satya",
+    "lastName": "Nadella",
+    "role": "Architect",
+    "rating": 5,
+    "IdsConflicted": [1002, 1008, 1020, 1043],
+    "photo":""
+  },
+  {
+    "id": 1014,
+    "firstName": "Jack",
+    "lastName": "Dorsey",
+    "role": "Architect",
+    "rating": 3,
+    "IdsConflicted": [1029, 1040],
+    "photo":""
+  },
+  {
+    "id": 1015,
+    "firstName": "Marissa",
+    "lastName": "Mayer",
+    "role": "Architect",
+    "rating": 4,
+    "IdsConflicted": [1005, 1007, 1023],
+    "photo":""
+  },
+  {
+    "id": 1016,
+    "firstName": "Garry",
+    "lastName": "Kasparov",
+    "role": "Tester",
+    "rating": 4,
+    "IdsConflicted": [1035, 1046, 1031],
+    "photo":""
+  },
+  {
+    "id": 1017,
+    "firstName": "Anatoly",
+    "lastName": "Karpov",
+    "role": "Tester",
+    "rating": 5,
+    "IdsConflicted": [1022, 1001, 1032],
+    "photo":""
+  },
+  {
+    "id": 1018,
+    "firstName": "Bobby",
+    "lastName": "Fischer",
+    "role": "Tester",
+    "rating": 4,
+    "IdsConflicted": [1012, 1045, 1030],
+    "photo":""
+  },
+  {
+    "id": 1019,
+    "firstName": "Magnus",
+    "lastName": "Carlsen",
+    "role": "Tester",
+    "rating": 3,
+    "IdsConflicted": [1039, 1047, 1024, 1001],
+    "photo":""
+  },
+  {
+    "id": 1020,
+    "firstName": "Viswanathan",
+    "lastName": "Anand",
+    "role": "Tester",
+    "rating": 4,
+    "IdsConflicted": [1049, 1026, 1037],
+    "photo":""
+  },
+  {
+    "id": 1021,
+    "firstName": "Vladimir",
+    "lastName": "Kramnik",
+    "role": "Tester",
+    "rating": 5,
+    "IdsConflicted": [1033, 1017, 1025],
+    "photo":""
+  },
+  {
+    "id": 1022,
+    "firstName": "Mikhail",
+    "lastName": "Tal",
+    "role": "Tester",
+    "rating": 4,
+    "IdsConflicted": [1015, 1039, 1026],
+    "photo":""
+  },
+  {
+    "id": 1023,
+    "firstName": "Jose Raul",
+    "lastName": "Capablanca",
+    "role": "Tester",
+    "rating": 3,
+    "IdsConflicted": [1030, 1046, 1013, 1021],
+    "photo":""
+  },
+  {
+    "id": 1024,
+    "firstName": "Alexander",
+    "lastName": "Alekhine",
+    "role": "Tester",
+    "rating": 4,
+    "IdsConflicted": [1027, 1034],
+    "photo":""
+  },
+  {
+    "id": 1025,
+    "firstName": "Veselin",
+    "lastName": "Topalov",
+    "role": "Tester",
+    "rating": 5,
+     "IdsConflicted": [1042, 1037],
+    "photo":""
+  },
+  {
+    "id": 1026,
+    "firstName": "Boris",
+    "lastName": "Spassky",
+    "role": "Tester",
+    "rating": 3,
+    "IdsConflicted": [1028, 1041, 1036, 1019],
+    "photo":""
+  },
+{
+  "id": 1027,
+  "firstName": "Vassily",
+  "lastName": "Ivanchuk",
+  "role": "Tester",
+  "rating": 3,
+  "IdsConflicted": [1012, 1023, 1047, 1018],
+  "photo":""
+},
+{
+  "id": 1028,
+  "firstName": "Levon",
+  "lastName": "Aronian",
+  "role": "Tester",
+  "rating": 4,
+  "IdsConflicted": [1038, 1045],
+  "photo":""
+},
+{
+  "id": 1029,
+  "firstName": "Tigran",
+  "lastName": "Petrosian",
+  "role": "Tester",
+  "rating": 5,
+  "IdsConflicted": [1024, 1031],
+  "photo":""
+},
+{
+  "id": 1030,
+  "firstName": "Max",
+  "lastName": "Euwe",
+  "role": "Tester",
+  "rating": 3,
+  "IdsConflicted": [1014, 1032, 1049],
+  "photo":""
+},
+{
+  "id": 1031,
+  "firstName": "Mikhail",
+  "lastName": "Botwinnik",
+  "role": "Programmer",
+  "rating": 4,
+  "IdsConflicted": [1035, 1048, 1037],
+  "photo":""
+},
+{
+  "id": 1032,
+  "firstName": "Hiraku",
+  "lastName": "Nakamura",
+  "role": "Programmer",
+  "rating": 2,
+  "IdsConflicted": [1039, 1035, 1044, 1045],
+  "photo":""
+},
+{
+  "id": 1033,
+  "firstName": "Anatoly",
+  "lastName": "Lein",
+  "role": "Programmer",
+  "rating": 4,
+   "IdsConflicted": [1032, 1041, 1042],
+  "photo":""
+},
+{
+  "id": 1034,
+  "firstName": "Nigel",
+  "lastName": "Short",
+  "role": "Programmer",
+  "rating": 5,
+  "IdsConflicted": [1037, 1043],
+  "photo":""
+},
+{
+  "id": 1035,
+  "firstName": "Viktor",
+  "lastName": "Korchnoi",
+  "role": "Programmer",
+  "rating": 3,
+  "IdsConflicted": [1045, 1049],
+  "photo":""
+},
+{
+  "id": 1036,
+  "firstName": "Fabiano",
+  "lastName": "Caruana",
+  "role": "Programmer",
+  "rating": 4,
+  "IdsConflicted": [1033, 1040, 1042, 1047],
+  "photo":""
+},
+{
+  "id": 1037,
+  "firstName": "Judith",
+  "lastName": "Polgar",
+  "role": "Programmer",
+  "rating": 4,
+  "IdsConflicted": [1038, 1041, 1044, 1046],
+  "photo":""
+},
+{
+  "id": 1038,
+  "firstName": "Alexander",
+  "lastName": "Grischuk",
+  "role": "Programmer",
+  "rating": 5,
+  "IdsConflicted": [1046, 1049],
+  "photo":""
+},
+{
+  "id": 1039,
+  "firstName": "Shakhiyar",
+  "lastName": "Mamedyarov",
+  "role": "Programmer",
+  "rating": 4,
+  "IdsConflicted": [1036, 1040],
+  "photo":""
+},
+{
+  "id": 1040,
+  "firstName": "David",
+  "lastName": "Bronstein",
+  "role": "Programmer",
+  "rating": 3,
+  "IdsConflicted": [1037, 1043, 1048],
+  "photo":""
+},
+{
+  "id": 1041,
+  "firstName": "Alexei",
+  "lastName": "Shirov",
+  "role": "Programmer",
+  "rating": 4,
+   "IdsConflicted": [1044, 1046, 1047, 1049],
+  "photo":""
+},
+{
+  "id": 1042,
+  "firstName": "Sergei",
+  "lastName": "Karjakin",
+  "role": "Programmer",
+  "rating": 5,
+  "IdsConflicted": [1043, 1045],
+  "photo":""
+},
+{
+  "id": 1043,
+  "firstName": "Vugar",
+  "lastName": "Gashimov",
+  "role": "Programmer",
+  "rating": 4,
+  "IdsConflicted": [1047, 1048],
+  "photo":""
+},
+{
+  "id": 1044,
+  "firstName": "Wesley",
+  "lastName": "So",
+  "role": "Programmer",
+  "rating": 3,
+  "IdsConflicted": [1041, 1045, 1048],
+  "photo":""
+},
+{
+  "id": 1045,
+  "firstName": "Telmour",
+  "lastName": "Radjabov",
+  "role": "Programmer",
+  "rating": 4,
+  "IdsConflicted": [1042, 1043, 1046],
+  "photo":""
+},
+{
+  "id": 1046,
+  "firstName": "Richard",
+  "lastName": "Reti",
+  "role": "Programmer",
+  "rating": 5,
+  "IdsConflicted": [1043, 1044, 1045, 1047],
+  "photo":""
+},
+  {
+    "id": 1047,
+    "firstName": "Akiba",
+    "lastName": "Rubinstein",
+    "role": "Programmer",
+    "rating": 4,
+    "IdsConflicted": [1041, 1043, 1046, 1049],
+    "photo":""
+  },
+  {
+    "id": 1048,
+    "firstName": "Mikhail",
+    "lastName": "Gurevich",
+    "role": "Programmer",
+    "rating": 2,
+    "IdsConflicted": [1043, 1044, 1049],
+    "photo":""
+  },
+  {
+    "id": 1049,
+    "firstName": "Vladimir",
+    "lastName": "Akopian",
+    "role": "Programmer",
+    "rating": 5,
+    "IdsConflicted": [1041, 1047, 1048],
+    "photo":""
+  },
+  {
+    "id": 1050,
+    "firstName": "Lajos",
+    "lastName": "Portisch",
+    "role": "Programmer",
+    "rating": 3,
+    "IdsConflicted": [1042, 1046],
+    "photo":""
   }
 ]
 
