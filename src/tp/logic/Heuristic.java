@@ -10,6 +10,11 @@ public class Heuristic {
 	private int architectCount;
 	private int programmerCount;
 	private int testerCount;
+	private int projectLeadersAdded;
+	private int architectsAdded;
+	private int programmersAdded;
+	private int testersAdded;
+	private int combinationCount;
 
 	public Heuristic(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
@@ -18,6 +23,12 @@ public class Heuristic {
 		this.architectCount = architectCount;
 		this.programmerCount = programmerCount;
 		this.testerCount = testerCount;
+		this.projectLeadersAdded = 0;
+		this.architectsAdded = 0;
+		this.programmersAdded = 0;
+		this.testersAdded = 0;
+		this.combinationCount = 0;
+		
 	}
 
 	public List<Employee> findBestCombination(Comparator<Employee> comparator) {
@@ -26,19 +37,16 @@ public class Heuristic {
 		team.sort(comparator);
 
 		List<Employee> finalTeam = new ArrayList<>();
-		int projectLeadersAdded = 0;
-		int architectsAdded = 0;
-		int programmersAdded = 0;
-		int testersAdded = 0;
 
 		for (Employee employee : team) {
-			if (isValidRole(employee, projectLeadersAdded, architectsAdded, programmersAdded, testersAdded)) {
-				finalTeam.add(employee);
+			if (isValidRole(employee, projectLeadersAdded, architectsAdded, programmersAdded, testersAdded)) {	
 				incrementRoleCount(employee.getRole(), projectLeadersAdded, architectsAdded, programmersAdded,
 						testersAdded);
+				finalTeam.add(employee);
+				combinationCount++;
 			}
 		}
-
+		System.out.println("En Heuristic, cantidad de combinaciones generadas: " + combinationCount);
 		return finalTeam;
 	}
 
@@ -46,16 +54,16 @@ public class Heuristic {
 			int programmersAdded, int testersAdded) {
 		switch (role) {
 		case Project_Leader:
-			projectLeadersAdded++;
+			this.projectLeadersAdded++;
 			break;
 		case Architect:
-			architectsAdded++;
+			this.architectsAdded++;
 			break;
 		case Programmer:
-			programmersAdded++;
+			this.programmersAdded++;
 			break;
 		case Tester:
-			testersAdded++;
+			this.testersAdded++;
 			break;
 		}
 	}
@@ -64,17 +72,15 @@ public class Heuristic {
 			int testersAdded) {
 		switch (employee.getRole()) {
 		case Project_Leader:
-			return projectLeadersAdded < projectLeaderCount;
+			return projectLeadersAdded < this.projectLeaderCount;
 		case Architect:
-			return architectsAdded < architectCount;
+			return architectsAdded < this.architectCount;
 		case Programmer:
-			return programmersAdded < programmerCount;
+			return programmersAdded < this.programmerCount;
 		case Tester:
-			return testersAdded < testerCount;
+			return testersAdded < this.testerCount;
 		default:
 			return false;
 		}
-	}
-
-	
+	}	
 }

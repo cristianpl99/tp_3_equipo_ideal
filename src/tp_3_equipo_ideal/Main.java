@@ -18,8 +18,8 @@ public class Main {
 		//idealTeam.displayEmployees(employees);
 		
 		//idealTeam.generateTeamByBruteForce(employees, 1, 1, 2, 3);
-		//idealTeam.generateTeamByBackTracking(employees, 1, 1, 3, 5);
-		idealTeam.generateTeamByHeuristic(employees, 1, 1, 3, 5);
+		idealTeam.generateTeamByBackTracking(employees, 1, 1, 2, 4);
+		idealTeam.generateTeamByHeuristic(employees, 1, 1, 2, 4);
 		
 		}
 

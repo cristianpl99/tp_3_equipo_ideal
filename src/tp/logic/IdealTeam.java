@@ -6,8 +6,6 @@ import java.util.Comparator;
 
 
 public class IdealTeam {
-
-	
 	
 	public void generateTeamByBruteForce(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount, int testerCount) {
 
@@ -26,7 +24,6 @@ public class IdealTeam {
                 for (Employee employee : bestCombination) {
                     System.out.println(employee);
                 }
-
                 System.out.println("Tiempo de ejecución: " + executionTime + " segundos");
             }
         };
@@ -35,7 +32,6 @@ public class IdealTeam {
 	    thread.start();
 	}
 
-	
 	public void generateTeamByBackTracking(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount, int testerCount) {
 
 	    Runnable backTrackingTask = new Runnable() {
@@ -51,9 +47,12 @@ public class IdealTeam {
                 
 	            System.out.println("Mejor combinación de empleados:");
 	            System.out.println(bestCombination.size());
+	            int acum =0;
 	            for (Employee employee : bestCombination) {
 	                System.out.println(employee);
+	                acum += employee.getRating();
 	            }
+	            System.out.println("Promedio de rating de empleados: " + acum / bestCombination.size());
 	            System.out.println("Tiempo de ejecución: " + executionTime + " segundos");
 	        }
 	    };
@@ -85,10 +84,12 @@ public class IdealTeam {
                 double executionTime = (endTime - startTime) / 1000.0;
                 
 	            System.out.println("Mejor combinación de empleados:");
-	            System.out.println(bestCombination.size());
+	            int acum =0;
 	            for (Employee employee : bestCombination) {
 	                System.out.println(employee);
+	                acum += employee.getRating();
 	            }
+	            System.out.println("Promedio de rating de empleados: " + acum / bestCombination.size());
 	            System.out.println("Tiempo de ejecución: " + executionTime + " segundos");
 	        }
 	    };
