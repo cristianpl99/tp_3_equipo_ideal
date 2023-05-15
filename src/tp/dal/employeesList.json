@@ -5,7 +5,7 @@
     "lastName": "Gates",
     "role": "Project_Leader",
     "rating": 4,
-    "IdsConflicted": [1012, 1038, 1033],
+    "IdsConflicted": [1012],
     "photo":""
   },
   {
@@ -14,7 +14,7 @@
     "lastName": "Jobs",
     "role": "Project_Leader",
     "rating": 3,
-    "IdsConflicted": [1005, 1045, 1015, 1022],
+    "IdsConflicted": [1005],
     "photo":""
   },
   {
@@ -23,7 +23,7 @@
     "lastName": "Torvalds",
     "role": "Project_Leader",
     "rating": 2,
-    "IdsConflicted": [1006, 1017],
+    "IdsConflicted": [1017],
     "photo":""
   },
   {
@@ -31,8 +31,8 @@
     "firstName": "Tim",
     "lastName": "Berners-Lee",
     "role": "Project_Leader",
-    "rating": 5,
-    "IdsConflicted": [1036, 1001, 1013, 1032],
+    "rating": 2,
+    "IdsConflicted": [1036],
     "photo":""
   },
   {
@@ -41,7 +41,7 @@
     "lastName": "Lovelace",
     "role": "Project_Leader",
     "rating": 4,
-    "IdsConflicted": [1007, 1015],
+    "IdsConflicted": [1015],
     "photo":""
   },
   {
@@ -50,7 +50,7 @@
     "lastName": "Turing",
     "role": "Architect",
     "rating": 3,
-    "IdsConflicted": [1010, 1040, 1017, 1022, 1046],
+    "IdsConflicted": [1022],
     "photo":""
   },
   {
@@ -59,7 +59,7 @@
     "lastName": "Hopper",
     "role": "Architect",
     "rating": 4,
-    "IdsConflicted": [1021, 1037, 1042, 1045],
+    "IdsConflicted": [1021],
     "photo":""
   },
   {
@@ -67,8 +67,8 @@
     "firstName": "Mark",
     "lastName": "Zuckerberg",
     "role": "Architect",
-    "rating": 5,
-    "IdsConflicted": [1003, 1010, 1013],
+    "rating": 2,
+    "IdsConflicted": [1013],
     "photo":""
   },
   {
@@ -77,7 +77,7 @@
     "lastName": "Page",
     "role": "Architect",
     "rating": 3,
-    "IdsConflicted": [1039, 1011],
+    "IdsConflicted": [1039],
     "photo":""
   },
   {
@@ -86,7 +86,7 @@
     "lastName": "Brin",
     "role": "Architect",
     "rating": 4,
-    "IdsConflicted": [1014, 1027, 1033, 1040],
+    "IdsConflicted": [1027],
     "photo":""
   },
   {
@@ -95,7 +95,7 @@
     "lastName": "Bezos",
     "role": "Architect",
     "rating": 2,
-     "IdsConflicted": [1022, 1038],
+     "IdsConflicted": [1038],
     "photo":""
   },
   {
@@ -104,7 +104,7 @@
     "lastName": "Musk",
     "role": "Architect",
     "rating": 4,
-    "IdsConflicted": [1036, 1030, 1025, 1015],
+    "IdsConflicted": [1025],
     "photo":""
   },
   {
@@ -113,7 +113,7 @@
     "lastName": "Nadella",
     "role": "Architect",
     "rating": 5,
-    "IdsConflicted": [1002, 1008, 1020, 1043],
+    "IdsConflicted": [1020],
     "photo":""
   },
   {
@@ -122,7 +122,7 @@
     "lastName": "Dorsey",
     "role": "Architect",
     "rating": 3,
-    "IdsConflicted": [1029, 1040],
+    "IdsConflicted": [1029],
     "photo":""
   },
   {
@@ -131,7 +131,7 @@
     "lastName": "Mayer",
     "role": "Architect",
     "rating": 4,
-    "IdsConflicted": [1005, 1007, 1023],
+    "IdsConflicted": [1023],
     "photo":""
   },
   {
@@ -140,7 +140,7 @@
     "lastName": "Kasparov",
     "role": "Tester",
     "rating": 4,
-    "IdsConflicted": [1035, 1046, 1031],
+    "IdsConflicted": [1035],
     "photo":""
   },
   {
@@ -148,8 +148,8 @@
     "firstName": "Anatoly",
     "lastName": "Karpov",
     "role": "Tester",
-    "rating": 5,
-    "IdsConflicted": [1022, 1001, 1032],
+    "rating": 3,
+    "IdsConflicted": [1032],
     "photo":""
   },
   {
@@ -158,7 +158,7 @@
     "lastName": "Fischer",
     "role": "Tester",
     "rating": 4,
-    "IdsConflicted": [1012, 1045, 1030],
+    "IdsConflicted": [1012],
     "photo":""
   },
   {
@@ -167,7 +167,7 @@
     "lastName": "Carlsen",
     "role": "Tester",
     "rating": 3,
-    "IdsConflicted": [1039, 1047, 1024, 1001],
+    "IdsConflicted": [1001],
     "photo":""
   },
   {
@@ -176,7 +176,7 @@
     "lastName": "Anand",
     "role": "Tester",
     "rating": 4,
-    "IdsConflicted": [1049, 1026, 1037],
+    "IdsConflicted": [1037],
     "photo":""
   },
   {
@@ -184,8 +184,8 @@
     "firstName": "Vladimir",
     "lastName": "Kramnik",
     "role": "Tester",
-    "rating": 5,
-    "IdsConflicted": [1033, 1017, 1025],
+    "rating": 3,
+    "IdsConflicted": [1033],
     "photo":""
   },
   {
@@ -194,7 +194,7 @@
     "lastName": "Tal",
     "role": "Tester",
     "rating": 4,
-    "IdsConflicted": [1015, 1039, 1026],
+    "IdsConflicted": [1015],
     "photo":""
   },
   {
@@ -203,7 +203,7 @@
     "lastName": "Capablanca",
     "role": "Tester",
     "rating": 3,
-    "IdsConflicted": [1030, 1046, 1013, 1021],
+    "IdsConflicted": [1030],
     "photo":""
   },
   {
@@ -212,7 +212,7 @@
     "lastName": "Alekhine",
     "role": "Tester",
     "rating": 4,
-    "IdsConflicted": [1027, 1034],
+    "IdsConflicted": [1027],
     "photo":""
   },
   {
@@ -220,8 +220,8 @@
     "firstName": "Veselin",
     "lastName": "Topalov",
     "role": "Tester",
-    "rating": 5,
-     "IdsConflicted": [1042, 1037],
+    "rating": 3,
+     "IdsConflicted": [1042],
     "photo":""
   },
   {
@@ -230,7 +230,7 @@
     "lastName": "Spassky",
     "role": "Tester",
     "rating": 3,
-    "IdsConflicted": [1028, 1041, 1036, 1019],
+    "IdsConflicted": [1019],
     "photo":""
   },
 {
@@ -239,7 +239,7 @@
   "lastName": "Ivanchuk",
   "role": "Tester",
   "rating": 3,
-  "IdsConflicted": [1012, 1023, 1047, 1018],
+  "IdsConflicted": [1012],
   "photo":""
 },
 {
@@ -248,7 +248,7 @@
   "lastName": "Aronian",
   "role": "Tester",
   "rating": 4,
-  "IdsConflicted": [1038, 1045],
+  "IdsConflicted": [1038],
   "photo":""
 },
 {
@@ -256,8 +256,8 @@
   "firstName": "Tigran",
   "lastName": "Petrosian",
   "role": "Tester",
-  "rating": 5,
-  "IdsConflicted": [1024, 1031],
+  "rating": 4,
+  "IdsConflicted": [1024],
   "photo":""
 },
 {
@@ -266,7 +266,7 @@
   "lastName": "Euwe",
   "role": "Tester",
   "rating": 3,
-  "IdsConflicted": [1014, 1032, 1049],
+  "IdsConflicted": [1014],
   "photo":""
 },
 {
@@ -275,7 +275,7 @@
   "lastName": "Botwinnik",
   "role": "Programmer",
   "rating": 4,
-  "IdsConflicted": [1035, 1048, 1037],
+  "IdsConflicted": [1037],
   "photo":""
 },
 {
@@ -284,7 +284,7 @@
   "lastName": "Nakamura",
   "role": "Programmer",
   "rating": 2,
-  "IdsConflicted": [1039, 1035, 1044, 1045],
+  "IdsConflicted": [1045],
   "photo":""
 },
 {
@@ -293,7 +293,7 @@
   "lastName": "Lein",
   "role": "Programmer",
   "rating": 4,
-   "IdsConflicted": [1032, 1041, 1042],
+   "IdsConflicted": [1042],
   "photo":""
 },
 {
@@ -302,7 +302,7 @@
   "lastName": "Short",
   "role": "Programmer",
   "rating": 5,
-  "IdsConflicted": [1037, 1043],
+  "IdsConflicted": [1006],
   "photo":""
 },
 {
@@ -311,7 +311,7 @@
   "lastName": "Korchnoi",
   "role": "Programmer",
   "rating": 3,
-  "IdsConflicted": [1045, 1049],
+  "IdsConflicted": [1009],
   "photo":""
 },
 {
@@ -320,7 +320,7 @@
   "lastName": "Caruana",
   "role": "Programmer",
   "rating": 4,
-  "IdsConflicted": [1033, 1040, 1042, 1047],
+  "IdsConflicted": [1018],
   "photo":""
 },
 {
@@ -329,7 +329,7 @@
   "lastName": "Polgar",
   "role": "Programmer",
   "rating": 4,
-  "IdsConflicted": [1038, 1041, 1044, 1046],
+  "IdsConflicted": [1020],
   "photo":""
 },
 {
@@ -337,8 +337,8 @@
   "firstName": "Alexander",
   "lastName": "Grischuk",
   "role": "Programmer",
-  "rating": 5,
-  "IdsConflicted": [1046, 1049],
+  "rating": 3,
+  "IdsConflicted": [1002],
   "photo":""
 },
 {
@@ -347,7 +347,7 @@
   "lastName": "Mamedyarov",
   "role": "Programmer",
   "rating": 4,
-  "IdsConflicted": [1036, 1040],
+  "IdsConflicted": [1028],
   "photo":""
 },
 {
@@ -356,7 +356,7 @@
   "lastName": "Bronstein",
   "role": "Programmer",
   "rating": 3,
-  "IdsConflicted": [1037, 1043, 1048],
+  "IdsConflicted": [1021],
   "photo":""
 },
 {
@@ -365,7 +365,7 @@
   "lastName": "Shirov",
   "role": "Programmer",
   "rating": 4,
-   "IdsConflicted": [1044, 1046, 1047, 1049],
+   "IdsConflicted": [1014],
   "photo":""
 },
 {
@@ -373,7 +373,7 @@
   "firstName": "Sergei",
   "lastName": "Karjakin",
   "role": "Programmer",
-  "rating": 5,
+  "rating": 4,
   "IdsConflicted": [1043, 1045],
   "photo":""
 },
@@ -383,7 +383,7 @@
   "lastName": "Gashimov",
   "role": "Programmer",
   "rating": 4,
-  "IdsConflicted": [1047, 1048],
+  "IdsConflicted": [1032],
   "photo":""
 },
 {
@@ -392,7 +392,7 @@
   "lastName": "So",
   "role": "Programmer",
   "rating": 3,
-  "IdsConflicted": [1041, 1045, 1048],
+  "IdsConflicted": [1017],
   "photo":""
 },
 {
@@ -401,7 +401,7 @@
   "lastName": "Radjabov",
   "role": "Programmer",
   "rating": 4,
-  "IdsConflicted": [1042, 1043, 1046],
+  "IdsConflicted": [1013],
   "photo":""
 },
 {
@@ -409,8 +409,8 @@
   "firstName": "Richard",
   "lastName": "Reti",
   "role": "Programmer",
-  "rating": 5,
-  "IdsConflicted": [1043, 1044, 1045, 1047],
+  "rating": 3,
+  "IdsConflicted": [1029],
   "photo":""
 },
   {
@@ -419,7 +419,7 @@
     "lastName": "Rubinstein",
     "role": "Programmer",
     "rating": 4,
-    "IdsConflicted": [1041, 1043, 1046, 1049],
+    "IdsConflicted": [1015],
     "photo":""
   },
   {
@@ -428,7 +428,7 @@
     "lastName": "Gurevich",
     "role": "Programmer",
     "rating": 2,
-    "IdsConflicted": [1043, 1044, 1049],
+    "IdsConflicted": [1039],
     "photo":""
   },
   {
@@ -436,8 +436,8 @@
     "firstName": "Vladimir",
     "lastName": "Akopian",
     "role": "Programmer",
-    "rating": 5,
-    "IdsConflicted": [1041, 1047, 1048],
+    "rating": 4,
+    "IdsConflicted": [1002],
     "photo":""
   },
   {
@@ -446,7 +446,7 @@
     "lastName": "Portisch",
     "role": "Programmer",
     "rating": 3,
-    "IdsConflicted": [1042, 1046],
+    "IdsConflicted": [1024],
     "photo":""
   }
 ]

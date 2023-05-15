@@ -15,7 +15,10 @@ public class Main {
 				
 		List<Employee> employees = data.readEmployeesFromJSON();
 		
-		idealTeam.displayEmployees(employees);
+		//idealTeam.displayEmployees(employees);
+		
+		//idealTeam.generateTeamByBruteForce(employees, 1, 1, 2, 3);
+		idealTeam.generateTeamByBackTracking(employees, 1, 1, 3, 5);
 		
 		}
 
