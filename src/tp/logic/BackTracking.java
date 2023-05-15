@@ -50,7 +50,7 @@ public class BackTracking {
             combination.add(currentEmployee);
             combinationCount++;
             generateCombination(combination, currentIndex + 1);
-            combination.remove(combination.size() - 1);
+            combination.remove(combination.size() - 1); // Aca se corta la rama de la recursion
         }
         combinationCount++;
         generateCombination(combination, currentIndex + 1);

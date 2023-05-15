@@ -61,6 +61,32 @@ public class IdealTeam {
 	    thread.start();
 	}
 	
+	public void generateTeamByHeuristic(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount, int testerCount) {
+
+	    Runnable heuristicTask = new Runnable() {
+	        @Override
+	        public void run() {
+	        	long startTime = System.currentTimeMillis();
+	        	
+	            Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
+	            List<Employee> bestCombination = heuristic.findBestCombination();
+	            
+	            long endTime = System.currentTimeMillis();
+                double executionTime = (endTime - startTime) / 1000.0;
+                
+	            System.out.println("Mejor combinación de empleados:");
+	            System.out.println(bestCombination.size());
+	            for (Employee employee : bestCombination) {
+	                System.out.println(employee);
+	            }
+	            System.out.println("Tiempo de ejecución: " + executionTime + " segundos");
+	        }
+	    };
+
+	    Thread thread = new Thread(heuristicTask);
+	    thread.start();
+	}
+	
 	//------------------------------------------------------------------------------------------------//
 	
 	public void displayEmployees(List<Employee> employees) {
