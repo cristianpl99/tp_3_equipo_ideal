@@ -109,11 +109,3 @@ public class BruteForce {
 		return (double) totalRating / combination.size();
 	}
 }
-
-
-
-	
-
-
-
-

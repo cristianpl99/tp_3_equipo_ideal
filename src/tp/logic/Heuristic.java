@@ -28,7 +28,7 @@ public class Heuristic {
 		this.programmersAdded = 0;
 		this.testersAdded = 0;
 		this.combinationCount = 0;
-		
+
 	}
 
 	public List<Employee> findBestCombination(Comparator<Employee> comparator) {
@@ -39,7 +39,7 @@ public class Heuristic {
 		List<Employee> finalTeam = new ArrayList<>();
 
 		for (Employee employee : team) {
-			if (isValidRole(employee, projectLeadersAdded, architectsAdded, programmersAdded, testersAdded)) {	
+			if (isValidRole(employee, projectLeadersAdded, architectsAdded, programmersAdded, testersAdded)) {
 				incrementRoleCount(employee.getRole(), projectLeadersAdded, architectsAdded, programmersAdded,
 						testersAdded);
 				finalTeam.add(employee);
@@ -82,5 +82,5 @@ public class Heuristic {
 		default:
 			return false;
 		}
-	}	
+	}
 }

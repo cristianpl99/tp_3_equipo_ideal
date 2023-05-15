@@ -16,39 +16,39 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 
-
 public class Data {
 	private String fileLocation = "src" + java.io.File.separator + "tp" + java.io.File.separator + "dal"
 			+ java.io.File.separator + "employeesList.json";
 
 	public List<Employee> readEmployeesFromJSON() {
-	    try (FileReader reader = new FileReader(fileLocation)) {
-	        Gson gson = new Gson();
-	        Type employeeListType = new TypeToken<List<Map<String, Object>>>() {}.getType();
-	        List<Map<String, Object>> employeeMapList = gson.fromJson(reader, employeeListType);
+		try (FileReader reader = new FileReader(fileLocation)) {
+			Gson gson = new Gson();
+			Type employeeListType = new TypeToken<List<Map<String, Object>>>() {
+			}.getType();
+			List<Map<String, Object>> employeeMapList = gson.fromJson(reader, employeeListType);
 
-	        List<Employee> employees = new ArrayList<>();
+			List<Employee> employees = new ArrayList<>();
 
-	        for (Map<String, Object> employeeMap : employeeMapList) {
-	            int id = ((Double) employeeMap.get("id")).intValue();
-	            String firstName = (String) employeeMap.get("firstName");
-	            String lastName = (String) employeeMap.get("lastName");
-	            int rating = ((Double) employeeMap.get("rating")).intValue();
-	            List<Double> idsConflicteds = (List<Double>) employeeMap.get("IdsConflicted");
-	            Role role = Role.valueOf((String) employeeMap.get("role"));
-	            String photo = (String) employeeMap.get("photo");
+			for (Map<String, Object> employeeMap : employeeMapList) {
+				int id = ((Double) employeeMap.get("id")).intValue();
+				String firstName = (String) employeeMap.get("firstName");
+				String lastName = (String) employeeMap.get("lastName");
+				int rating = ((Double) employeeMap.get("rating")).intValue();
+				@SuppressWarnings("unchecked")
+				List<Double> idsConflicteds = (List<Double>) employeeMap.get("IdsConflicted");
+				Role role = Role.valueOf((String) employeeMap.get("role"));
+				String photo = (String) employeeMap.get("photo");
 
-	            Set<Double> idsConflictedsSet = new HashSet<>(idsConflicteds);
+				Set<Double> idsConflictedsSet = new HashSet<>(idsConflicteds);
 
-	            Employee employee = new Employee(id, firstName, lastName, rating, idsConflictedsSet, role, photo);
-	            employees.add(employee);
-	        }
+				Employee employee = new Employee(id, firstName, lastName, rating, idsConflictedsSet, role, photo);
+				employees.add(employee);
+			}
 
-	        return employees;
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
-	    return null;
+			return employees;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }
-
