@@ -65,13 +65,7 @@ public class IdealTeam {
 	
 	public void displayEmployees(List<Employee> employees) {
 	    for (Employee employee : employees) {
-	        System.out.println("Employee ID: " + employee.getId());
-	        System.out.println("First Name: " + employee.getFirstName());
-	        System.out.println("Last Name: " + employee.getLastName());
-	        System.out.println("Rating: " + employee.getRating());
-	        System.out.println("Role: " + employee.getRole());
-	        System.out.println("Photo: " + employee.getPhoto());
-
+	    	employee.toString();
 	        System.out.println("Conflicted Employees:");
 	        Set<Double> conflictedIds = employee.getConflicts();
 	        for (Double conflictedId : conflictedIds) {
@@ -80,7 +74,6 @@ public class IdealTeam {
 	                System.out.println("  - " + conflictedEmployee.getFirstName() + " " + conflictedEmployee.getLastName());
 	            }
 	        }
-
 	        System.out.println();
 	    }
 	}
