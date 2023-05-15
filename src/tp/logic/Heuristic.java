@@ -20,17 +20,10 @@ public class Heuristic {
 		this.testerCount = testerCount;
 	}
 
-	public List<Employee> findBestCombination() {
+	public List<Employee> findBestCombination(Comparator<Employee> comparator) {
 		List<Employee> team = new ArrayList<>(employees);
 
-		team.sort(new Comparator<Employee>() {
-			@Override
-			public int compare(Employee e1, Employee e2) {
-				double coefficient1 = calculateCoefficient(e1);
-				double coefficient2 = calculateCoefficient(e2);
-				return Double.compare(coefficient2, coefficient1);
-			}
-		});
+		team.sort(comparator);
 
 		List<Employee> finalTeam = new ArrayList<>();
 		int projectLeadersAdded = 0;
@@ -83,14 +76,5 @@ public class Heuristic {
 		}
 	}
 
-	private double calculateCoefficient(Employee employee) {
-		int conflictCount = employee.getConflicts().size();
-		double rating = employee.getRating();
-
-		if (conflictCount > 0) {
-			return rating / conflictCount;
-		} else {
-			return rating;
-		}
-	}
+	
 }

@@ -2,6 +2,7 @@ package tp.logic;
 
 import java.util.List;
 import java.util.Set;
+import java.util.Comparator;
 
 
 public class IdealTeam {
@@ -62,6 +63,15 @@ public class IdealTeam {
 	}
 	
 	public void generateTeamByHeuristic(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount, int testerCount) {
+		
+		Comparator<Employee> customComparator = new Comparator<Employee>() {
+		    @Override
+		    public int compare(Employee e1, Employee e2) {
+		        double coefficient1 = calculateCoefficient(e1);
+		        double coefficient2 = calculateCoefficient(e2);
+		        return Double.compare(coefficient2, coefficient1);
+		    }
+		};
 
 	    Runnable heuristicTask = new Runnable() {
 	        @Override
@@ -69,7 +79,7 @@ public class IdealTeam {
 	        	long startTime = System.currentTimeMillis();
 	        	
 	            Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
-	            List<Employee> bestCombination = heuristic.findBestCombination();
+	            List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
 	            
 	            long endTime = System.currentTimeMillis();
                 double executionTime = (endTime - startTime) / 1000.0;
@@ -85,6 +95,14 @@ public class IdealTeam {
 
 	    Thread thread = new Thread(heuristicTask);
 	    thread.start();
+	}
+	
+	private double calculateCoefficient(Employee employee) {
+		int conflictCount = employee.getConflicts().size();
+		double rating = employee.getRating();
+		double coefficient = rating / conflictCount;
+		
+			return coefficient;	
 	}
 	
 	//------------------------------------------------------------------------------------------------//
