@@ -10,6 +10,8 @@ public class BruteForce {
 	private int programmerCount;
 	private int testerCount;
 	private List<Employee> bestCombination;
+	
+
 	private double bestAverageRating;
 	private int combinationCount;
 
@@ -32,7 +34,7 @@ public class BruteForce {
 		return bestCombination;
 	}
 
-	private void generateCombination(List<Employee> combination, int currentIndex) {
+	public void generateCombination(List<Employee> combination, int currentIndex) {
 		if (currentIndex == employees.size()) {
 //			System.out.println(combinationCount);
 //			System.out.println(combination);
@@ -48,7 +50,7 @@ public class BruteForce {
 		generateCombination(combination, currentIndex + 1);
 	}
 
-	private void evaluateCombination(List<Employee> combination) {
+	public void evaluateCombination(List<Employee> combination) {
 		if (isValidCombination(combination)) {
 			double averageRating = calculateAverageRating(combination);
 			if (averageRating > bestAverageRating && !hasConflictedEmployees(combination)) {
@@ -76,7 +78,7 @@ public class BruteForce {
 		return false;
 	}
 
-	private boolean isValidCombination(List<Employee> combination) {
+	public boolean isValidCombination(List<Employee> combination) {
 		int projectLeaderCount = 0;
 		int architectCount = 0;
 		int programmerCount = 0;
@@ -109,5 +111,13 @@ public class BruteForce {
 			totalRating += employee.getRating();
 		}
 		return (double) totalRating / combination.size();
+	}
+
+	public int getCombinationCount() {
+		return combinationCount;
+	}
+	
+	public List<Employee> getBestCombination() {
+		return bestCombination;
 	}
 }
