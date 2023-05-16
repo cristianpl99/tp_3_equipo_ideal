@@ -8,114 +8,81 @@ public class IdealTeam {
 
 	public void generateTeamByBruteForce(List<Employee> employees, int projectLeaderCount, int architectCount,
 			int programmerCount, int testerCount) {
-
-		Runnable bruteForceTask = new Runnable() {
-			@Override
-			public void run() {
-				long startTime = System.currentTimeMillis();
-
-				BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
-						testerCount);
-				List<Employee> bestCombination = bruteForce.findBestCombination();
-
-				long endTime = System.currentTimeMillis();
-				double executionTime = (endTime - startTime) / 1000.0;
-
-				System.out.println("Mejor combinación de empleados:");
-				for (Employee employee : bestCombination) {
-					System.out.println(employee);
-				}
-				System.out.println("Tiempo de ejecución: " + executionTime + " segundos");
-			}
-		};
-
-		Thread thread = new Thread(bruteForceTask);
-		thread.start();
+		runTask(() -> {
+			BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
+					testerCount);
+			List<Employee> bestCombination = bruteForce.findBestCombination();
+			printResult(bestCombination);
+		}, "Fuerza Bruta");
 	}
 
 	public void generateTeamByBackTracking(List<Employee> employees, int projectLeaderCount, int architectCount,
 			int programmerCount, int testerCount) {
-
-		Runnable backTrackingTask = new Runnable() {
-			@Override
-			public void run() {
-				long startTime = System.currentTimeMillis();
-
-				BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount,
-						programmerCount, testerCount);
-				List<Employee> bestCombination = backTracking.findBestCombination();
-
-				long endTime = System.currentTimeMillis();
-				double executionTime = (endTime - startTime) / 1000.0;
-
-				System.out.println("Mejor combinación de empleados:");
-				System.out.println(bestCombination.size());
-				int acum = 0;
-				for (Employee employee : bestCombination) {
-					System.out.println(employee);
-					acum += employee.getRating();
-				}
-				System.out.println("Promedio de rating de empleados: " + acum / bestCombination.size());
-				System.out.println("Tiempo de ejecución: " + executionTime + " segundos");
-			}
-		};
-
-		Thread thread = new Thread(backTrackingTask);
-		thread.start();
+		runTask(() -> {
+			BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount,
+					testerCount);
+			List<Employee> bestCombination = backTracking.findBestCombination();
+			printResult(bestCombination);
+		}, "Back Tracking");
 	}
 
 	public void generateTeamByHeuristic(List<Employee> employees, int projectLeaderCount, int architectCount,
 			int programmerCount, int testerCount) {
-
-		Comparator<Employee> customComparator = new Comparator<Employee>() {
-			@Override
-			public int compare(Employee e1, Employee e2) {
+		runTask(() -> {
+			Comparator<Employee> customComparator = (e1, e2) -> {
 				double coefficient1 = calculateCoefficient(e1);
 				double coefficient2 = calculateCoefficient(e2);
 				return Double.compare(coefficient2, coefficient1);
-			}
-		};
+			};
 
-		Runnable heuristicTask = new Runnable() {
-			@Override
-			public void run() {
-				long startTime = System.currentTimeMillis();
-
-				Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount,
-						testerCount);
-				List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
-
-				long endTime = System.currentTimeMillis();
-				double executionTime = (endTime - startTime) / 1000.0;
-
-				System.out.println("Mejor combinación de empleados:");
-				int acum = 0;
-				for (Employee employee : bestCombination) {
-					System.out.println(employee);
-					acum += employee.getRating();
-				}
-				System.out.println("Promedio de rating de empleados: " + acum / bestCombination.size());
-				System.out.println("Tiempo de ejecución: " + executionTime + " segundos");
-			}
-		};
-
-		Thread thread = new Thread(heuristicTask);
-		thread.start();
+			Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount,
+					testerCount);
+			List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
+			printResult(bestCombination);
+		},"Heuristica");
 	}
 
+	private void runTask(Runnable task, String algorithmName) {
+		long startTime = System.currentTimeMillis();
+
+		Thread thread = new Thread(task);
+		thread.start();
+
+		try {
+			thread.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		long endTime = System.currentTimeMillis();
+		double executionTime = (endTime - startTime) / 1000.0;
+		System.out.println("Tiempo de ejecución (" + algorithmName + "): " + executionTime + " segundos" + "\n");
+	}
+
+	
 	private double calculateCoefficient(Employee employee) {
 		int conflictCount = employee.getConflicts().size();
 		double rating = employee.getRating();
-		double coefficient = rating / conflictCount;
-
-		return coefficient;
+		return rating / conflictCount;
 	}
-
+	
 	// ------------------------------------------------------------------------------------------------//
+	
+	private void printResult(List<Employee> bestCombination) {
+		System.out.println("Mejor combinación de empleados:" + "\n");
+		int totalRating = 0;
+		for (Employee employee : bestCombination) {
+			System.out.println(employee);
+			totalRating += employee.getRating();
+		}
+		int employeeCount = bestCombination.size();
+		double averageRating = (double) totalRating / employeeCount;
+		System.out.println("Promedio de rating de empleados: " + averageRating + "\n");
+	}
 
 	public void displayEmployees(List<Employee> employees) {
 		for (Employee employee : employees) {
-			employee.toString();
+			System.out.println(employee.toString());
 			System.out.println("Conflicted Employees:");
 			Set<Double> conflictedIds = employee.getConflicts();
 			for (Double conflictedId : conflictedIds) {

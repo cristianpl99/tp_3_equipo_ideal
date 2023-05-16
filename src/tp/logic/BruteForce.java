@@ -34,6 +34,8 @@ public class BruteForce {
 
 	private void generateCombination(List<Employee> combination, int currentIndex) {
 		if (currentIndex == employees.size()) {
+//			System.out.println(combinationCount);
+//			System.out.println(combination);
 			combinationCount++;
 			evaluateCombination(combination);
 			return;
