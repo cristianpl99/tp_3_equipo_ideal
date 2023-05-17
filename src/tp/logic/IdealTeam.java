@@ -84,8 +84,8 @@ public class IdealTeam {
 		for (Employee employee : employees) {
 			System.out.println(employee.toString());
 			System.out.println("Conflicted Employees:");
-			Set<Double> conflictedIds = employee.getConflicts();
-			for (Double conflictedId : conflictedIds) {
+			Set<String> conflictedIds = employee.getConflicts();
+			for (String conflictedId : conflictedIds) {
 				Employee conflictedEmployee = findEmployeeById(employees, conflictedId);
 				if (conflictedEmployee != null) {
 					System.out.println(
@@ -96,7 +96,7 @@ public class IdealTeam {
 		}
 	}
 
-	private Employee findEmployeeById(List<Employee> employees, Double conflictedId) {
+	private Employee findEmployeeById(List<Employee> employees, String conflictedId) {
 		for (Employee employee : employees) {
 			if (employee.getId() == conflictedId) {
 				return employee;

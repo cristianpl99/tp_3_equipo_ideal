@@ -3,15 +3,15 @@ package tp.logic;
 import java.util.Set;
 
 public class Employee {
-	private int id;
+	private String id;
 	private String firstName;
 	private String lastName;
 	private int rating;
-	private Set<Double> idsConflicteds;
+	private Set<String> idsConflicteds;
 	private Role role;
 	private String photo;
 
-	public Employee(int id, String firstName, String lastName, int rating, Set<Double> conflicts, Role role,
+	public Employee(String id, String firstName, String lastName, int rating, Set<String> conflicts, Role role,
 			String photo) {
 		this.id = id;
 		this.firstName = firstName;
@@ -26,11 +26,11 @@ public class Employee {
 		return photo;
 	}
 
-	public Set<Double> getConflicts() {
+	public Set<String> getConflicts() {
 		return idsConflicteds;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 

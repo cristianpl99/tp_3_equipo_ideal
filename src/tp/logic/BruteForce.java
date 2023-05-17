@@ -60,7 +60,7 @@ public class BruteForce {
 		}
 	}
 
-	private boolean hasConflictedEmployees(List<Employee> combination) {
+	public boolean hasConflictedEmployees(List<Employee> combination) {
 		for (Employee employee : combination) {
 			if (combinationContainsConflictedEmployee(combination, employee)) {
 				return true;
@@ -71,7 +71,7 @@ public class BruteForce {
 
 	private boolean combinationContainsConflictedEmployee(List<Employee> combination, Employee employee) {
 		for (Employee e : combination) {
-			if (e.getConflicts().contains((double) employee.getId())) {
+			if (e.getConflicts().contains( employee.getId())) {
 				return true;
 			}
 		}

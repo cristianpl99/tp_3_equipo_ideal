@@ -32,7 +32,7 @@ public class BackTracking {
 		return bestCombination;
 	}
 
-	private void generateCombination(List<Employee> combination, int currentIndex) {
+	public void generateCombination(List<Employee> combination, int currentIndex) {
 		if (currentIndex == employees.size()) {
 			if (isValidCombination(combination)) {
 				double averageRating = calculateAverageRating(combination);
@@ -57,14 +57,15 @@ public class BackTracking {
 		generateCombination(combination, currentIndex + 1);
 	}
 
-	private boolean combinationContainsConflictedEmployee(List<Employee> combination, Employee employee) {
-		for (Employee e : combination) {
-			if (e.getConflicts().contains((double) employee.getId())) {
-				return true;
-			}
-		}
-		return false;
+	public boolean combinationContainsConflictedEmployee(List<Employee> combination, Employee employee) {
+	    for (Employee e : combination) {
+	        if (e.getConflicts().contains(employee.getId())) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
+
 
 	private boolean combinationContainsExceedingRole(List<Employee> combination, Employee.Role role) {
 		int count = 0;
@@ -87,7 +88,7 @@ public class BackTracking {
 		}
 	}
 
-	private boolean isValidCombination(List<Employee> combination) {
+	public boolean isValidCombination(List<Employee> combination) {
 		int projectLeaderCount = 0;
 		int architectCount = 0;
 		int programmerCount = 0;
@@ -121,4 +122,14 @@ public class BackTracking {
 		}
 		return (double) totalRating / combination.size();
 	}
+
+	public int getCombinationCount() {
+		return combinationCount;
+	}
+
+	public List<Employee> getBestCombination() {
+		return bestCombination;
+	}
+
+	
 }

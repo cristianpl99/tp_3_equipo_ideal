@@ -23,15 +23,15 @@ public class Data {
 
     public List<Employee> readEmployeesFromJSON() {
         List<Employee> employees = readEmployeesListFromJSON(employeesFileLocation);
-        List<Map<String, List<Double>>> conflictsList = readConflictsListFromJSON(conflictsFileLocation);
+        List<Map<String, List<String>>> conflictsList = readConflictsListFromJSON(conflictsFileLocation);
 
         if (employees != null && conflictsList != null) {
             for (Employee employee : employees) {
-                for (Map<String, List<Double>> conflict : conflictsList) {
+                for (Map<String, List<String>> conflict : conflictsList) {
                     String employeeIdStr = String.valueOf(employee.getId());
                     if (conflict.containsKey(employeeIdStr)) {
-                        List<Double> conflictedIds = conflict.get(employeeIdStr);
-                        Set<Double> conflictedIdsSet = new HashSet<>(conflictedIds);
+                        List<String> conflictedIds = conflict.get(employeeIdStr);
+                        Set<String> conflictedIdsSet = new HashSet<>(conflictedIds);
                         employee.getConflicts().addAll(conflictedIdsSet);
                     }
                 }
@@ -50,7 +50,7 @@ public class Data {
             List<Employee> employees = new ArrayList<>();
 
             for (Map<String, Object> employeeMap : employeeMapList) {
-                int id = ((Double) employeeMap.get("id")).intValue();
+                String id = (String) employeeMap.get("id");
                 String firstName = (String) employeeMap.get("firstName");
                 String lastName = (String) employeeMap.get("lastName");
                 int rating = ((Double) employeeMap.get("rating")).intValue();
@@ -67,10 +67,10 @@ public class Data {
         return null;
     }
 
-    private List<Map<String, List<Double>>> readConflictsListFromJSON(String fileLocation) {
+    private List<Map<String, List<String>>> readConflictsListFromJSON(String fileLocation) {
         try (FileReader reader = new FileReader(fileLocation)) {
             Gson gson = new Gson();
-            Type conflictsListType = new TypeToken<List<Map<String, List<Double>>>>() {}.getType();
+            Type conflictsListType = new TypeToken<List<Map<String, List<String>>>>() {}.getType();
             return gson.fromJson(reader, conflictsListType);
         } catch (IOException e) {
             e.printStackTrace();
