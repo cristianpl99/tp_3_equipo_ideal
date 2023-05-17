@@ -63,7 +63,7 @@ public class IdealTeam {
 	private double calculateCoefficient(Employee employee) {
 		int conflictCount = employee.getConflicts().size();
 		double rating = employee.getRating();
-		return rating / conflictCount;
+		return rating - conflictCount;
 	}
 	
 	// ------------------------------------------------------------------------------------------------//

@@ -39,7 +39,8 @@ public class Heuristic {
 		List<Employee> finalTeam = new ArrayList<>();
 
 		for (Employee employee : team) {
-			if (isValidRole(employee, projectLeadersAdded, architectsAdded, programmersAdded, testersAdded)) {
+			if (isValidRole(employee, projectLeadersAdded, architectsAdded, programmersAdded, testersAdded)
+					&& !hasConflicts(finalTeam, employee)) {
 				incrementRoleCount(employee.getRole(), projectLeadersAdded, architectsAdded, programmersAdded,
 						testersAdded);
 				finalTeam.add(employee);
@@ -82,5 +83,14 @@ public class Heuristic {
 		default:
 			return false;
 		}
+	}
+	
+	public boolean hasConflicts(List<Employee> team, Employee employee) {
+	    for (Employee e : team) {
+	        if (e.getConflicts().contains(employee.getId())) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 }
