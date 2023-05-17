@@ -3,6 +3,10 @@ package tp.gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import tp.logic.Employee;
+import tp.logic.IdealTeam;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
@@ -14,14 +18,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import javax.swing.JButton;
 
 public class MainWindow extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField project_leader;
@@ -34,10 +36,7 @@ public class MainWindow extends JFrame {
 	private JLabel lblProgrammer;
 	private JLabel lblTester;
 
-	/**
-	 * Create the frame.
-	 */
-	public MainWindow() {
+	public MainWindow(IdealTeam idealTeam, List<Employee> employees) {
 		setTitle("Programacion III - Equipo ideal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 505, 350);
@@ -51,10 +50,10 @@ public class MainWindow extends JFrame {
 		programmer = createTextField(313, 165, 107, 20, 10, JTextField.CENTER);
 		tester = createTextField(313, 196, 107, 20, 10, JTextField.CENTER);
 
-		entryValidation(project_leader);
-		entryValidation(architect);
-		entryValidation(programmer);
-		entryValidation(tester);
+		entryValidationForCant(project_leader);
+		entryValidationForCant(architect);
+		entryValidationForCant(programmer);
+		entryValidationForCant(tester);
 
 		contentPane.add(project_leader);
 		contentPane.add(architect);
@@ -73,16 +72,17 @@ public class MainWindow extends JFrame {
 		contentPane.add(lblProgrammer);
 		contentPane.add(lblTester);
 
-		JButton btnAvanzar = new JButton("avanzar a creador");
+		JButton btnAvanzar = new JButton("Go to creator");
 		btnAvanzar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CreatorWindow launch;
 				if (project_leader.getText().equals("") || architect.getText().equals("")
 						|| programmer.getText().equals("") || tester.getText().equals("")) {
-					showMessageDialog("Debe completar todos los requisitos del equipo para avanzar");
+					showMessageDialog("Must complete all team requirements to advance");
 				} else {
 					dispose();
-					launch = new CreatorWindow();
+					launch = new CreatorWindow(project_leader.getText(), architect.getText(), programmer.getText(),
+							tester.getText(), idealTeam, employees);
 					launch.setResizable(false);
 					launch.setVisible(true);
 					launch.setLocationRelativeTo(null);
@@ -116,12 +116,12 @@ public class MainWindow extends JFrame {
 		JOptionPane.showMessageDialog(null, message, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 	}
 
-	private void entryValidation(JTextField jText) {
+	private void entryValidationForCant(JTextField jText) {
 		jText.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				int key = e.getKeyChar();
-				// valida que la entrada sea un valor numeral y no 0, ademas longitud 1
+				// valida que la entrada sea un numero, no 0, y solo 1
 				boolean numeros = (key >= 49 && key <= 57);
 				if ((!numeros || jText.getText().trim().length() == 1)) {
 					e.consume();

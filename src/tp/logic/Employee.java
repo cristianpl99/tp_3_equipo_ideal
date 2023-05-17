@@ -1,5 +1,6 @@
 package tp.logic;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class Employee {
@@ -59,4 +60,23 @@ public class Employee {
 		return "Employee{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", rating=" + rating
 				+ ", role=" + role + '}';
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, lastName, rating, role);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		return Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
+				&& rating == other.rating && role == other.role;
+	}
+
 }

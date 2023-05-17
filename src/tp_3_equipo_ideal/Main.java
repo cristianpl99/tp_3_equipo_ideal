@@ -13,27 +13,16 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// todo esto debe estar en la 2 ventana
-
 		Data data = new Data();
 		IdealTeam idealTeam = new IdealTeam();
-
 		List<Employee> employees = data.readEmployeesFromJSON();
-
-		//idealTeam.displayEmployees(employees);
-
-		idealTeam.generateTeamByBruteForce(employees, 1, 1, 2, 2);
-		idealTeam.generateTeamByBackTracking(employees, 1, 1, 2, 2);
-		idealTeam.generateTeamByHeuristic(employees, 1, 1, 2, 2);
-
-		// ------------------------------------------------------------------- //
 
 		try {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		MainWindow launch = new MainWindow();
+		MainWindow launch = new MainWindow(idealTeam, employees);
 		launch.setResizable(false);
 		launch.setVisible(true);
 		launch.setLocationRelativeTo(null);

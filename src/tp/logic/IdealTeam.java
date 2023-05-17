@@ -39,8 +39,14 @@ public class IdealTeam {
 					testerCount);
 			List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
 			printResult(bestCombination);
-		},"Heuristica");
+		}, "Heuristica");
 	}
+
+	// la funcion runTask deberia hacerse al darle al boton en la vetana
+	// creatorWindow, ya que debemos crear y correr el thread desde la ejecucion del
+	// btn
+	// ya que si no se hace de esa forma, por ejemplo al darle al btn de FB, se
+	// queda colgada la visual...
 
 	private void runTask(Runnable task, String algorithmName) {
 		long startTime = System.currentTimeMillis();
@@ -59,15 +65,14 @@ public class IdealTeam {
 		System.out.println("Tiempo de ejecución (" + algorithmName + "): " + executionTime + " segundos" + "\n");
 	}
 
-	
 	private double calculateCoefficient(Employee employee) {
 		int conflictCount = employee.getConflicts().size();
 		double rating = employee.getRating();
 		return rating - conflictCount;
 	}
-	
+
 	// ------------------------------------------------------------------------------------------------//
-	
+
 	private void printResult(List<Employee> bestCombination) {
 		System.out.println("Mejor combinación de empleados:" + "\n");
 		int totalRating = 0;
@@ -89,7 +94,7 @@ public class IdealTeam {
 				Employee conflictedEmployee = findEmployeeById(employees, conflictedId);
 				if (conflictedEmployee != null) {
 					System.out.println(
-							"  - " + conflictedEmployee.getFirstName() + " " + conflictedEmployee.getLastName());
+							" - " + conflictedEmployee.getFirstName() + " " + conflictedEmployee.getLastName());
 				}
 			}
 			System.out.println();
@@ -98,7 +103,7 @@ public class IdealTeam {
 
 	private Employee findEmployeeById(List<Employee> employees, String conflictedId) {
 		for (Employee employee : employees) {
-			if (employee.getId() == conflictedId) {
+			if (employee.getId().equals(conflictedId)) {
 				return employee;
 			}
 		}
