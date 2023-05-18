@@ -8,6 +8,7 @@ import tp.logic.Employee;
 import tp.logic.IdealTeam;
 import tp.dal.Data;
 import tp.gui.MainWindow;
+import tp.gui.EmployeeScreen;
 
 public class Main {
 
@@ -22,10 +23,15 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		MainWindow launch = new MainWindow(idealTeam, employees);
+		
+		EmployeeScreen launch = new EmployeeScreen(employees.get(0));
 		launch.setResizable(false);
 		launch.setVisible(true);
 		launch.setLocationRelativeTo(null);
+		//MainWindow launch = new MainWindow(idealTeam, employees);
+		//launch.setResizable(false);
+		//launch.setVisible(true);
+		//launch.setLocationRelativeTo(null);
 	}
 
 }

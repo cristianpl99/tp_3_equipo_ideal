@@ -5,7 +5,7 @@
     "lastName": "Gates",
     "role": "Project_Leader",
     "rating": 4,
-    "photo":""
+    "photo": "src/tp/dal/images/bill_gates.png"
   },
   {
     "id": "PL1002",
