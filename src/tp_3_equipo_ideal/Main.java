@@ -7,7 +7,7 @@ import javax.swing.UIManager;
 import tp.logic.Employee;
 import tp.logic.IdealTeam;
 import tp.dal.LoadData;
-import tp.gui.MainWindow;
+import tp.gui.HomeScreen;
 import tp.gui.EmployeeScreen;
 
 public class Main {
@@ -31,7 +31,7 @@ public class Main {
 		//launch.setResizable(false);
 		//launch.setVisible(true);
 		//launch.setLocationRelativeTo(null);
-		MainWindow launch = new MainWindow(idealTeam, employees);
+		HomeScreen launch = new HomeScreen(idealTeam, employees);
 		launch.setResizable(false);
 		launch.setVisible(true);
 		launch.setLocationRelativeTo(null);

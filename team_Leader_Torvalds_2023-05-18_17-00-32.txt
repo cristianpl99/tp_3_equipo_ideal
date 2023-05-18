@@ -1,5 +1,0 @@
-Equipo generado:
-Employee{firstName='Linus', lastName='Torvalds', rating=5, role=Project_Leader}
-Employee{firstName='Satya', lastName='Nadella', rating=5, role=Architect}
-Employee{firstName='Garry', lastName='Kasparov', rating=4, role=Tester}
-Employee{firstName='Mikhail', lastName='Botwinnik', rating=4, role=Programmer}

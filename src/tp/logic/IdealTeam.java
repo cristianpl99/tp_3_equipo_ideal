@@ -23,7 +23,6 @@ public class IdealTeam {
 	        int programmerCount, int testerCount) {
 	    BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
 	    List<Employee> bestCombination = bruteForce.findBestCombination();
-	    printResult(bestCombination);
 	    notifyTeamGenerated(bestCombination);
 	    return bestCombination;
 	}
@@ -32,7 +31,6 @@ public class IdealTeam {
 	        int programmerCount, int testerCount) {
 	    BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
 	    List<Employee> bestCombination = backTracking.findBestCombination();
-	    //printResult(bestCombination);
 	    notifyTeamGenerated(bestCombination);
 	    return bestCombination;
 	}
@@ -47,7 +45,6 @@ public class IdealTeam {
 
 	    Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
 	    List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
-	    printResult(bestCombination);
 	    notifyTeamGenerated(bestCombination);
 	    return bestCombination;
 	}

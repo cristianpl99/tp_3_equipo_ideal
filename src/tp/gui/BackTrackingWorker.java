@@ -34,9 +34,7 @@ public class BackTrackingWorker extends SwingWorker<List<Employee>, Void> {
     @Override
     protected void done() {
         try {
-            // Este método se ejecuta en el hilo de la interfaz de usuario cuando la tarea en segundo plano ha finalizado
-            List<Employee> bestCombination = get(); // Obtiene el resultado de la tarea en segundo plano
-            // Actualiza la interfaz de usuario con el resultado obtenido
+            List<Employee> bestCombination = get(); 
         } catch (Exception ex) {
             ex.printStackTrace();
         }

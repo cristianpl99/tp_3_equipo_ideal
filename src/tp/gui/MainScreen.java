@@ -28,7 +28,7 @@ import javax.swing.JComboBox;
 // faltaria hacer algo parecido a la seccion de agregar empleado pero con el tema de agregar conflictos (y de agregar foto tal vez???) en la otra parte libre que quedo
 // ¡¡¡¡¡¡ NO USAR MAS ESPACIO DEL Q YA ESTA USADO PARA ABAJO QUE AHI SE PONDRAN LAS TABLAS DE ESTADISTICA OCULTANDO LOS BOTONES UNA VEZ CORRIDOS LOS ALGORITMOS !!!!!!
 
-public class CreatorWindow extends JFrame {
+public class MainScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -46,7 +46,7 @@ public class CreatorWindow extends JFrame {
 	private JLabel lblRole;
 	private JLabel lblListOfEmployees;
 
-	public CreatorWindow(String projectLeader, String architect, String programmer, String tester, IdealTeam idealTeam,
+	public MainScreen(String projectLeader, String architect, String programmer, String tester, IdealTeam idealTeam,
 			List<Employee> employees) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 800);

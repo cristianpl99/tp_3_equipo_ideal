@@ -22,7 +22,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 
-public class MainWindow extends JFrame {
+public class HomeScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -36,7 +36,7 @@ public class MainWindow extends JFrame {
 	private JLabel lblProgrammer;
 	private JLabel lblTester;
 
-	public MainWindow(IdealTeam idealTeam, List<Employee> employees) {
+	public HomeScreen(IdealTeam idealTeam, List<Employee> employees) {
 		setTitle("Programacion III - Equipo ideal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 505, 350);
@@ -75,13 +75,13 @@ public class MainWindow extends JFrame {
 		JButton btnAvanzar = new JButton("Go to creator");
 		btnAvanzar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CreatorWindow launch;
+				MainScreen launch;
 				if (project_leader.getText().equals("") || architect.getText().equals("")
 						|| programmer.getText().equals("") || tester.getText().equals("")) {
 					showMessageDialog("Must complete all team requirements to advance");
 				} else {
 					dispose();
-					launch = new CreatorWindow(project_leader.getText(), architect.getText(), programmer.getText(),
+					launch = new MainScreen(project_leader.getText(), architect.getText(), programmer.getText(),
 							tester.getText(), idealTeam, employees);
 					launch.setResizable(false);
 					launch.setVisible(true);
