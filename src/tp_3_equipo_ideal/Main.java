@@ -6,7 +6,7 @@ import javax.swing.UIManager;
 
 import tp.logic.Employee;
 import tp.logic.IdealTeam;
-import tp.dal.Data;
+import tp.dal.LoadData;
 import tp.gui.MainWindow;
 import tp.gui.EmployeeScreen;
 
@@ -14,8 +14,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Data data = new Data();
+		LoadData data = new LoadData();
 		IdealTeam idealTeam = new IdealTeam();
+		
+		
 		List<Employee> employees = data.readEmployeesFromJSON();
 
 		try {

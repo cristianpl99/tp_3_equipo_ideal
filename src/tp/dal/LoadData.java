@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Data {
+public class LoadData {
     private String employeesFileLocation = "src" + java.io.File.separator + "tp" + java.io.File.separator + "dal"
             + java.io.File.separator + "employeesList.json";
     private String conflictsFileLocation = "src" + java.io.File.separator + "tp" + java.io.File.separator + "dal"
