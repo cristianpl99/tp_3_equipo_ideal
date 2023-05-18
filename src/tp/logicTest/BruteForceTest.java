@@ -59,11 +59,12 @@ public class BruteForceTest {
 
 		bruteForce.evaluateCombination(validCombination);
 		// Es posible generar combinacion
-		boolean sameSizeLists = bruteForce.getBestCombination().size() == validCombination.size();;
+		boolean sameSizeLists = bruteForce.getBestCombination().size() == validCombination.size();
+		;
 		Assert.assertTrue(sameSizeLists);
 
 	}
-	
+
 	@Test
 	public void testEvaluateInvalidCombination() {
 		List<Employee> invalidCombination = new ArrayList<>();
@@ -78,26 +79,26 @@ public class BruteForceTest {
 		Assert.assertTrue(emptyBestCombinationList);
 
 	}
-	
+
 	@Test
 	public void testHasConflictedEmployees() {
-	    List<Employee> combinationWithConflicts = new ArrayList<>();
-	    combinationWithConflicts.add(employees.get(0));
-	    combinationWithConflicts.add(employees.get(1));
-	    combinationWithConflicts.add(employees.get(2));
-	    combinationWithConflicts.add(employees.get(4));
+		List<Employee> combinationWithConflicts = new ArrayList<>();
+		combinationWithConflicts.add(employees.get(0));
+		combinationWithConflicts.add(employees.get(1));
+		combinationWithConflicts.add(employees.get(2));
+		combinationWithConflicts.add(employees.get(4));
 
-	    List<Employee> combinationWithoutConflicts = new ArrayList<>();
-	    combinationWithoutConflicts.add(employees.get(0));
-	    combinationWithoutConflicts.add(employees.get(1));
-	    combinationWithoutConflicts.add(employees.get(2));
-	    combinationWithoutConflicts.add(employees.get(3));
+		List<Employee> combinationWithoutConflicts = new ArrayList<>();
+		combinationWithoutConflicts.add(employees.get(0));
+		combinationWithoutConflicts.add(employees.get(1));
+		combinationWithoutConflicts.add(employees.get(2));
+		combinationWithoutConflicts.add(employees.get(3));
 
-	    boolean hasConflicts1 = bruteForce.hasConflictedEmployees(combinationWithConflicts);
-	    boolean hasConflicts2 = bruteForce.hasConflictedEmployees(combinationWithoutConflicts);
+		boolean hasConflicts1 = bruteForce.hasConflictedEmployees(combinationWithConflicts);
+		boolean hasConflicts2 = bruteForce.hasConflictedEmployees(combinationWithoutConflicts);
 
-	    assertTrue(hasConflicts1);
-	    assertFalse(hasConflicts2);
+		assertTrue(hasConflicts1);
+		assertFalse(hasConflicts2);
 	}
 
 }

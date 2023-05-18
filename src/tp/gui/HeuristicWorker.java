@@ -9,34 +9,35 @@ import tp.logic.Employee;
 import java.util.List;
 
 public class HeuristicWorker extends SwingWorker<List<Employee>, Void> {
-    private List<Employee> employees;
-    private int projectLeaderCount;
-    private int architectCount;
-    private int programmerCount;
-    private int testerCount;
+	private List<Employee> employees;
+	private int projectLeaderCount;
+	private int architectCount;
+	private int programmerCount;
+	private int testerCount;
 
-    public HeuristicWorker(List<Employee> employees, int projectLeaderCount, int architectCount,
-                            int programmerCount, int testerCount) {
-        this.employees = employees;
-        this.projectLeaderCount = projectLeaderCount;
-        this.architectCount = architectCount;
-        this.programmerCount = programmerCount;
-        this.testerCount = testerCount;
-    }
+	public HeuristicWorker(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
+			int testerCount) {
+		this.employees = employees;
+		this.projectLeaderCount = projectLeaderCount;
+		this.architectCount = architectCount;
+		this.programmerCount = programmerCount;
+		this.testerCount = testerCount;
+	}
 
-    @Override
-    protected List<Employee> doInBackground() throws Exception {
-        IdealTeam idealTeam = new IdealTeam();
-        List<Employee> bestCombination = idealTeam.generateTeamByHeuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount);	
-        return bestCombination;
-    }
+	@Override
+	protected List<Employee> doInBackground() throws Exception {
+		IdealTeam idealTeam = new IdealTeam();
+		List<Employee> bestCombination = idealTeam.generateTeamByHeuristic(employees, projectLeaderCount,
+				architectCount, programmerCount, testerCount);
+		return bestCombination;
+	}
 
-    @Override
-    protected void done() {
-        try {
-            List<Employee> bestCombination = get(); 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
+	@Override
+	protected void done() {
+		try {
+			List<Employee> bestCombination = get();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
 }

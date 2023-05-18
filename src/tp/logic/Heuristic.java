@@ -84,13 +84,13 @@ public class Heuristic {
 			return false;
 		}
 	}
-	
+
 	public boolean hasConflicts(List<Employee> team, Employee employee) {
-	    for (Employee e : team) {
-	        if (e.getConflicts().contains(employee.getId())) {
-	            return true;
-	        }
-	    }
-	    return false;
+		for (Employee e : team) {
+			if (e.getConflicts().contains(employee.getId())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

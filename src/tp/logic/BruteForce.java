@@ -10,7 +10,6 @@ public class BruteForce {
 	private int programmerCount;
 	private int testerCount;
 	private List<Employee> bestCombination;
-	
 
 	private double bestAverageRating;
 	private int combinationCount;
@@ -36,8 +35,6 @@ public class BruteForce {
 
 	public void generateCombination(List<Employee> combination, int currentIndex) {
 		if (currentIndex == employees.size()) {
-//			System.out.println(combinationCount);
-//			System.out.println(combination);
 			combinationCount++;
 			evaluateCombination(combination);
 			return;
@@ -71,7 +68,7 @@ public class BruteForce {
 
 	private boolean combinationContainsConflictedEmployee(List<Employee> combination, Employee employee) {
 		for (Employee e : combination) {
-			if (e.getConflicts().contains( employee.getId())) {
+			if (e.getConflicts().contains(employee.getId())) {
 				return true;
 			}
 		}
@@ -116,7 +113,7 @@ public class BruteForce {
 	public int getCombinationCount() {
 		return combinationCount;
 	}
-	
+
 	public List<Employee> getBestCombination() {
 		return bestCombination;
 	}

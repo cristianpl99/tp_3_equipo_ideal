@@ -104,9 +104,10 @@ public class MainScreen extends JFrame {
 		role.addItem("Programmer");
 		role.addItem("Tester");
 
-		// tema del id de la persona a agregar hay q ver q onda, y el tema de la foto
+		// tema del id de la persona a agregar, cambiarlo por dni de 1 a x, y hacer que
+		// se le agregue al nuevo empleado (equals en base al dni), y el tema de la foto
 		// del tipo a agregar tambien (IDEA=poner una foto generica con un signo de
-		// interrogacion
+		// interrogacion)
 
 		JButton btnAddEmployee = new JButton("Add employee");
 		btnAddEmployee.setBounds(99, 245, 159, 43);
@@ -135,31 +136,33 @@ public class MainScreen extends JFrame {
 
 		JButton btnBruteForce = new JButton("Run Brute Force");
 		btnBruteForce.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		        BruteForceWorker worker = new BruteForceWorker(employees, cantProjectLeader, cantArchitect, cantProgrammer, cantTester);
-		        worker.execute(); 
-		    }
+			public void actionPerformed(ActionEvent e) {
+				BruteForceWorker worker = new BruteForceWorker(employees, cantProjectLeader, cantArchitect,
+						cantProgrammer, cantTester);
+				worker.execute();
+			}
 		});
 		btnBruteForce.setBounds(50, 600, 148, 122);
 		contentPane.add(btnBruteForce);
 
-
 		JButton btnBacktracking = new JButton("Run Backtracking");
 		btnBacktracking.addActionListener(new ActionListener() {
-			  public void actionPerformed(ActionEvent e) {
-			        BackTrackingWorker worker = new BackTrackingWorker(employees, cantProjectLeader, cantArchitect, cantProgrammer, cantTester);
-			        worker.execute(); 
-			    }
-			});
+			public void actionPerformed(ActionEvent e) {
+				BackTrackingWorker worker = new BackTrackingWorker(employees, cantProjectLeader, cantArchitect,
+						cantProgrammer, cantTester);
+				worker.execute();
+			}
+		});
 		btnBacktracking.setBounds(365, 600, 148, 122);
 		contentPane.add(btnBacktracking);
 
 		JButton btnHeuristics = new JButton("Run Heuristics");
 		btnHeuristics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		        HeuristicWorker worker = new HeuristicWorker(employees, cantProjectLeader, cantArchitect, cantProgrammer, cantTester);
-		        worker.execute(); 
-		    }
+				HeuristicWorker worker = new HeuristicWorker(employees, cantProjectLeader, cantArchitect,
+						cantProgrammer, cantTester);
+				worker.execute();
+			}
 		});
 		btnHeuristics.setBounds(680, 600, 148, 122);
 		contentPane.add(btnHeuristics);

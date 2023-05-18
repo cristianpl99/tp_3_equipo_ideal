@@ -36,7 +36,6 @@ public class BackTracking {
 		if (currentIndex == employees.size()) {
 			if (isValidCombination(combination)) {
 				double averageRating = calculateAverageRating(combination);
-				// System.out.println(averageRating);
 				if (averageRating > bestAverageRating) {
 					bestCombination = new ArrayList<>(combination);
 					bestAverageRating = averageRating;
@@ -58,14 +57,13 @@ public class BackTracking {
 	}
 
 	public boolean combinationContainsConflictedEmployee(List<Employee> combination, Employee employee) {
-	    for (Employee e : combination) {
-	        if (e.getConflicts().contains(employee.getId())) {
-	            return true;
-	        }
-	    }
-	    return false;
+		for (Employee e : combination) {
+			if (e.getConflicts().contains(employee.getId())) {
+				return true;
+			}
+		}
+		return false;
 	}
-
 
 	private boolean combinationContainsExceedingRole(List<Employee> combination, Employee.Role role) {
 		int count = 0;
@@ -131,5 +129,4 @@ public class BackTracking {
 		return bestCombination;
 	}
 
-	
 }

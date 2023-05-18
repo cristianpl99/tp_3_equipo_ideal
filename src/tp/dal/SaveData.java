@@ -13,32 +13,31 @@ public class SaveData {
 
 	public void createFile(List<Employee> team) {
 		String fileName = generateFileName(team);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
-            writer.write("Equipo generado:\n");
-            for (Employee employee : team) {
-                writer.write(employee.toString() + "\n");
-            }
-            writer.flush();
-            System.out.println("Equipo guardado en el archivo: " + fileName);
-        } catch (IOException e) {
-            System.out.println("Error al guardar el equipo en el archivo.");
-            e.printStackTrace();
-        }
-		
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+			writer.write("Equipo generado:\n");
+			for (Employee employee : team) {
+				writer.write(employee.toString() + "\n");
+			}
+			writer.flush();
+			System.out.println("Equipo guardado en el archivo: " + fileName);
+		} catch (IOException e) {
+			System.out.println("Error al guardar el equipo en el archivo.");
+			e.printStackTrace();
+		}
+
 	}
-	
+
 	private String generateFileName(List<Employee> team) {
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-	    String timestamp = dateFormat.format(new Date());
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+		String timestamp = dateFormat.format(new Date());
 
-	    for (Employee employee : team) {
-	        if (employee.getRole() == Employee.Role.Project_Leader) {
-	            return "team_Leader_" + employee.getLastName() + "_" + timestamp + ".txt";
-	        }
-	    }
+		for (Employee employee : team) {
+			if (employee.getRole() == Employee.Role.Project_Leader) {
+				return "team_Leader_" + employee.getLastName() + "_" + timestamp + ".txt";
+			}
+		}
 
-	    return "team_" + timestamp + ".txt";
+		return "team_" + timestamp + ".txt";
 	}
-
 
 }
