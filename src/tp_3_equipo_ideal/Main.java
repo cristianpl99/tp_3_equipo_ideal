@@ -24,14 +24,15 @@ public class Main {
 			System.out.println(e);
 		}
 		
-		EmployeeScreen launch = new EmployeeScreen(employees.get(0));
-		launch.setResizable(false);
-		launch.setVisible(true);
-		launch.setLocationRelativeTo(null);
-		//MainWindow launch = new MainWindow(idealTeam, employees);
+		//test de la ventana de ficha empleado
+		//EmployeeScreen launch = new EmployeeScreen(employees.get(0));
 		//launch.setResizable(false);
 		//launch.setVisible(true);
 		//launch.setLocationRelativeTo(null);
+		MainWindow launch = new MainWindow(idealTeam, employees);
+		launch.setResizable(false);
+		launch.setVisible(true);
+		launch.setLocationRelativeTo(null);
 	}
 
 }

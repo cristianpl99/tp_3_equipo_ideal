@@ -135,39 +135,31 @@ public class CreatorWindow extends JFrame {
 
 		JButton btnBruteForce = new JButton("Run Brute Force");
 		btnBruteForce.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				Thread thread = new Thread(idealTeam.generateTeamByBruteForce(employees, cantProjectLeader, cantArchitect, cantProgrammer,
-//						cantTester));
-//				thread.start();
-				idealTeam.generateTeamByBruteForce(employees, cantProjectLeader, cantArchitect, cantProgrammer,
-						cantTester);
-				// idealTeam.displayEmployees(employees);
-			}
-
+		    public void actionPerformed(ActionEvent e) {
+		        BruteForceWorker worker = new BruteForceWorker(employees, cantProjectLeader, cantArchitect, cantProgrammer, cantTester);
+		        worker.execute(); 
+		    }
 		});
 		btnBruteForce.setBounds(50, 600, 148, 122);
 		contentPane.add(btnBruteForce);
 
+
 		JButton btnBacktracking = new JButton("Run Backtracking");
 		btnBacktracking.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				idealTeam.generateTeamByBackTracking(employees, cantProjectLeader, cantArchitect, cantProgrammer,
-						cantTester);
-				// idealTeam.displayEmployees(employees);
-			}
-
-		});
+			  public void actionPerformed(ActionEvent e) {
+			        BackTrackingWorker worker = new BackTrackingWorker(employees, cantProjectLeader, cantArchitect, cantProgrammer, cantTester);
+			        worker.execute(); 
+			    }
+			});
 		btnBacktracking.setBounds(365, 600, 148, 122);
 		contentPane.add(btnBacktracking);
 
 		JButton btnHeuristics = new JButton("Run Heuristics");
 		btnHeuristics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				idealTeam.generateTeamByHeuristic(employees, cantProjectLeader, cantArchitect, cantProgrammer,
-						cantTester);
-				// idealTeam.displayEmployees(employees);
-			}
-
+		        HeuristicWorker worker = new HeuristicWorker(employees, cantProjectLeader, cantArchitect, cantProgrammer, cantTester);
+		        worker.execute(); 
+		    }
 		});
 		btnHeuristics.setBounds(680, 600, 148, 122);
 		contentPane.add(btnHeuristics);

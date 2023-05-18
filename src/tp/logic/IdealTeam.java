@@ -6,63 +6,34 @@ import java.util.Comparator;
 
 public class IdealTeam {
 
-	public void generateTeamByBruteForce(List<Employee> employees, int projectLeaderCount, int architectCount,
-			int programmerCount, int testerCount) {
-		runTask(() -> {
-			BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
-					testerCount);
-			List<Employee> bestCombination = bruteForce.findBestCombination();
-			printResult(bestCombination);
-		}, "Fuerza Bruta");
+	public List<Employee> generateTeamByBruteForce(List<Employee> employees, int projectLeaderCount, int architectCount,
+	        int programmerCount, int testerCount) {
+	    BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
+	    List<Employee> bestCombination = bruteForce.findBestCombination();
+	    printResult(bestCombination);
+	    return bestCombination;
 	}
 
-	public void generateTeamByBackTracking(List<Employee> employees, int projectLeaderCount, int architectCount,
-			int programmerCount, int testerCount) {
-		runTask(() -> {
-			BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount,
-					testerCount);
-			List<Employee> bestCombination = backTracking.findBestCombination();
-			printResult(bestCombination);
-		}, "Back Tracking");
+	public List<Employee> generateTeamByBackTracking(List<Employee> employees, int projectLeaderCount, int architectCount,
+	        int programmerCount, int testerCount) {
+	    BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
+	    List<Employee> bestCombination = backTracking.findBestCombination();
+	    printResult(bestCombination);
+	    return bestCombination;
 	}
 
-	public void generateTeamByHeuristic(List<Employee> employees, int projectLeaderCount, int architectCount,
-			int programmerCount, int testerCount) {
-		runTask(() -> {
-			Comparator<Employee> customComparator = (e1, e2) -> {
-				double coefficient1 = calculateCoefficient(e1);
-				double coefficient2 = calculateCoefficient(e2);
-				return Double.compare(coefficient2, coefficient1);
-			};
+	public List<Employee> generateTeamByHeuristic(List<Employee> employees, int projectLeaderCount, int architectCount,
+	        int programmerCount, int testerCount) {
+	    Comparator<Employee> customComparator = (e1, e2) -> {
+	        double coefficient1 = calculateCoefficient(e1);
+	        double coefficient2 = calculateCoefficient(e2);
+	        return Double.compare(coefficient2, coefficient1);
+	    };
 
-			Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount,
-					testerCount);
-			List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
-			printResult(bestCombination);
-		}, "Heuristica");
-	}
-
-	// la funcion runTask deberia hacerse al darle al boton en la vetana
-	// creatorWindow, ya que debemos crear y correr el thread desde la ejecucion del
-	// btn
-	// ya que si no se hace de esa forma, por ejemplo al darle al btn de FB, se
-	// queda colgada la visual...
-
-	private void runTask(Runnable task, String algorithmName) {
-		long startTime = System.currentTimeMillis();
-
-		Thread thread = new Thread(task);
-		thread.start();
-
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		long endTime = System.currentTimeMillis();
-		double executionTime = (endTime - startTime) / 1000.0;
-		System.out.println("Tiempo de ejecución (" + algorithmName + "): " + executionTime + " segundos" + "\n");
+	    Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
+	    List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
+	    printResult(bestCombination);
+	    return bestCombination;
 	}
 
 	private double calculateCoefficient(Employee employee) {
