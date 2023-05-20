@@ -26,9 +26,11 @@ public class HeuristicWorker extends SwingWorker<List<Employee>, Void> {
 
 	@Override
 	protected List<Employee> doInBackground() throws Exception {
-		List<Employee> bestCombination = idealT.generateTeamByHeuristic(projectLeaderCount, architectCount,
-				programmerCount, testerCount);
-		return bestCombination;
+	    List<Employee> bestCombination = idealT.generateTeamByHeuristic(projectLeaderCount, architectCount,
+	            programmerCount, testerCount);
+	    int progress = 100;
+	    setProgress(progress); 
+	    return bestCombination;
 	}
 
 	@Override

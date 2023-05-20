@@ -26,10 +26,13 @@ public class BruteForceWorker extends SwingWorker<List<Employee>, Void> {
 
 	@Override
 	protected List<Employee> doInBackground() throws Exception {
-		List<Employee> bestCombination = idealT.generateTeamByBruteForce(projectLeaderCount, architectCount,
-				programmerCount, testerCount);
-		return bestCombination;
+	    List<Employee> bestCombination = idealT.generateTeamByBruteForce(projectLeaderCount, architectCount,
+	            programmerCount, testerCount);
+	    int progress = 100;
+	    setProgress(progress);	    
+	    return bestCombination;
 	}
+
 
 	@Override
 	protected void done() {

@@ -4,14 +4,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import javax.swing.JProgressBar;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import tp.logic.Employee;
 import tp.logic.IdealTeam;
@@ -24,7 +31,15 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.SwingWorker;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+
+
+
+
 
 public class MainScreen extends JFrame {
 
@@ -49,6 +64,7 @@ public class MainScreen extends JFrame {
 	private JLabel lblListOfConflicts;
 	private IdealTeam idealTeam;
 	private ArrayList<Employee> employees;
+	private List<Employee> bestCombination;
 
 	public MainScreen(String projectLeader, String architect, String programmer, String tester) {
 		setTitle("Programacion III - Equipo ideal - Constructor");
@@ -171,38 +187,63 @@ public class MainScreen extends JFrame {
 
 		});
 		contentPane.add(btnAddEmployee);
+		
+		String[] columnNames = { "DNI", "Rol", "Nombre", "Apellido" };
+		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+
+		JTable table = new JTable(tableModel);
+		table.setBounds(344, 447, 392, 267);
+		table.setEnabled(false);
+		table.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        if (e.getClickCount() == 1) {
+		            int selectedRow = table.getSelectedRow();
+		            if (selectedRow != -1) {
+		                showEmployee(selectedRow);
+		            }
+		        }
+		    }
+		});
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(344, 447, 392, 267);
+		contentPane.add(scrollPane);
+
+		JProgressBar progressBarBruteForce = new JProgressBar();
+		progressBarBruteForce.setBounds(17, 497, 148, 45);
+		progressBarBruteForce.setVisible(false);
+		progressBarBruteForce.setForeground(Color.GREEN);
+		contentPane.add(progressBarBruteForce);
 
 		JButton btnBruteForce = new JButton("Run Brute Force");
-		btnBruteForce.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				BruteForceWorker worker = new BruteForceWorker(idealTeam, cantProjectLeader, cantArchitect,
-						cantProgrammer, cantTester);
-				worker.execute();
-			}
-		});
-		btnBruteForce.setBounds(50, 600, 148, 122);
+		configureButtonWithProgressBar(btnBruteForce, progressBarBruteForce,
+		        new BruteForceWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
+		btnBruteForce.setBounds(17, 497, 148, 45);
 		contentPane.add(btnBruteForce);
 
-		JButton btnBacktracking = new JButton("Run Backtracking");
-		btnBacktracking.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				BackTrackingWorker worker = new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect,
-						cantProgrammer, cantTester);
-				worker.execute();
-			}
-		});
-		btnBacktracking.setBounds(365, 600, 148, 122);
-		contentPane.add(btnBacktracking);
+		JProgressBar progressBarBacktracking = new JProgressBar();
+		progressBarBacktracking.setBounds(17, 576, 148, 44);
+		progressBarBacktracking.setVisible(false);
+		progressBarBacktracking.setForeground(Color.RED); 
+		contentPane.add(progressBarBacktracking);
+
+		JButton btnBackTracking = new JButton("Run BackTracking");
+		configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
+		        new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
+		btnBackTracking.setBounds(17, 576, 148, 44);
+		contentPane.add(btnBackTracking);
+
+		JProgressBar progressBarHeuristics = new JProgressBar();
+		progressBarHeuristics.setBounds(17, 654, 148, 43);
+		progressBarHeuristics.setVisible(false);
+		progressBarHeuristics.setForeground(Color.BLUE);
+		contentPane.add(progressBarHeuristics);
 
 		JButton btnHeuristics = new JButton("Run Heuristics");
-		btnHeuristics.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				HeuristicWorker worker = new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect,
-						cantProgrammer, cantTester);
-				worker.execute();
-			}
-		});
-		btnHeuristics.setBounds(680, 600, 148, 122);
+		configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
+		        new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
+		btnHeuristics.setBounds(17, 654, 148, 43);
 		contentPane.add(btnHeuristics);
 
 		JButton btnAddConflict = new JButton("Add conflict");
@@ -233,8 +274,15 @@ public class MainScreen extends JFrame {
 
 		});
 		btnAddConflict.setBounds(588, 275, 148, 43);
-		contentPane.add(btnAddConflict);
-
+		contentPane.add(btnAddConflict);		
+	}
+	
+	private void showEmployee(int selectedRow) {
+		EmployeeScreen launch;
+		launch = new EmployeeScreen(this.bestCombination.get(selectedRow));
+		launch.setResizable(false);
+		launch.setVisible(true);
+		launch.setLocationRelativeTo(null);
 	}
 
 	private JLabel createLabel(String text, int fontSize, int x, int y, int width, int height) {
@@ -258,6 +306,55 @@ public class MainScreen extends JFrame {
 
 	private void showMessageDialog(String message) {
 		JOptionPane.showMessageDialog(null, message, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
+	private void configureButtonWithProgressBar(JButton button, JProgressBar progressBar, SwingWorker<List<Employee>, Void> worker, JTable table) {
+	    button.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	            button.setVisible(false);  
+	            progressBar.setVisible(true); 
+	            progressBar.setIndeterminate(true); 
+
+	            worker.addPropertyChangeListener(new PropertyChangeListener() {
+	                @Override
+	                public void propertyChange(PropertyChangeEvent evt) {
+	                    if ("progress".equals(evt.getPropertyName())) {
+	                        int progress = (int) evt.getNewValue();
+	                        progressBar.setIndeterminate(false);  
+	                        progressBar.setValue(progress); 
+	                    }
+	                }
+	            });
+
+	            worker.execute();
+
+	            worker.addPropertyChangeListener(new PropertyChangeListener() {
+	                @Override
+	                public void propertyChange(PropertyChangeEvent evt) {
+	                    if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
+	                        try {
+	                            bestCombination = worker.get();
+	                            populateTable(table, bestCombination); 
+	                        } catch (Exception ex) {
+	                            ex.printStackTrace();
+	                        }
+
+	                        button.setVisible(true); 
+	                        progressBar.setVisible(false);
+	                    }
+	                }
+	            });
+	        }
+	    });
+	}
+
+	private void populateTable(JTable table, List<Employee> employees) {
+		this.bestCombination = employees;
+	    DefaultTableModel model = (DefaultTableModel) table.getModel();
+	    model.setRowCount(0); 
+	    for (Employee employee : employees) {
+	        model.addRow(new Object[] {employee.getDni(), employee.getRole(), employee.getFirstName(), employee.getLastName() });
+	    }
 	}
 
 	private void entryValidationForNames(JTextField jText) {
