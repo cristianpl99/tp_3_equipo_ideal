@@ -193,7 +193,8 @@ public class MainScreen extends JFrame {
 
 		JTable table = new JTable(tableModel);
 		table.setBounds(344, 447, 392, 267);
-		table.setEnabled(false);
+		//table.setEnabled(false);
+		table.setRowSelectionAllowed(true);
 		table.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {
@@ -229,6 +230,7 @@ public class MainScreen extends JFrame {
 		contentPane.add(progressBarBacktracking);
 
 		JButton btnBackTracking = new JButton("Run BackTracking");
+		
 		configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
 		        new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
 		btnBackTracking.setBounds(17, 576, 148, 44);
@@ -276,6 +278,7 @@ public class MainScreen extends JFrame {
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);		
 	}
+
 	
 	private void showEmployee(int selectedRow) {
 		EmployeeScreen launch;
@@ -314,9 +317,7 @@ public class MainScreen extends JFrame {
 	            button.setVisible(false);  
 	            progressBar.setVisible(true); 
 	            progressBar.setIndeterminate(true);
-	            
-	           
-	              
+	                     
 	            worker.addPropertyChangeListener(new PropertyChangeListener() {
 	                @Override
 	                public void propertyChange(PropertyChangeEvent evt) {
@@ -336,9 +337,6 @@ public class MainScreen extends JFrame {
 	                    if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
 	                        try {
 	                            bestCombination = worker.get();
-	                            if (worker != null && !worker.isDone()) {
-	            	                worker.cancel(true);
-	            	            }
 	                            populateTable(table, bestCombination); 
 	                        } catch (Exception ex) {
 	                            ex.printStackTrace();
