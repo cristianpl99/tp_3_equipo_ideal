@@ -4,9 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import tp.logic.Employee;
-import tp.logic.IdealTeam;
-
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
@@ -18,8 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class HomeScreen extends JFrame {
@@ -36,8 +33,10 @@ public class HomeScreen extends JFrame {
 	private JLabel lblProgrammer;
 	private JLabel lblTester;
 
-	public HomeScreen(IdealTeam idealTeam, List<Employee> employees) {
+	public HomeScreen() {
 		setTitle("Programacion III - Equipo ideal");
+		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
+		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 505, 350);
 		contentPane = new JPanel();
@@ -82,7 +81,7 @@ public class HomeScreen extends JFrame {
 				} else {
 					dispose();
 					launch = new MainScreen(project_leader.getText(), architect.getText(), programmer.getText(),
-							tester.getText(), idealTeam, employees);
+							tester.getText());
 					launch.setResizable(false);
 					launch.setVisible(true);
 					launch.setLocationRelativeTo(null);

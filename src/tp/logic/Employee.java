@@ -4,7 +4,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Employee {
-	private String id;
+	private String dni;
 	private String firstName;
 	private String lastName;
 	private int rating;
@@ -12,15 +12,19 @@ public class Employee {
 	private Role role;
 	private String photo;
 
-	public Employee(String id, String firstName, String lastName, int rating, Set<String> conflicts, Role role,
+	public Employee(String dni, String firstName, String lastName, int rating, Set<String> conflicts, Role role,
 			String photo) {
-		this.id = id;
+		this.dni = dni;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.rating = rating;
 		this.idsConflicteds = conflicts;
 		this.role = role;
 		this.photo = photo;
+	}
+
+	public void addConflict(String dni) {
+		idsConflicteds.add(dni);
 	}
 
 	public String getPhoto() {
@@ -31,8 +35,8 @@ public class Employee {
 		return idsConflicteds;
 	}
 
-	public String getId() {
-		return id;
+	public String getDni() {
+		return dni;
 	}
 
 	public String getFirstName() {
@@ -57,13 +61,13 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", rating=" + rating
-				+ ", role=" + role + '}';
+		return "Employee{" + "DNI='" + dni + '\'' + ", firstName='" + firstName + '\'' + ", lastName='" + lastName
+				+ '\'' + ", rating=" + rating + ", role=" + role + '}';
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(firstName, lastName, rating, role);
+		return Objects.hash(dni);
 	}
 
 	@Override
@@ -75,8 +79,7 @@ public class Employee {
 		if (getClass() != obj.getClass())
 			return false;
 		Employee other = (Employee) obj;
-		return Objects.equals(firstName, other.firstName) && Objects.equals(lastName, other.lastName)
-				&& rating == other.rating && role == other.role;
+		return Objects.equals(dni, other.dni);
 	}
 
 }

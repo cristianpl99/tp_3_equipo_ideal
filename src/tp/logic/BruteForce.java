@@ -68,7 +68,7 @@ public class BruteForce {
 
 	private boolean combinationContainsConflictedEmployee(List<Employee> combination, Employee employee) {
 		for (Employee e : combination) {
-			if (e.getConflicts().contains(employee.getId())) {
+			if (e.getConflicts().contains(employee.getDni())) {
 				return true;
 			}
 		}

@@ -28,7 +28,7 @@ public class LoadData {
 		if (employees != null && conflictsList != null) {
 			for (Employee employee : employees) {
 				for (Map<String, List<String>> conflict : conflictsList) {
-					String employeeIdStr = String.valueOf(employee.getId());
+					String employeeIdStr = String.valueOf(employee.getDni());
 					if (conflict.containsKey(employeeIdStr)) {
 						List<String> conflictedIds = conflict.get(employeeIdStr);
 						Set<String> conflictedIdsSet = new HashSet<>(conflictedIds);
@@ -51,13 +51,13 @@ public class LoadData {
 			List<Employee> employees = new ArrayList<>();
 
 			for (Map<String, Object> employeeMap : employeeMapList) {
-				String id = (String) employeeMap.get("id");
+				String dni = (String) employeeMap.get("dni");
 				String firstName = (String) employeeMap.get("firstName");
 				String lastName = (String) employeeMap.get("lastName");
 				int rating = ((Double) employeeMap.get("rating")).intValue();
 				Role role = Role.valueOf((String) employeeMap.get("role"));
 				String photo = (String) employeeMap.get("photo");
-				Employee employee = new Employee(id, firstName, lastName, rating, new HashSet<>(), role, photo);
+				Employee employee = new Employee(dni, firstName, lastName, rating, new HashSet<>(), role, photo);
 				employees.add(employee);
 			}
 

@@ -44,9 +44,9 @@ public class Heuristic {
 				incrementRoleCount(employee.getRole(), projectLeadersAdded, architectsAdded, programmersAdded,
 						testersAdded);
 				finalTeam.add(employee);
-				combinationCount++;
 			}
 		}
+		combinationCount++;
 		System.out.println("En Heuristic, cantidad de combinaciones generadas: " + combinationCount);
 		return finalTeam;
 	}
@@ -87,7 +87,7 @@ public class Heuristic {
 
 	public boolean hasConflicts(List<Employee> team, Employee employee) {
 		for (Employee e : team) {
-			if (e.getConflicts().contains(employee.getId())) {
+			if (e.getConflicts().contains(employee.getDni())) {
 				return true;
 			}
 		}

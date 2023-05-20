@@ -4,9 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,9 +26,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 
-// faltaria hacer algo parecido a la seccion de agregar empleado pero con el tema de agregar conflictos (y de agregar foto tal vez???) en la otra parte libre que quedo
-// ¡¡¡¡¡¡ NO USAR MAS ESPACIO DEL Q YA ESTA USADO PARA ABAJO QUE AHI SE PONDRAN LAS TABLAS DE ESTADISTICA OCULTANDO LOS BOTONES UNA VEZ CORRIDOS LOS ALGORITMOS !!!!!!
-
 public class MainScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -36,18 +34,26 @@ public class MainScreen extends JFrame {
 	private int cantArchitect;
 	private int cantProgrammer;
 	private int cantTester;
+	private JTextField textDni;
 	private JTextField textFirstName;
 	private JTextField textLastName;
 	private JTextField textRating;
 	private JLabel lblAddEmployee;
+	private JLabel lblDni;
 	private JLabel lblFirstName;
 	private JLabel lblLastName;
 	private JLabel lblRating;
 	private JLabel lblRole;
 	private JLabel lblListOfEmployees;
+	private JLabel lblConflicts;
+	private JLabel lblListOfConflicts;
+	private IdealTeam idealTeam;
+	private ArrayList<Employee> employees;
 
-	public MainScreen(String projectLeader, String architect, String programmer, String tester, IdealTeam idealTeam,
-			List<Employee> employees) {
+	public MainScreen(String projectLeader, String architect, String programmer, String tester) {
+		setTitle("Programacion III - Equipo ideal - Constructor");
+		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
+		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 800);
 		contentPane = new JPanel();
@@ -56,13 +62,39 @@ public class MainScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		idealTeam = new IdealTeam();
+		employees = (ArrayList<Employee>) idealTeam.getEmployees();
+
 		JComboBox<String> listOfEmployee = new JComboBox<String>();
-		listOfEmployee.setBounds(17, 350, 330, 22);
+		listOfEmployee.setBounds(17, 350, 350, 22);
 		contentPane.add(listOfEmployee);
+
+		JComboBox<String> conflict_1 = new JComboBox<String>();
+		conflict_1.setBounds(466, 70, 175, 22);
+		contentPane.add(conflict_1);
+
+		JComboBox<String> conflict_2 = new JComboBox<String>();
+		conflict_2.setBounds(680, 70, 175, 22);
+		contentPane.add(conflict_2);
 
 		for (Employee em : employees) {
 			listOfEmployee.addItem(em.getFirstName() + " " + em.getLastName() + " - Role: " + em.getRole()
 					+ ", Rating: " + em.getRating());
+			conflict_1.addItem(em.getDni() + " - " + em.getLastName());
+			conflict_2.addItem(em.getDni() + " - " + em.getLastName());
+		}
+
+		JComboBox<String> listOfConflicts = new JComboBox<String>();
+		listOfConflicts.setBounds(493, 350, 335, 22);
+		contentPane.add(listOfConflicts);
+
+		for (Employee em : employees) {
+			if (!em.getConflicts().isEmpty()) {
+				for (String conflict : em.getConflicts()) {
+					listOfConflicts.addItem(em.getDni() + " - " + em.getLastName() + " ---> " + conflict + " - "
+							+ idealTeam.findEmployeeByDni(conflict).getLastName());
+				}
+			}
 		}
 
 		cantProjectLeader = Integer.parseInt(projectLeader);
@@ -70,56 +102,60 @@ public class MainScreen extends JFrame {
 		cantProgrammer = Integer.parseInt(programmer);
 		cantTester = Integer.parseInt(tester);
 
-		lblAddEmployee = createLabel("DATA OF NEW EMPLOYEE", 18, 50, 11, 242, 45);
-		lblFirstName = createLabel("First name", 14, 37, 67, 99, 29);
-		lblLastName = createLabel("Last name", 14, 37, 107, 99, 29);
-		lblRating = createLabel("Rating", 14, 37, 153, 99, 29);
-		lblRole = createLabel("Role", 14, 37, 193, 99, 29);
-		lblListOfEmployees = createLabel("LIST OF EMPLOYEES", 14, 107, 299, 159, 29);
+		lblAddEmployee = createLabel("DATA OF NEW EMPLOYEE", 18, 70, 11, 242, 45);
+		lblDni = createLabel("DNI", 14, 47, 67, 99, 29);
+		lblFirstName = createLabel("First name", 14, 47, 107, 99, 29);
+		lblLastName = createLabel("Last name", 14, 47, 147, 99, 29);
+		lblRating = createLabel("Rating", 14, 47, 193, 99, 29);
+		lblRole = createLabel("Role", 14, 47, 233, 99, 29);
+		lblListOfEmployees = createLabel("LIST OF EMPLOYEES", 14, 117, 319, 159, 29);
+		lblConflicts = createLabel("CONFLICTS", 18, 612, 11, 130, 45);
+		lblListOfConflicts = createLabel("LIST OF CONFLICTS", 14, 592, 321, 152, 22);
 
 		contentPane.add(lblAddEmployee);
+		contentPane.add(lblDni);
 		contentPane.add(lblFirstName);
 		contentPane.add(lblLastName);
 		contentPane.add(lblRating);
 		contentPane.add(lblRole);
 		contentPane.add(lblListOfEmployees);
+		contentPane.add(lblConflicts);
+		contentPane.add(lblListOfConflicts);
 
-		textFirstName = createTextField(166, 67, 148, 29, 10, JTextField.CENTER);
-		textLastName = createTextField(166, 107, 148, 29, 10, JTextField.CENTER);
-		textRating = createTextField(166, 153, 148, 29, 10, JTextField.CENTER);
+		textDni = createTextField(176, 67, 148, 29, 10, JTextField.CENTER);
+		textFirstName = createTextField(176, 107, 148, 29, 10, JTextField.CENTER);
+		textLastName = createTextField(176, 147, 148, 29, 10, JTextField.CENTER);
+		textRating = createTextField(176, 193, 148, 29, 10, JTextField.CENTER);
 
 		entryValidationForNames(textFirstName);
+		entryValidationForDni(textDni);
 		entryValidationForNames(textLastName);
 		entryValidationForRating(textRating);
 
 		contentPane.add(textFirstName);
+		contentPane.add(textDni);
 		contentPane.add(textLastName);
 		contentPane.add(textRating);
 
 		JComboBox<String> role = new JComboBox<String>();
-		role.setBounds(166, 193, 148, 29);
+		role.setBounds(176, 233, 148, 29);
 		contentPane.add(role);
 		role.addItem("Project_Leader");
 		role.addItem("Architect");
 		role.addItem("Programmer");
 		role.addItem("Tester");
 
-		// tema del id de la persona a agregar, cambiarlo por dni de 1 a x, y hacer que
-		// se le agregue al nuevo empleado (equals en base al dni), y el tema de la foto
-		// del tipo a agregar tambien (IDEA=poner una foto generica con un signo de
-		// interrogacion)
-
 		JButton btnAddEmployee = new JButton("Add employee");
-		btnAddEmployee.setBounds(99, 245, 159, 43);
+		btnAddEmployee.setBounds(109, 275, 159, 43);
 		btnAddEmployee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (textFirstName.getText().equals("") || textLastName.getText().equals("")
-						|| textRating.getText().equals("")) {
+						|| textRating.getText().equals("") || textDni.getText().equals("")) {
 					showMessageDialog("Missing to add data of the new employee");
 				} else {
-					Employee em = new Employee("", textFirstName.getText(), textLastName.getText(),
+					Employee em = new Employee(textDni.getText(), textFirstName.getText(), textLastName.getText(),
 							Integer.parseInt(textRating.getText()), new HashSet<String>(),
-							Role.valueOf((String) role.getSelectedItem()), "foto.jpg");
+							Role.valueOf((String) role.getSelectedItem()), "foto.png");
 					if (employees.contains(em)) {
 						showMessageDialog("Employee already exists");
 					} else {
@@ -127,6 +163,8 @@ public class MainScreen extends JFrame {
 						showMessageDialog("employee added successfully");
 						listOfEmployee.addItem(em.getFirstName() + " " + em.getLastName() + " - Role: " + em.getRole()
 								+ ", Rating: " + em.getRating());
+						conflict_1.addItem(em.getDni() + " - " + em.getLastName());
+						conflict_2.addItem(em.getDni() + " - " + em.getLastName());
 					}
 				}
 			}
@@ -137,7 +175,7 @@ public class MainScreen extends JFrame {
 		JButton btnBruteForce = new JButton("Run Brute Force");
 		btnBruteForce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BruteForceWorker worker = new BruteForceWorker(employees, cantProjectLeader, cantArchitect,
+				BruteForceWorker worker = new BruteForceWorker(idealTeam, cantProjectLeader, cantArchitect,
 						cantProgrammer, cantTester);
 				worker.execute();
 			}
@@ -148,7 +186,7 @@ public class MainScreen extends JFrame {
 		JButton btnBacktracking = new JButton("Run Backtracking");
 		btnBacktracking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BackTrackingWorker worker = new BackTrackingWorker(employees, cantProjectLeader, cantArchitect,
+				BackTrackingWorker worker = new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect,
 						cantProgrammer, cantTester);
 				worker.execute();
 			}
@@ -159,13 +197,33 @@ public class MainScreen extends JFrame {
 		JButton btnHeuristics = new JButton("Run Heuristics");
 		btnHeuristics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				HeuristicWorker worker = new HeuristicWorker(employees, cantProjectLeader, cantArchitect,
+				HeuristicWorker worker = new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect,
 						cantProgrammer, cantTester);
 				worker.execute();
 			}
 		});
 		btnHeuristics.setBounds(680, 600, 148, 122);
 		contentPane.add(btnHeuristics);
+
+		JButton btnAddConflict = new JButton("Add conflict");
+		btnAddConflict.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (conflict_1.getSelectedItem().equals(conflict_2.getSelectedItem())) {
+					showMessageDialog("selected the same employee");
+				} else {
+					// aca hay que chequear q no exita el conflicto ya (en la lista de conflictos, o
+					// directamente en la barra de conflictos), y sino existe agregarselo
+					// (al conflicto) a ambos empleados, y luego agregarselo a la barra de
+					// conflictos
+
+					// IMPORTANTE ARREGLAR EL JSON DE CONFLICTOS PARA Q LOS CONFLICTOS SEAN
+					// SIMETRICOS
+				}
+			}
+
+		});
+		btnAddConflict.setBounds(588, 275, 148, 43);
+		contentPane.add(btnAddConflict);
 
 	}
 
@@ -214,6 +272,20 @@ public class MainScreen extends JFrame {
 				// valida que la entrada sea un numero del 1 al 5, solo 1
 				boolean numeros = (key >= 49 && key <= 53);
 				if ((!numeros || jText.getText().trim().length() == 1)) {
+					e.consume();
+				}
+			}
+		});
+	}
+
+	private void entryValidationForDni(JTextField jText) {
+		jText.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				int key = e.getKeyChar();
+				// valida que la entrada sea un numero del 0 al 9, y de largo de 8 digitos
+				boolean numeros = (key >= 48 && key <= 58);
+				if ((!numeros || jText.getText().trim().length() == 8)) {
 					e.consume();
 				}
 			}

@@ -4,8 +4,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import tp.logic.Employee;
+
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 
@@ -24,7 +27,7 @@ public class EmployeeScreen extends JFrame {
 	public EmployeeScreen(Employee employee) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 526, 297);
-		setTitle("Id " + employee.getId() + " - Employee Record");
+		setTitle("Dni " + employee.getDni() + " - Employee Record");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
 
@@ -33,24 +36,14 @@ public class EmployeeScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		lblFirstName = new JLabel("First Name: " + employee.getFirstName());
-		lblFirstName.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblFirstName.setBounds(10, 26, 200, 20);
+		lblFirstName = createLabel("First Name: " + employee.getFirstName(), 12, 10, 26, 200, 20);
+		lblLastName = createLabel("Last Name: " + employee.getLastName(), 12, 10, 57, 200, 20);
+		lblRating = createLabel("Rating: " + employee.getRating(), 12, 10, 88, 200, 20);
+		lblRole = createLabel("Role: " + employee.getRole(), 12, 10, 119, 200, 20);
+
 		contentPane.add(lblFirstName);
-
-		lblLastName = new JLabel("Last Name: " + employee.getLastName());
-		lblLastName.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblLastName.setBounds(10, 57, 200, 20);
 		contentPane.add(lblLastName);
-
-		lblRating = new JLabel("Rating: " + employee.getRating());
-		lblRating.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblRating.setBounds(10, 88, 200, 20);
 		contentPane.add(lblRating);
-
-		lblRole = new JLabel("Role: " + employee.getRole());
-		lblRole.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblRole.setBounds(10, 119, 200, 20);
 		contentPane.add(lblRole);
 
 		lblPhoto = new JLabel();
@@ -68,5 +61,14 @@ public class EmployeeScreen extends JFrame {
 				lblPhoto.setIcon(scaledPhotoIcon);
 			}
 		}
+	}
+
+	private JLabel createLabel(String text, int fontSize, int x, int y, int width, int height) {
+		JLabel label = new JLabel(text);
+		label.setForeground(Color.BLACK);
+		label.setFont(new Font("Tahoma", Font.BOLD, fontSize));
+		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setBounds(x, y, width, height);
+		return label;
 	}
 }

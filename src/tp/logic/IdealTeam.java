@@ -3,6 +3,9 @@ package tp.logic;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
+
+import tp.dal.LoadData;
+
 import java.util.Comparator;
 
 public class IdealTeam {
@@ -10,8 +13,12 @@ public class IdealTeam {
 	private List<TeamUpdateListener> listeners;
 	private ConsoleTeamUpdateListener consoleListener;
 	private FileTeamUpdateListener fileListener;
+	private LoadData data;
+	private List<Employee> employees;
 
 	public IdealTeam() {
+		data = new LoadData();
+		employees = data.readEmployeesFromJSON();
 		listeners = new ArrayList<>();
 		consoleListener = new ConsoleTeamUpdateListener();
 		fileListener = new FileTeamUpdateListener();
@@ -19,8 +26,8 @@ public class IdealTeam {
 		addListener(fileListener);
 	}
 
-	public List<Employee> generateTeamByBruteForce(List<Employee> employees, int projectLeaderCount, int architectCount,
-			int programmerCount, int testerCount) {
+	public List<Employee> generateTeamByBruteForce(int projectLeaderCount, int architectCount, int programmerCount,
+			int testerCount) {
 		BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
 		List<Employee> bestCombination = bruteForce.findBestCombination();
@@ -28,8 +35,8 @@ public class IdealTeam {
 		return bestCombination;
 	}
 
-	public List<Employee> generateTeamByBackTracking(List<Employee> employees, int projectLeaderCount,
-			int architectCount, int programmerCount, int testerCount) {
+	public List<Employee> generateTeamByBackTracking(int projectLeaderCount, int architectCount, int programmerCount,
+			int testerCount) {
 		BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
 		List<Employee> bestCombination = backTracking.findBestCombination();
@@ -37,8 +44,8 @@ public class IdealTeam {
 		return bestCombination;
 	}
 
-	public List<Employee> generateTeamByHeuristic(List<Employee> employees, int projectLeaderCount, int architectCount,
-			int programmerCount, int testerCount) {
+	public List<Employee> generateTeamByHeuristic(int projectLeaderCount, int architectCount, int programmerCount,
+			int testerCount) {
 		Comparator<Employee> customComparator = (e1, e2) -> {
 			double coefficient1 = calculateCoefficient(e1);
 			double coefficient2 = calculateCoefficient(e2);
@@ -79,27 +86,13 @@ public class IdealTeam {
 		return rating - conflictCount;
 	}
 
-	// ------------------------------------------------------------------------------------------------//
-
-	private void printResult(List<Employee> bestCombination) {
-		System.out.println("Mejor combinación de empleados:" + "\n");
-		int totalRating = 0;
-		for (Employee employee : bestCombination) {
-			System.out.println(employee);
-			totalRating += employee.getRating();
-		}
-		int employeeCount = bestCombination.size();
-		double averageRating = (double) totalRating / employeeCount;
-		System.out.println("Promedio de rating de empleados: " + averageRating + "\n");
-	}
-
-	public void displayEmployees(List<Employee> employees) {
+	public void displayEmployees() {
 		for (Employee employee : employees) {
 			System.out.println(employee.toString());
 			System.out.println("Conflicted Employees:");
 			Set<String> conflictedIds = employee.getConflicts();
 			for (String conflictedId : conflictedIds) {
-				Employee conflictedEmployee = findEmployeeById(employees, conflictedId);
+				Employee conflictedEmployee = findEmployeeByDni(conflictedId);
 				if (conflictedEmployee != null) {
 					System.out.println(
 							" - " + conflictedEmployee.getFirstName() + " " + conflictedEmployee.getLastName());
@@ -109,12 +102,18 @@ public class IdealTeam {
 		}
 	}
 
-	private Employee findEmployeeById(List<Employee> employees, String conflictedId) {
+	public Employee findEmployeeByDni(String conflictedId) {
 		for (Employee employee : employees) {
-			if (employee.getId().equals(conflictedId)) {
+			if (employee.getDni().equals(conflictedId)) {
 				return employee;
 			}
 		}
 		return null;
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Employee> getEmployees() {
+		return (List<Employee>) ((ArrayList<Employee>) employees).clone();
+	}
+
 }
