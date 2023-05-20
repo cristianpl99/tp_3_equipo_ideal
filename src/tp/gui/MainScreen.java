@@ -90,9 +90,9 @@ public class MainScreen extends JFrame {
 
 		for (Employee em : employees) {
 			if (!em.getConflicts().isEmpty()) {
-				for (String conflict : em.getConflicts()) {
-					listOfConflicts.addItem(em.getDni() + " - " + em.getLastName() + " ---> " + conflict + " - "
-							+ idealTeam.findEmployeeByDni(conflict).getLastName());
+				for (String dniConflict : em.getConflicts()) {
+					listOfConflicts.addItem(em.getDni() + " - " + em.getLastName() + " ---> " + dniConflict + " - "
+							+ idealTeam.findEmployeeByDni(dniConflict).getLastName());
 				}
 			}
 		}
@@ -160,7 +160,7 @@ public class MainScreen extends JFrame {
 						showMessageDialog("Employee already exists");
 					} else {
 						employees.add(em);
-						showMessageDialog("employee added successfully");
+						showMessageDialog("Employee added successfully");
 						listOfEmployee.addItem(em.getFirstName() + " " + em.getLastName() + " - Role: " + em.getRole()
 								+ ", Rating: " + em.getRating());
 						conflict_1.addItem(em.getDni() + " - " + em.getLastName());
@@ -209,13 +209,25 @@ public class MainScreen extends JFrame {
 		btnAddConflict.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (conflict_1.getSelectedItem().equals(conflict_2.getSelectedItem())) {
-					showMessageDialog("selected the same employee");
+					showMessageDialog("Selected the same employee");
 				} else {
-					// aca hay que chequear q no exita el conflicto ya (en la lista de conflictos, o
-					// directamente en la barra de conflictos), y sino existe agregarselo
-					// (al conflicto) a ambos empleados, y luego agregarselo a la barra de
-					// conflictos
-
+					String[] conflict1 = conflict_1.getSelectedItem().toString().split(" - ");
+					String[] conflict2 = conflict_2.getSelectedItem().toString().split(" - ");
+					String dni1 = conflict1[0];
+					String dni2 = conflict2[0];
+					if (idealTeam.findEmployeeByDni(dni1).getConflicts().contains(dni2)) {
+						showMessageDialog("Conflict already exists");
+					} else {
+						Employee em1 = idealTeam.findEmployeeByDni(dni1);
+						em1.addConflict(dni2);
+						Employee em2 = idealTeam.findEmployeeByDni(dni2);
+						em2.addConflict(dni1);
+						showMessageDialog("Conflict added successfully");
+						listOfConflicts.addItem(em1.getDni() + " - " + em1.getLastName() + " ---> " + em2.getDni()
+								+ " - " + em2.getLastName());
+						listOfConflicts.addItem(em2.getDni() + " - " + em2.getLastName() + " ---> " + em1.getDni()
+								+ " - " + em1.getLastName());
+					}
 				}
 			}
 
