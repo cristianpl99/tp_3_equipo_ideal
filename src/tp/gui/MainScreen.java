@@ -216,8 +216,6 @@ public class MainScreen extends JFrame {
 					// (al conflicto) a ambos empleados, y luego agregarselo a la barra de
 					// conflictos
 
-					// IMPORTANTE ARREGLAR EL JSON DE CONFLICTOS PARA Q LOS CONFLICTOS SEAN
-					// SIMETRICOS
 				}
 			}
 
