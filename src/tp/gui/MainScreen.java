@@ -313,8 +313,10 @@ public class MainScreen extends JFrame {
 	        public void actionPerformed(ActionEvent e) {
 	            button.setVisible(false);  
 	            progressBar.setVisible(true); 
-	            progressBar.setIndeterminate(true); 
-
+	            progressBar.setIndeterminate(true);
+	            
+	           
+	              
 	            worker.addPropertyChangeListener(new PropertyChangeListener() {
 	                @Override
 	                public void propertyChange(PropertyChangeEvent evt) {
@@ -334,6 +336,9 @@ public class MainScreen extends JFrame {
 	                    if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
 	                        try {
 	                            bestCombination = worker.get();
+	                            if (worker != null && !worker.isDone()) {
+	            	                worker.cancel(true);
+	            	            }
 	                            populateTable(table, bestCombination); 
 	                        } catch (Exception ex) {
 	                            ex.printStackTrace();
