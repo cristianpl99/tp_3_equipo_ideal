@@ -37,10 +37,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
-
-
-
-
 public class MainScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -176,6 +172,7 @@ public class MainScreen extends JFrame {
 						showMessageDialog("Employee already exists");
 					} else {
 						employees.add(em);
+						idealTeam.addEmployee(em);
 						showMessageDialog("Employee added successfully");
 						listOfEmployee.addItem(em.getFirstName() + " " + em.getLastName() + " - Role: " + em.getRole()
 								+ ", Rating: " + em.getRating());
@@ -187,7 +184,7 @@ public class MainScreen extends JFrame {
 
 		});
 		contentPane.add(btnAddEmployee);
-		
+
 		String[] columnNames = { "DNI", "Rol", "Nombre", "Apellido" };
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
@@ -195,17 +192,17 @@ public class MainScreen extends JFrame {
 		table.setBounds(344, 447, 392, 267);
 		table.setEnabled(false);
 		table.addMouseListener(new MouseAdapter() {
-		    @Override
-		    public void mouseClicked(MouseEvent e) {
-		        if (e.getClickCount() == 1) {
-		            int selectedRow = table.getSelectedRow();
-		            if (selectedRow != -1) {
-		                showEmployee(selectedRow);
-		            }
-		        }
-		    }
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 1) {
+					int selectedRow = table.getSelectedRow();
+					if (selectedRow != -1) {
+						showEmployee(selectedRow);
+					}
+				}
+			}
 		});
-		
+
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(344, 447, 392, 267);
 		contentPane.add(scrollPane);
@@ -218,19 +215,19 @@ public class MainScreen extends JFrame {
 
 		JButton btnBruteForce = new JButton("Run Brute Force");
 		configureButtonWithProgressBar(btnBruteForce, progressBarBruteForce,
-		        new BruteForceWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
+				new BruteForceWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
 		btnBruteForce.setBounds(17, 497, 148, 45);
 		contentPane.add(btnBruteForce);
 
 		JProgressBar progressBarBacktracking = new JProgressBar();
 		progressBarBacktracking.setBounds(17, 576, 148, 44);
 		progressBarBacktracking.setVisible(false);
-		progressBarBacktracking.setForeground(Color.RED); 
+		progressBarBacktracking.setForeground(Color.RED);
 		contentPane.add(progressBarBacktracking);
 
 		JButton btnBackTracking = new JButton("Run BackTracking");
 		configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
-		        new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
+				new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
 		btnBackTracking.setBounds(17, 576, 148, 44);
 		contentPane.add(btnBackTracking);
 
@@ -242,7 +239,7 @@ public class MainScreen extends JFrame {
 
 		JButton btnHeuristics = new JButton("Run Heuristics");
 		configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
-		        new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
+				new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
 		btnHeuristics.setBounds(17, 654, 148, 43);
 		contentPane.add(btnHeuristics);
 
@@ -274,9 +271,9 @@ public class MainScreen extends JFrame {
 
 		});
 		btnAddConflict.setBounds(588, 275, 148, 43);
-		contentPane.add(btnAddConflict);		
+		contentPane.add(btnAddConflict);
 	}
-	
+
 	private void showEmployee(int selectedRow) {
 		EmployeeScreen launch;
 		launch = new EmployeeScreen(this.bestCombination.get(selectedRow));
@@ -307,59 +304,59 @@ public class MainScreen extends JFrame {
 	private void showMessageDialog(String message) {
 		JOptionPane.showMessageDialog(null, message, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
 	}
-	
-	private void configureButtonWithProgressBar(JButton button, JProgressBar progressBar, SwingWorker<List<Employee>, Void> worker, JTable table) {
-	    button.addActionListener(new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	            button.setVisible(false);  
-	            progressBar.setVisible(true); 
-	            progressBar.setIndeterminate(true);
-	            
-	           
-	              
-	            worker.addPropertyChangeListener(new PropertyChangeListener() {
-	                @Override
-	                public void propertyChange(PropertyChangeEvent evt) {
-	                    if ("progress".equals(evt.getPropertyName())) {
-	                        int progress = (int) evt.getNewValue();
-	                        progressBar.setIndeterminate(false);  
-	                        progressBar.setValue(progress); 
-	                    }
-	                }
-	            });
 
-	            worker.execute();
+	private void configureButtonWithProgressBar(JButton button, JProgressBar progressBar,
+			SwingWorker<List<Employee>, Void> worker, JTable table) {
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				button.setVisible(false);
+				progressBar.setVisible(true);
+				progressBar.setIndeterminate(true);
 
-	            worker.addPropertyChangeListener(new PropertyChangeListener() {
-	                @Override
-	                public void propertyChange(PropertyChangeEvent evt) {
-	                    if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
-	                        try {
-	                            bestCombination = worker.get();
-	                            if (worker != null && !worker.isDone()) {
-	            	                worker.cancel(true);
-	            	            }
-	                            populateTable(table, bestCombination); 
-	                        } catch (Exception ex) {
-	                            ex.printStackTrace();
-	                        }
+				worker.addPropertyChangeListener(new PropertyChangeListener() {
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						if ("progress".equals(evt.getPropertyName())) {
+							int progress = (int) evt.getNewValue();
+							progressBar.setIndeterminate(false);
+							progressBar.setValue(progress);
+						}
+					}
+				});
 
-	                        button.setVisible(true); 
-	                        progressBar.setVisible(false);
-	                    }
-	                }
-	            });
-	        }
-	    });
+				worker.execute();
+
+				worker.addPropertyChangeListener(new PropertyChangeListener() {
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
+							try {
+								bestCombination = worker.get();
+								if (worker != null && !worker.isDone()) {
+									worker.cancel(true);
+								}
+								populateTable(table, bestCombination);
+							} catch (Exception ex) {
+								ex.printStackTrace();
+							}
+
+							button.setVisible(true);
+							progressBar.setVisible(false);
+						}
+					}
+				});
+			}
+		});
 	}
 
 	private void populateTable(JTable table, List<Employee> employees) {
 		this.bestCombination = employees;
-	    DefaultTableModel model = (DefaultTableModel) table.getModel();
-	    model.setRowCount(0); 
-	    for (Employee employee : employees) {
-	        model.addRow(new Object[] {employee.getDni(), employee.getRole(), employee.getFirstName(), employee.getLastName() });
-	    }
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.setRowCount(0);
+		for (Employee employee : employees) {
+			model.addRow(new Object[] { employee.getDni(), employee.getRole(), employee.getFirstName(),
+					employee.getLastName() });
+		}
 	}
 
 	private void entryValidationForNames(JTextField jText) {

@@ -116,4 +116,8 @@ public class IdealTeam {
 		return (List<Employee>) ((ArrayList<Employee>) employees).clone();
 	}
 
+	public void addEmployee(Employee em) {
+		employees.add(em);
+	}
+
 }
