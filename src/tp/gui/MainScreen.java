@@ -190,7 +190,8 @@ public class MainScreen extends JFrame {
 
 		JTable table = new JTable(tableModel);
 		table.setBounds(344, 447, 392, 267);
-		table.setEnabled(false);
+		table.setEnabled(true);
+		table.setDefaultEditor(Object.class, null);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
