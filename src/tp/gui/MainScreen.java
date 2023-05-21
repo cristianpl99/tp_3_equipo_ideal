@@ -325,7 +325,6 @@ public class MainScreen extends JFrame {
 				});
 
 				worker.execute();
-
 				worker.addPropertyChangeListener(new PropertyChangeListener() {
 					@Override
 					public void propertyChange(PropertyChangeEvent evt) {
