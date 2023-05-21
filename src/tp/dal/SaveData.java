@@ -11,10 +11,12 @@ import tp.logic.Employee;
 
 public class SaveData {
 
-	public void createFile(List<Employee> team) {
+	public void createFile(List<Employee> team, int combinations, long time) {
 		String fileName = generateFileName(team);
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
 			writer.write("Equipo generado:\n");
+			writer.write("Combinaciones generadas: " + combinations + "\n");
+			writer.write("Tiempo del proceso: " + time + "\n");
 			for (Employee employee : team) {
 				writer.write(employee.toString() + "\n");
 			}

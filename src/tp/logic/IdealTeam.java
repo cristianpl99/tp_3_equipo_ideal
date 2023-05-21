@@ -13,6 +13,8 @@ public class IdealTeam {
 	private List<TeamUpdateListener> listeners;
 	private ConsoleTeamUpdateListener consoleListener;
 	private FileTeamUpdateListener fileListener;
+	private ScreenTeamUpdateListener screenListener;
+	
 	private LoadData data;
 	private List<Employee> employees;
 
@@ -22,8 +24,10 @@ public class IdealTeam {
 		listeners = new ArrayList<>();
 		consoleListener = new ConsoleTeamUpdateListener();
 		fileListener = new FileTeamUpdateListener();
+		screenListener = new ScreenTeamUpdateListener();
 		addListener(consoleListener);
 		addListener(fileListener);
+		addListener(screenListener);
 	}
 
 	public List<Employee> generateTeamByBruteForce(int projectLeaderCount, int architectCount, int programmerCount,
@@ -31,7 +35,7 @@ public class IdealTeam {
 		BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
 		List<Employee> bestCombination = bruteForce.findBestCombination();
-		notifyTeamGenerated(bestCombination);
+		notifyTeamGenerated(bestCombination, bruteForce.getCombinationCount(), bruteForce.getExecutionTime());
 		return bestCombination;
 	}
 
@@ -40,7 +44,7 @@ public class IdealTeam {
 		BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
 		List<Employee> bestCombination = backTracking.findBestCombination();
-		notifyTeamGenerated(bestCombination);
+		notifyTeamGenerated(bestCombination, backTracking.getCombinationCount(), backTracking.getExecutionTime());
 		return bestCombination;
 	}
 
@@ -55,7 +59,7 @@ public class IdealTeam {
 		Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
 		List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
-		notifyTeamGenerated(bestCombination);
+		notifyTeamGenerated(bestCombination, heuristic.getCombinationCount(), heuristic.getExecutionTime());
 		return bestCombination;
 	}
 
@@ -72,10 +76,10 @@ public class IdealTeam {
 		}
 	}
 
-	private void notifyTeamGenerated(List<Employee> team) {
+	private void notifyTeamGenerated(List<Employee> team, int combinations, long time) {
 		if (listeners != null) {
 			for (TeamUpdateListener listener : listeners) {
-				listener.onTeamGenerated(team);
+				listener.onTeamGenerated(team, combinations, time);
 			}
 		}
 	}

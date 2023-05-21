@@ -5,7 +5,7 @@
     "lastName": "Gates",
     "role": "Project_Leader",
     "rating": 4,
-    "photo": "src/tp/dal/images/bill_gates.png"
+    "photo": "src/tp/dal/images/gates.png"
   },
   {
     "dni": "PL1002",
@@ -13,7 +13,7 @@
     "lastName": "Jobs",
     "role": "Project_Leader",
     "rating": 3,
-    "photo":""
+    "photo":"src/tp/dal/images/jobs.png"
   },
   {
     "dni": "PL1003",
@@ -21,7 +21,7 @@
     "lastName": "Torvalds",
     "role": "Project_Leader",
     "rating": 5,
-    "photo":""
+    "photo":"src/tp/dal/images/torvalds.png"
   },
   {
     "dni": "A1004",
@@ -29,7 +29,7 @@
     "lastName": "Turing",
     "role": "Architect",
     "rating": 3,
-    "photo":""
+    "photo":"src/tp/dal/images/turing.png"
   },
   {
     "dni": "A1005",
@@ -37,7 +37,7 @@
     "lastName": "Zuckerberg",
     "role": "Architect",
     "rating": 2,
-    "photo":""
+    "photo":"src/tp/dal/images/zuckerberg.png"
   },
   {
     "dni": "A1006",
@@ -45,7 +45,7 @@
     "lastName": "Brin",
     "role": "Architect",
     "rating": 4,
-    "photo":""
+    "photo":"src/tp/dal/images/brin.png"
   },
   {
     "dni": "A1007",
@@ -53,7 +53,7 @@
     "lastName": "Bezos",
     "role": "Architect",
     "rating": 2,
-    "photo":""
+    "photo":"src/tp/dal/images/bezos.png"
   },
   {
     "dni": "A1008",
@@ -61,7 +61,7 @@
     "lastName": "Musk",
     "role": "Architect",
     "rating": 4,
-    "photo":""
+    "photo":"src/tp/dal/images/musk.png"
   },
   {
     "dni": "A1009",
@@ -69,7 +69,7 @@
     "lastName": "Nadella",
     "role": "Architect",
     "rating": 5,
-    "photo":""
+    "photo":"src/tp/dal/images/nadella.png"
   },  
   {
     "dni": "T1010",
@@ -77,7 +77,7 @@
     "lastName": "Kasparov",
     "role": "Tester",
     "rating": 4,
-    "photo":""
+    "photo":"src/tp/dal/images/kasparov.png"
   },
   {
     "dni": "T1011",
@@ -85,7 +85,7 @@
     "lastName": "Karpov",
     "role": "Tester",
     "rating": 3,
-    "photo":""
+    "photo":"src/tp/dal/images/karpov.png"
   },
   {
     "dni": "T1012",
@@ -93,7 +93,7 @@
     "lastName": "Fischer",
     "role": "Tester",
     "rating": 4,
-    "photo":""
+    "photo":"src/tp/dal/images/fischer.png"
   },
   {
     "dni": "T1013",
@@ -101,7 +101,7 @@
     "lastName": "Carlsen",
     "role": "Tester",
     "rating": 3,
-    "photo":""
+    "photo":"src/tp/dal/images/carlsen.png"
   },
   {
     "dni": "T1014",
@@ -109,7 +109,7 @@
     "lastName": "Anand",
     "role": "Tester",
     "rating": 4,
-    "photo":""
+    "photo":"src/tp/dal/images/anand.png"
   },
   {
     "dni": "T1015",
@@ -117,7 +117,7 @@
     "lastName": "Kramnik",
     "role": "Tester",
     "rating": 3,
-    "photo":""
+    "photo":"src/tp/dal/images/kamnik.png"
   },
   {
     "dni": "T1016",
@@ -125,7 +125,7 @@
     "lastName": "Capablanca",
     "role": "Tester",
     "rating": 3,
-    "photo":""
+    "photo":"src/tp/dal/images/capablanca.png"
   },
   {
     "dni": "T1017",
@@ -133,7 +133,7 @@
     "lastName": "Alekhine",
     "role": "Tester",
     "rating": 4,
-    "photo":""
+    "photo":"src/tp/dal/images/alekhine.png"
   },
   {
     "dni": "T1018",
@@ -141,7 +141,7 @@
     "lastName": "Spassky",
     "role": "Tester",
     "rating": 3,
-    "photo":""
+    "photo":"src/tp/dal/images/spassky.png"
   },
 {
   "dni": "T1019",
@@ -149,7 +149,7 @@
   "lastName": "Ivanchuk",
   "role": "Tester",
   "rating": 3,
-  "photo":""
+  "photo":"src/tp/dal/images/ivanchuk.png"
 },
 {
   "dni": "P1020",
@@ -157,7 +157,7 @@
   "lastName": "Botwinnik",
   "role": "Programmer",
   "rating": 4,
-  "photo":""
+  "photo":"src/tp/dal/images/botvinnik.png"
 },
 {
   "dni": "P1021",
@@ -165,7 +165,7 @@
   "lastName": "Nakamura",
   "role": "Programmer",
   "rating": 2,
-  "photo":""
+  "photo":"src/tp/dal/images/nakamura.png"
 },
 {
   "dni": "P1022",
@@ -173,7 +173,7 @@
   "lastName": "Lein",
   "role": "Programmer",
   "rating": 4,
-  "photo":""
+  "photo":"src/tp/dal/images/lein.png"
 },
 {
   "dni": "P1023",
@@ -181,7 +181,7 @@
   "lastName": "Short",
   "role": "Programmer",
   "rating": 3,
-  "photo":""
+  "photo":"src/tp/dal/images/short.png"
 },
 {
   "dni": "P1024",
@@ -189,7 +189,7 @@
   "lastName": "Korchnoi",
   "role": "Programmer",
   "rating": 3,
-  "photo":""
+  "photo":"src/tp/dal/images/korchnoi.png"
 },
 {
   "dni": "P1025",
@@ -197,7 +197,7 @@
   "lastName": "Caruana",
   "role": "Programmer",
   "rating": 4,
-  "photo":""
+  "photo":"src/tp/dal/images/caruana.png"
 },
 {
   "dni": "P1026",
@@ -205,7 +205,7 @@
   "lastName": "Polgar",
   "role": "Programmer",
   "rating": 4,
-  "photo":""
+  "photo":"src/tp/dal/images/polgar.png"
 },
 {
   "dni": "P1027",
@@ -213,7 +213,7 @@
   "lastName": "Grischuk",
   "role": "Programmer",
   "rating": 3,
-  "photo":""
+  "photo":"src/tp/dal/images/grischuk.png"
 },
 {
   "dni": "P1028",
@@ -221,7 +221,7 @@
   "lastName": "Mamedyarov",
   "role": "Programmer",
   "rating": 4,
-  "photo":""
+  "photo":"src/tp/dal/images/mamedyarov.png"
 },
 {
   "dni": "P1029",
@@ -229,7 +229,7 @@
   "lastName": "Bronstein",
   "role": "Programmer",
   "rating": 3,
-  "photo":""
+  "photo":"src/tp/dal/images/bronstein.png"
 },
 {
   "dni": "P1030",
@@ -237,6 +237,6 @@
   "lastName": "Shirov",
   "role": "Programmer",
   "rating": 4,
-  "photo":""
+  "photo":"src/tp/dal/images/shirov.png"
 }
 ]

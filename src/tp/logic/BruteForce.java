@@ -10,9 +10,9 @@ public class BruteForce {
 	private int programmerCount;
 	private int testerCount;
 	private List<Employee> bestCombination;
-
 	private double bestAverageRating;
 	private int combinationCount;
+	private long executionTime;
 
 	public BruteForce(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
@@ -24,12 +24,16 @@ public class BruteForce {
 		this.bestCombination = new ArrayList<>();
 		this.bestAverageRating = 0;
 		this.combinationCount = 0;
+		this.executionTime =0;
 	}
 
 	public List<Employee> findBestCombination() {
+		long startTime = System.currentTimeMillis();
 		List<Employee> combination = new ArrayList<>();
 		generateCombination(combination, 0);
-		System.out.println("En BruteForce, cantidad de combinaciones generadas: " + combinationCount);
+		//System.out.println("En BruteForce, cantidad de combinaciones generadas: " + combinationCount);
+		long endTime = System.currentTimeMillis();
+	    executionTime = endTime - startTime;
 		return bestCombination;
 	}
 
@@ -65,6 +69,11 @@ public class BruteForce {
 		}
 		return false;
 	}
+	
+	public long getExecutionTime() {
+	    return executionTime;
+	}
+	
 
 	private boolean combinationContainsConflictedEmployee(List<Employee> combination, Employee employee) {
 		for (Employee e : combination) {

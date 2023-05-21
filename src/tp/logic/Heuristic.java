@@ -15,6 +15,7 @@ public class Heuristic {
 	private int programmersAdded;
 	private int testersAdded;
 	private int combinationCount;
+	private long executionTime;
 
 	public Heuristic(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
@@ -28,10 +29,12 @@ public class Heuristic {
 		this.programmersAdded = 0;
 		this.testersAdded = 0;
 		this.combinationCount = 0;
+		this.executionTime =0;
 
 	}
 
 	public List<Employee> findBestCombination(Comparator<Employee> comparator) {
+		long startTime = System.currentTimeMillis();
 		List<Employee> team = new ArrayList<>(employees);
 
 		team.sort(comparator);
@@ -47,8 +50,16 @@ public class Heuristic {
 			}
 		}
 		combinationCount++;
-		System.out.println("En Heuristic, cantidad de combinaciones generadas: " + combinationCount);
-		return finalTeam;
+		long endTime = System.currentTimeMillis();
+	    executionTime = endTime - startTime;
+	    return finalTeam;
+	}
+	
+	public long getExecutionTime() {
+	    return executionTime;
+	}
+	public int getCombinationCount() {
+		return combinationCount;
 	}
 
 	private void incrementRoleCount(Employee.Role role, int projectLeadersAdded, int architectsAdded,

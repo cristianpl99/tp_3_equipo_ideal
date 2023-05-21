@@ -12,6 +12,7 @@ public class BackTracking {
 	private List<Employee> bestCombination;
 	private double bestAverageRating;
 	private int combinationCount;
+	private long executionTime;
 
 	public BackTracking(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
@@ -23,12 +24,16 @@ public class BackTracking {
 		this.bestCombination = new ArrayList<>();
 		this.bestAverageRating = 0;
 		this.combinationCount = 0;
+		this.executionTime =0;
 	}
 
 	public List<Employee> findBestCombination() {
+		long startTime = System.currentTimeMillis();
 		List<Employee> combination = new ArrayList<>();
 		generateCombination(combination, 0);
-		System.out.println("En BackTracking, cantidad de combinaciones generadas: " + combinationCount);
+		//System.out.println("En BackTracking, cantidad de combinaciones generadas: " + combinationCount);
+		long endTime = System.currentTimeMillis();
+	    executionTime = endTime - startTime;
 		return bestCombination;
 	}
 
@@ -123,6 +128,9 @@ public class BackTracking {
 
 	public int getCombinationCount() {
 		return combinationCount;
+	}
+	public long getExecutionTime() {
+	    return executionTime;
 	}
 
 	public List<Employee> getBestCombination() {

@@ -34,7 +34,10 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingWorker;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import javax.swing.JScrollPane;
 
 public class MainScreen extends JFrame {
@@ -58,16 +61,23 @@ public class MainScreen extends JFrame {
 	private JLabel lblListOfEmployees;
 	private JLabel lblConflicts;
 	private JLabel lblListOfConflicts;
+	private JLabel lblCombinations;
+	private JLabel lblTime;
+	private JLabel lblAverageRating;
 	private IdealTeam idealTeam;
 	private ArrayList<Employee> employees;
 	private List<Employee> bestCombination;
+	
+	public static int combinations;
+	public static double time;
+	public static double averageRating;
 
 	public MainScreen(String projectLeader, String architect, String programmer, String tester) {
 		setTitle("Programacion III - Equipo ideal - Constructor");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 900, 800);
+		setBounds(100, 100, 900, 818);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -123,7 +133,13 @@ public class MainScreen extends JFrame {
 		lblListOfEmployees = createLabel("LIST OF EMPLOYEES", 14, 117, 319, 159, 29);
 		lblConflicts = createLabel("CONFLICTS", 18, 612, 11, 130, 45);
 		lblListOfConflicts = createLabel("LIST OF CONFLICTS", 14, 592, 321, 152, 22);
-
+		lblCombinations = createLabel("", 14, 284, 715, 452, 22);
+		lblCombinations.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTime = createLabel("", 14, 284, 735, 452, 22);
+		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAverageRating = createLabel("", 14, 284, 755, 452, 22);
+		lblAverageRating.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		contentPane.add(lblAddEmployee);
 		contentPane.add(lblDni);
 		contentPane.add(lblFirstName);
@@ -133,6 +149,10 @@ public class MainScreen extends JFrame {
 		contentPane.add(lblListOfEmployees);
 		contentPane.add(lblConflicts);
 		contentPane.add(lblListOfConflicts);
+		contentPane.add(lblCombinations);
+		contentPane.add(lblTime);
+		contentPane.add(lblCombinations);
+		contentPane.add(lblAverageRating);
 
 		textDni = createTextField(176, 67, 148, 29, 10, JTextField.CENTER);
 		textFirstName = createTextField(176, 107, 148, 29, 10, JTextField.CENTER);
@@ -165,19 +185,19 @@ public class MainScreen extends JFrame {
 						|| textRating.getText().equals("") || textDni.getText().equals("")) {
 					showMessageDialog("Missing to add data of the new employee");
 				} else {
-					Employee em = new Employee(textDni.getText(), textFirstName.getText(), textLastName.getText(),
+					Employee employee = new Employee(textDni.getText(), textFirstName.getText(), textLastName.getText(),
 							Integer.parseInt(textRating.getText()), new HashSet<String>(),
 							Role.valueOf((String) role.getSelectedItem()), "foto.png");
-					if (employees.contains(em)) {
+					if (employees.contains(employee)) {
 						showMessageDialog("Employee already exists");
 					} else {
-						employees.add(em);
-						idealTeam.addEmployee(em);
+						employees.add(employee);
+						idealTeam.addEmployee(employee);
 						showMessageDialog("Employee added successfully");
-						listOfEmployee.addItem(em.getFirstName() + " " + em.getLastName() + " - Role: " + em.getRole()
-								+ ", Rating: " + em.getRating());
-						conflict_1.addItem(em.getDni() + " - " + em.getLastName());
-						conflict_2.addItem(em.getDni() + " - " + em.getLastName());
+						listOfEmployee.addItem(employee.getFirstName() + " " + employee.getLastName() + " - Role: " + employee.getRole()
+								+ ", Rating: " + employee.getRating());
+						conflict_1.addItem(employee.getDni() + " - " + employee.getLastName());
+						conflict_2.addItem(employee.getDni() + " - " + employee.getLastName());
 					}
 				}
 			}
@@ -185,12 +205,13 @@ public class MainScreen extends JFrame {
 		});
 		contentPane.add(btnAddEmployee);
 
-		String[] columnNames = { "DNI", "Rol", "Nombre", "Apellido" };
+		String[] columnNames = { "DNI", "Rol", "Nombre", "Apellido", "Rating" };
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
 		JTable table = new JTable(tableModel);
 		table.setBounds(344, 447, 392, 267);
 		table.setEnabled(true);
+		
 		table.setDefaultEditor(Object.class, null);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -203,9 +224,18 @@ public class MainScreen extends JFrame {
 				}
 			}
 		});
+		DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+		renderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+		table.setDefaultRenderer(Object.class, renderer);
+		TableColumnModel columnModel = table.getColumnModel();
+		int columnCount = columnModel.getColumnCount();
+		for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
+		    TableColumn column = columnModel.getColumn(columnIndex);
+		    column.setResizable(false);
+		}
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(344, 447, 392, 267);
+		scrollPane.setBounds(284, 447, 452, 267);
 		contentPane.add(scrollPane);
 
 		JProgressBar progressBarBruteForce = new JProgressBar();
@@ -273,6 +303,7 @@ public class MainScreen extends JFrame {
 		});
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);
+		
 	}
 
 	private void showEmployee(int selectedRow) {
@@ -332,10 +363,16 @@ public class MainScreen extends JFrame {
 						if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
 							try {
 								bestCombination = worker.get();
-								if (worker != null && !worker.isDone()) {
-									worker.cancel(true);
-								}
+								if(bestCombination.size() != cantProjectLeader + cantArchitect + cantProgrammer + cantTester){
+									showMessageDialog("There is no possible combination due to the employees "
+											+ "conflict configuration.");	
+								}else {
+								worker.cancel(true); //?????????
 								populateTable(table, bestCombination);
+								lblCombinations.setText("Combinations " + String.valueOf(combinations));
+								lblTime.setText("Time " + String.valueOf(time) + " seconds");
+								lblAverageRating.setText("Average Team Rating " + String.valueOf(averageRating));
+								}
 							} catch (Exception ex) {
 								ex.printStackTrace();
 							}
@@ -355,7 +392,7 @@ public class MainScreen extends JFrame {
 		model.setRowCount(0);
 		for (Employee employee : employees) {
 			model.addRow(new Object[] { employee.getDni(), employee.getRole(), employee.getFirstName(),
-					employee.getLastName() });
+					employee.getLastName(), employee.getRating() });
 		}
 	}
 
