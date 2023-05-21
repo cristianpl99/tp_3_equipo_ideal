@@ -1,0 +1,242 @@
+[
+  {
+    "dni": "PL1001",
+    "firstName": "Bill",
+    "lastName": "Gates",
+    "role": "Project_Leader",
+    "rating": 4,
+    "photo": "src/tp/dal/images/bill_gates.png"
+  },
+  {
+    "dni": "PL1002",
+    "firstName": "Steve",
+    "lastName": "Jobs",
+    "role": "Project_Leader",
+    "rating": 3,
+    "photo":""
+  },
+  {
+    "dni": "PL1003",
+    "firstName": "Linus",
+    "lastName": "Torvalds",
+    "role": "Project_Leader",
+    "rating": 5,
+    "photo":""
+  },
+  {
+    "dni": "A1004",
+    "firstName": "Alan",
+    "lastName": "Turing",
+    "role": "Architect",
+    "rating": 3,
+    "photo":""
+  },
+  {
+    "dni": "A1005",
+    "firstName": "Mark",
+    "lastName": "Zuckerberg",
+    "role": "Architect",
+    "rating": 2,
+    "photo":""
+  },
+  {
+    "dni": "A1006",
+    "firstName": "Sergey",
+    "lastName": "Brin",
+    "role": "Architect",
+    "rating": 4,
+    "photo":""
+  },
+  {
+    "dni": "A1007",
+    "firstName": "Jeff",
+    "lastName": "Bezos",
+    "role": "Architect",
+    "rating": 2,
+    "photo":""
+  },
+  {
+    "dni": "A1008",
+    "firstName": "Elon",
+    "lastName": "Musk",
+    "role": "Architect",
+    "rating": 4,
+    "photo":""
+  },
+  {
+    "dni": "A1009",
+    "firstName": "Satya",
+    "lastName": "Nadella",
+    "role": "Architect",
+    "rating": 5,
+    "photo":""
+  },  
+  {
+    "dni": "T1010",
+    "firstName": "Garry",
+    "lastName": "Kasparov",
+    "role": "Tester",
+    "rating": 4,
+    "photo":""
+  },
+  {
+    "dni": "T1011",
+    "firstName": "Anatoly",
+    "lastName": "Karpov",
+    "role": "Tester",
+    "rating": 3,
+    "photo":""
+  },
+  {
+    "dni": "T1012",
+    "firstName": "Bobby",
+    "lastName": "Fischer",
+    "role": "Tester",
+    "rating": 4,
+    "photo":""
+  },
+  {
+    "dni": "T1013",
+    "firstName": "Magnus",
+    "lastName": "Carlsen",
+    "role": "Tester",
+    "rating": 3,
+    "photo":""
+  },
+  {
+    "dni": "T1014",
+    "firstName": "Viswanathan",
+    "lastName": "Anand",
+    "role": "Tester",
+    "rating": 4,
+    "photo":""
+  },
+  {
+    "dni": "T1015",
+    "firstName": "Vladimir",
+    "lastName": "Kramnik",
+    "role": "Tester",
+    "rating": 3,
+    "photo":""
+  },
+  {
+    "dni": "T1016",
+    "firstName": "Jose Raul",
+    "lastName": "Capablanca",
+    "role": "Tester",
+    "rating": 3,
+    "photo":""
+  },
+  {
+    "dni": "T1017",
+    "firstName": "Alexander",
+    "lastName": "Alekhine",
+    "role": "Tester",
+    "rating": 4,
+    "photo":""
+  },
+  {
+    "dni": "T1018",
+    "firstName": "Boris",
+    "lastName": "Spassky",
+    "role": "Tester",
+    "rating": 3,
+    "photo":""
+  },
+{
+  "dni": "T1019",
+  "firstName": "Vassily",
+  "lastName": "Ivanchuk",
+  "role": "Tester",
+  "rating": 3,
+  "photo":""
+},
+{
+  "dni": "P1020",
+  "firstName": "Mikhail",
+  "lastName": "Botwinnik",
+  "role": "Programmer",
+  "rating": 4,
+  "photo":""
+},
+{
+  "dni": "P1021",
+  "firstName": "Hiraku",
+  "lastName": "Nakamura",
+  "role": "Programmer",
+  "rating": 2,
+  "photo":""
+},
+{
+  "dni": "P1022",
+  "firstName": "Anatoly",
+  "lastName": "Lein",
+  "role": "Programmer",
+  "rating": 4,
+  "photo":""
+},
+{
+  "dni": "P1023",
+  "firstName": "Nigel",
+  "lastName": "Short",
+  "role": "Programmer",
+  "rating": 3,
+  "photo":""
+},
+{
+  "dni": "P1024",
+  "firstName": "Viktor",
+  "lastName": "Korchnoi",
+  "role": "Programmer",
+  "rating": 3,
+  "photo":""
+},
+{
+  "dni": "P1025",
+  "firstName": "Fabiano",
+  "lastName": "Caruana",
+  "role": "Programmer",
+  "rating": 4,
+  "photo":""
+},
+{
+  "dni": "P1026",
+  "firstName": "Judith",
+  "lastName": "Polgar",
+  "role": "Programmer",
+  "rating": 4,
+  "photo":""
+},
+{
+  "dni": "P1027",
+  "firstName": "Alexander",
+  "lastName": "Grischuk",
+  "role": "Programmer",
+  "rating": 3,
+  "photo":""
+},
+{
+  "dni": "P1028",
+  "firstName": "Shakhiyar",
+  "lastName": "Mamedyarov",
+  "role": "Programmer",
+  "rating": 4,
+  "photo":""
+},
+{
+  "dni": "P1029",
+  "firstName": "David",
+  "lastName": "Bronstein",
+  "role": "Programmer",
+  "rating": 3,
+  "photo":""
+},
+{
+  "dni": "P1030",
+  "firstName": "Alexei",
+  "lastName": "Shirov",
+  "role": "Programmer",
+  "rating": 4,
+  "photo":""
+}
+]
