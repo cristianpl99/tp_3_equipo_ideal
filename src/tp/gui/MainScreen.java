@@ -133,7 +133,7 @@ public class MainScreen extends JFrame {
 		lblListOfEmployees = createLabel("LIST OF EMPLOYEES", 14, 117, 319, 159, 29);
 		lblConflicts = createLabel("CONFLICTS", 18, 612, 11, 130, 45);
 		lblListOfConflicts = createLabel("LIST OF CONFLICTS", 14, 592, 321, 152, 22);
-		lblCombinations = createLabel("", 14, 284, 715, 452, 22);
+		lblCombinations = createLabel("COMPLETE LIST OF EMPLOYEES", 14, 284, 715, 452, 22);
 		lblCombinations.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTime = createLabel("", 14, 284, 735, 452, 22);
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
@@ -168,43 +168,7 @@ public class MainScreen extends JFrame {
 		contentPane.add(textDni);
 		contentPane.add(textLastName);
 		contentPane.add(textRating);
-
-		JComboBox<String> role = new JComboBox<String>();
-		role.setBounds(176, 233, 148, 29);
-		contentPane.add(role);
-		role.addItem("Project_Leader");
-		role.addItem("Architect");
-		role.addItem("Programmer");
-		role.addItem("Tester");
-
-		JButton btnAddEmployee = new JButton("Add employee");
-		btnAddEmployee.setBounds(109, 275, 159, 43);
-		btnAddEmployee.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (textFirstName.getText().equals("") || textLastName.getText().equals("")
-						|| textRating.getText().equals("") || textDni.getText().equals("")) {
-					showMessageDialog("Missing to add data of the new employee");
-				} else {
-					Employee employee = new Employee(textDni.getText(), textFirstName.getText(), textLastName.getText(),
-							Integer.parseInt(textRating.getText()), new HashSet<String>(),
-							Role.valueOf((String) role.getSelectedItem()), "foto.png");
-					if (employees.contains(employee)) {
-						showMessageDialog("Employee already exists");
-					} else {
-						employees.add(employee);
-						idealTeam.addEmployee(employee);
-						showMessageDialog("Employee added successfully");
-						listOfEmployee.addItem(employee.getFirstName() + " " + employee.getLastName() + " - Role: " + employee.getRole()
-								+ ", Rating: " + employee.getRating());
-						conflict_1.addItem(employee.getDni() + " - " + employee.getLastName());
-						conflict_2.addItem(employee.getDni() + " - " + employee.getLastName());
-					}
-				}
-			}
-
-		});
-		contentPane.add(btnAddEmployee);
-
+		
 		String[] columnNames = { "DNI", "Rol", "Nombre", "Apellido", "Rating" };
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
@@ -237,6 +201,46 @@ public class MainScreen extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(284, 447, 452, 267);
 		contentPane.add(scrollPane);
+		populateTable(table, employees);
+
+		JComboBox<String> role = new JComboBox<String>();
+		role.setBounds(176, 233, 148, 29);
+		contentPane.add(role);
+		role.addItem("Project_Leader");
+		role.addItem("Architect");
+		role.addItem("Programmer");
+		role.addItem("Tester");
+
+		JButton btnAddEmployee = new JButton("Add employee");
+		btnAddEmployee.setBounds(109, 275, 159, 43);
+		btnAddEmployee.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (textFirstName.getText().equals("") || textLastName.getText().equals("")
+						|| textRating.getText().equals("") || textDni.getText().equals("")) {
+					showMessageDialog("Missing to add data of the new employee");
+				} else {
+					Employee employee = new Employee(textDni.getText(), textFirstName.getText(), textLastName.getText(),
+							Integer.parseInt(textRating.getText()), new HashSet<String>(),
+							Role.valueOf((String) role.getSelectedItem()), "src/tp/dal/images/random.png");
+					if (employees.contains(employee)) {
+						showMessageDialog("Employee already exists");
+					} else {
+						employees.add(employee);
+						idealTeam.addEmployee(employee);
+						showMessageDialog("Employee added successfully");
+						listOfEmployee.addItem(employee.getFirstName() + " " + employee.getLastName() + " - Role: " + employee.getRole()
+								+ ", Rating: " + employee.getRating());
+						conflict_1.addItem(employee.getDni() + " - " + employee.getLastName());
+						conflict_2.addItem(employee.getDni() + " - " + employee.getLastName());
+						populateTable(table, employees);
+					}
+				}
+			}
+
+		});
+		contentPane.add(btnAddEmployee);
+
+
 
 		JProgressBar progressBarBruteForce = new JProgressBar();
 		progressBarBruteForce.setBounds(17, 497, 148, 45);

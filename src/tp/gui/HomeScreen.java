@@ -59,11 +59,11 @@ public class HomeScreen extends JFrame {
 		contentPane.add(programmer);
 		contentPane.add(tester);
 
-		lblTitulo = createLabel("INGRESE LOS REQUISITOS DEL EQUIPO", 20, 39, 23, 411, 50);
-		lblLeader = createLabel("Number of Project leader", 14, 53, 103, 191, 20);
-		lblArch = createLabel("Number of Architect", 14, 53, 134, 191, 20);
-		lblProgrammer = createLabel("Number of Programmer", 14, 53, 165, 191, 20);
-		lblTester = createLabel("Number of Tester", 14, 53, 196, 191, 20);
+		lblTitulo = createLabel("TEAM REQUIREMENTS", 20, 39, 23, 411, 50);
+		lblLeader = createLabel("Project Leaders", 14, 53, 103, 191, 20);
+		lblArch = createLabel("Architects", 14, 53, 134, 191, 20);
+		lblProgrammer = createLabel("Programmers", 14, 53, 165, 191, 20);
+		lblTester = createLabel("Testers", 14, 53, 196, 191, 20);
 
 		contentPane.add(lblTitulo);
 		contentPane.add(lblLeader);
@@ -97,7 +97,7 @@ public class HomeScreen extends JFrame {
 		JLabel label = new JLabel(text);
 		label.setForeground(Color.BLACK);
 		label.setFont(new Font("Tahoma", Font.BOLD, fontSize));
-		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setBounds(x, y, width, height);
 		return label;
 	}
