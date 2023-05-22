@@ -57,8 +57,8 @@ public class IdealTeam {
 		};
 
 		Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount,
-				testerCount);
-		List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
+				testerCount, customComparator);
+		List<Employee> bestCombination = heuristic.findBestCombination();
 		notifyTeamGenerated(bestCombination, heuristic.getCombinationCount(), heuristic.getExecutionTime());
 		return bestCombination;
 	}

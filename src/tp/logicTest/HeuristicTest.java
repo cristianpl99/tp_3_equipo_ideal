@@ -29,18 +29,19 @@ public class HeuristicTest {
 		employees.add(new Employee("5", "Judith", "Polgar", 2, new HashSet<>(Arrays.asList("1", "2", "3")), Role.Tester,
 				"photo4.jpg"));
 
-		heuristic = new Heuristic(employees, 1, 1, 1, 1);
+		
 
 		customComparator = (e1, e2) -> {
 			double coefficient1 = e1.getRating() - e1.getConflicts().size();
 			double coefficient2 = e2.getRating() - e2.getConflicts().size();
 			return Double.compare(coefficient2, coefficient1);
 		};
+		heuristic = new Heuristic(employees, 1, 1, 1, 1, customComparator);
 	}
 
 	@Test
 	public void testFindBestCombination() {
-		List<Employee> bestCombination = heuristic.findBestCombination(customComparator);
+		List<Employee> bestCombination = heuristic.findBestCombination();
 		Assert.assertNotNull(bestCombination);
 		Assert.assertFalse(bestCombination.isEmpty());
 	}
