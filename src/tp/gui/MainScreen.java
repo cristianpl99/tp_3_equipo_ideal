@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -258,7 +259,7 @@ public class MainScreen extends JFrame {
 		progressBarBacktracking.setVisible(false);
 		progressBarBacktracking.setForeground(Color.RED);
 		contentPane.add(progressBarBacktracking);
-
+		
 		JButton btnBackTracking = new JButton("Run BackTracking");
 		configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
 				new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
@@ -270,13 +271,42 @@ public class MainScreen extends JFrame {
 		progressBarHeuristics.setVisible(false);
 		progressBarHeuristics.setForeground(Color.BLUE);
 		contentPane.add(progressBarHeuristics);
-
+		
 		JButton btnHeuristics = new JButton("Run Heuristics");
 		configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
 				new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
-		btnHeuristics.setBounds(17, 654, 148, 43);
+		btnHeuristics.setBounds(17,654, 148, 43);
 		contentPane.add(btnHeuristics);
-
+		
+		JProgressBar progressBarAlgorithms = new JProgressBar();
+		progressBarAlgorithms.setBounds(17, 720, 148, 45);
+		progressBarAlgorithms.setVisible(false);
+		progressBarAlgorithms.setForeground(Color.RED);
+		contentPane.add(progressBarAlgorithms);
+		
+		JButton btnAlgorithms = new JButton("Run Comparative");
+		btnAlgorithms.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                progressBarAlgorithms.setVisible(true);
+                progressBarAlgorithms.setIndeterminate(true);
+                AlgorithmsWorker worker = new AlgorithmsWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester);
+                worker.execute();
+                worker.addPropertyChangeListener(new PropertyChangeListener() {
+					@Override
+					public void propertyChange(PropertyChangeEvent evt) {
+						if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
+							btnAlgorithms.setVisible(true);
+							progressBarAlgorithms.setVisible(false);
+							
+						}		
+					}
+				});
+            }
+        });
+		
+		btnAlgorithms.setBounds(17, 720, 148, 43);
+		contentPane.add(btnAlgorithms);
+		
 		JButton btnAddConflict = new JButton("Add conflict");
 		btnAddConflict.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -386,6 +416,7 @@ public class MainScreen extends JFrame {
 			}
 		});
 	}
+	
 
 	private void populateTable(JTable table, List<Employee> employees) {
 		this.bestCombination = employees;

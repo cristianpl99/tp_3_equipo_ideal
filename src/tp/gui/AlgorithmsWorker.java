@@ -6,6 +6,8 @@ import tp.logic.IdealTeam;
 
 import tp.logic.Employee;
 
+import tp.gui.ComparisonScreen;
+
 import java.util.List;
 
 import java.util.Map;
@@ -30,38 +32,20 @@ public class AlgorithmsWorker extends SwingWorker<Map<String, Object[]>, Void> {
 	@Override
 	protected Map<String, Object[]> doInBackground() throws Exception {
 		Map<String, Object[]> resultMap = new HashMap<>();
-
-		long startTime = System.currentTimeMillis();
-		List<Employee> bruteForceBestCombination = idealT.generateTeamByBruteForce(projectLeaderCount, architectCount,
+		resultMap = idealT.generateComparative(projectLeaderCount, architectCount,
 				programmerCount, testerCount);
-		long endTime = System.currentTimeMillis();
-		long executionTime = endTime - startTime;
-		resultMap.put("Brute Force", new Object[] { bruteForceBestCombination, executionTime });
-
-		startTime = System.currentTimeMillis();
-		List<Employee> backTrackingBestCombination = idealT.generateTeamByBackTracking(projectLeaderCount,
-				architectCount, programmerCount, testerCount);
-		endTime = System.currentTimeMillis();
-		executionTime = endTime - startTime;
-		resultMap.put("Backtracking", new Object[] { backTrackingBestCombination, executionTime });
-
-		startTime = System.currentTimeMillis();
-		List<Employee> heuristicBestCombination = idealT.generateTeamByBruteForce(projectLeaderCount, architectCount,
-				programmerCount, testerCount);
-		endTime = System.currentTimeMillis();
-		executionTime = endTime - startTime;
-		resultMap.put("Heuristic", new Object[] { heuristicBestCombination, executionTime });
-
-		int progress = 100;
-		setProgress(progress);
 		return resultMap;
 	}
 
 	@Override
 	protected void done() {
-		try {
-
+		try {	
 			Map<String, Object[]> resultMap = get();
+			ComparisonScreen launch = new ComparisonScreen(resultMap);
+			launch.setResizable(false);
+			launch.setVisible(true);
+			launch.setLocationRelativeTo(null);
+			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

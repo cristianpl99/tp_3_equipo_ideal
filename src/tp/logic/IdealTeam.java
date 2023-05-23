@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import java.util.Comparator;
+import java.util.HashMap;
 
 public class IdealTeam {
 
@@ -47,6 +48,40 @@ public class IdealTeam {
 		notifyTeamGenerated(bestCombination, heuristic.getCombinationCount(), heuristic.getExecutionTime());
 		return bestCombination;
 	}
+	
+	// todo esto se puede refactorizar pasando directamente el objeto algorithm class
+	public HashMap<String, Object[]> generateComparative(int projectLeaderCount, int architectCount, int programmerCount, int testerCount) {
+	    HashMap<String, Object[]> resultMap = new HashMap<>();
+	    
+	    BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
+	    List<Employee> bruteForceBestCombination = bruteForce.findBestCombination();
+	    int bruteForceCombinationCount = bruteForce.getCombinationCount();
+	    long bruteForceExecutionTime = bruteForce.getExecutionTime();
+	    resultMap.put("Brute Force", new Object[]{ bruteForceBestCombination, bruteForceCombinationCount, bruteForceExecutionTime });
+
+	    BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount, testerCount);
+	    List<Employee> backTrackingBestCombination = backTracking.findBestCombination();
+	    int backTrackingCombinationCount = backTracking.getCombinationCount();
+	    long backTrackingExecutionTime = backTracking.getExecutionTime();
+	    resultMap.put("Back Tracking", new Object[]{ backTrackingBestCombination, backTrackingCombinationCount, backTrackingExecutionTime });
+
+	    Comparator<Employee> customComparator = (e1, e2) -> {
+	        double coefficient1 = calculateCoefficient(e1);
+	        double coefficient2 = calculateCoefficient(e2);
+	        return Double.compare(coefficient2, coefficient1);
+	    };
+	    Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount, customComparator);
+	    List<Employee> heuristicBestCombination = heuristic.findBestCombination();
+	    int heuristicCombinationCount = heuristic.getCombinationCount();
+	    long heuristicExecutionTime = heuristic.getExecutionTime();
+	    resultMap.put("Heuristic", new Object[] { heuristicBestCombination, heuristicCombinationCount, heuristicExecutionTime });
+
+	    return resultMap;
+	}
+
+
+	
+	
 
 	public void addListener(IteamUpdateListener listener) {
 		if (listeners == null) {
