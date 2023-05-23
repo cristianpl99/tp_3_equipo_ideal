@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Algorithm {
+	
     protected List<Employee> employees;
     protected int projectLeaderCount;
     protected int architectCount;

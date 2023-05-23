@@ -42,6 +42,7 @@ public class Heuristic extends Algorithm {
         
         long endTime = System.currentTimeMillis();
         executionTime = endTime - startTime;
+        combinationCount ++;
         return bestCombination;
     }
 

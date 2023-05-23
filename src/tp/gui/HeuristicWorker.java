@@ -30,18 +30,6 @@ public class HeuristicWorker extends SwingWorker<List<Employee>, Void> {
 				programmerCount, testerCount);
 		int progress = 100;
 		setProgress(progress);
-		if (isCancelled()) { //????????
-	        return null; 
-	    }
 		return bestCombination;
-	}
-
-	@Override
-	protected void done() {
-		try {
-			List<Employee> bestCombination = get();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
 	}
 }

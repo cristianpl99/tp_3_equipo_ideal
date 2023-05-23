@@ -1,0 +1,7 @@
+Equipo generado:
+Combinaciones generadas: 0
+Tiempo del proceso: 1
+Employee{DNI='PL1001', firstName='Bill', lastName='Gates', rating=4, role=Project_Leader}
+Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
+Employee{DNI='T1012', firstName='Bobby', lastName='Fischer', rating=4, role=Tester}
+Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Programmer}

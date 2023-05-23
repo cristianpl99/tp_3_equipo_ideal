@@ -371,7 +371,6 @@ public class MainScreen extends JFrame {
 									showMessageDialog("There is no possible combination due to the employees "
 											+ "conflict configuration.");	
 								}else {
-								worker.cancel(true); //?????????
 								populateTable(table, bestCombination);
 								lblCombinations.setText("Combinations " + String.valueOf(combinations));
 								lblTime.setText("Time " + String.valueOf(time) + " seconds");
@@ -380,10 +379,10 @@ public class MainScreen extends JFrame {
 							} catch (Exception ex) {
 								ex.printStackTrace();
 							}
-
+							worker.cancel(true);/////????????
 							button.setVisible(true);
 							progressBar.setVisible(false);
-						}
+						}		
 					}
 				});
 			}
