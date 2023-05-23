@@ -1,8 +1,11 @@
-package tp.logic;
+package tp.gui;
 
 import java.util.List;
 
-public class ConsoleTeamUpdateListener implements TeamUpdateListener {
+import tp.logic.Employee;
+import tp.logic.IteamUpdateListener;
+
+public class ConsoleTeamUpdateListener implements IteamUpdateListener {
 
 	@Override
 	public void onTeamGenerated(List<Employee> team, int combination, long time) {

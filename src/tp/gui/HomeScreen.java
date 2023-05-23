@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import tp.logic.IdealTeam;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
@@ -33,7 +35,7 @@ public class HomeScreen extends JFrame {
 	private JLabel lblProgrammer;
 	private JLabel lblTester;
 
-	public HomeScreen() {
+	public HomeScreen(IdealTeam idealTeam) {
 		setTitle("Programacion III - Equipo ideal");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
@@ -80,7 +82,7 @@ public class HomeScreen extends JFrame {
 					showMessageDialog("Must complete all team requirements to advance");
 				} else {
 					dispose();
-					launch = new MainScreen(project_leader.getText(), architect.getText(), programmer.getText(),
+					launch = new MainScreen(idealTeam, project_leader.getText(), architect.getText(), programmer.getText(),
 							tester.getText());
 					launch.setResizable(false);
 					launch.setVisible(true);

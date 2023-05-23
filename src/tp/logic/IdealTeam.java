@@ -2,36 +2,21 @@ package tp.logic;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
-
-import tp.dal.LoadData;
 
 import java.util.Comparator;
 
 public class IdealTeam {
 
-	private List<TeamUpdateListener> listeners;
-	private ConsoleTeamUpdateListener consoleListener;
-	private FileTeamUpdateListener fileListener;
-	private ScreenTeamUpdateListener screenListener;
-	
-	private LoadData data;
+	private List<IteamUpdateListener> listeners;
 	private List<Employee> employees;
 
-	public IdealTeam() {
-		data = new LoadData();
-		employees = data.readEmployeesFromJSON();
+	public IdealTeam() {	
+		employees = new ArrayList<>();
 		listeners = new ArrayList<>();
-		consoleListener = new ConsoleTeamUpdateListener();
-		fileListener = new FileTeamUpdateListener();
-		screenListener = new ScreenTeamUpdateListener();
-		addListener(consoleListener);
-		addListener(fileListener);
-		addListener(screenListener);
 	}
 
 	public List<Employee> generateTeamByBruteForce(int projectLeaderCount, int architectCount, int programmerCount,
-			int testerCount) {
+			int testerCount) {	
 		BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
 		List<Employee> bestCombination = bruteForce.findBestCombination();
@@ -63,14 +48,14 @@ public class IdealTeam {
 		return bestCombination;
 	}
 
-	public void addListener(TeamUpdateListener listener) {
+	public void addListener(IteamUpdateListener listener) {
 		if (listeners == null) {
 			listeners = new ArrayList<>();
 		}
 		listeners.add(listener);
 	}
 
-	public void removeListener(TeamUpdateListener listener) {
+	public void removeListener(IteamUpdateListener listener) {
 		if (listeners != null) {
 			listeners.remove(listener);
 		}
@@ -78,7 +63,7 @@ public class IdealTeam {
 
 	private void notifyTeamGenerated(List<Employee> team, int combinations, long time) {
 		if (listeners != null) {
-			for (TeamUpdateListener listener : listeners) {
+			for (IteamUpdateListener listener : listeners) {
 				listener.onTeamGenerated(team, combinations, time);
 			}
 		}
@@ -88,22 +73,6 @@ public class IdealTeam {
 		int conflictCount = employee.getConflicts().size();
 		double rating = employee.getRating();
 		return rating - conflictCount;
-	}
-
-	public void displayEmployees() {
-		for (Employee employee : employees) {
-			System.out.println(employee.toString());
-			System.out.println("Conflicted Employees:");
-			Set<String> conflictedIds = employee.getConflicts();
-			for (String conflictedId : conflictedIds) {
-				Employee conflictedEmployee = findEmployeeByDni(conflictedId);
-				if (conflictedEmployee != null) {
-					System.out.println(
-							" - " + conflictedEmployee.getFirstName() + " " + conflictedEmployee.getLastName());
-				}
-			}
-			System.out.println();
-		}
 	}
 
 	public Employee findEmployeeByDni(String conflictedId) {
@@ -123,5 +92,8 @@ public class IdealTeam {
 	public void addEmployee(Employee em) {
 		employees.add(em);
 	}
-
+	
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
 }

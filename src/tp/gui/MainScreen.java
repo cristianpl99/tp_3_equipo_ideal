@@ -64,7 +64,6 @@ public class MainScreen extends JFrame {
 	private JLabel lblCombinations;
 	private JLabel lblTime;
 	private JLabel lblAverageRating;
-	private IdealTeam idealTeam;
 	private ArrayList<Employee> employees;
 	private List<Employee> bestCombination;
 	
@@ -72,7 +71,13 @@ public class MainScreen extends JFrame {
 	public static double time;
 	public static double averageRating;
 
-	public MainScreen(String projectLeader, String architect, String programmer, String tester) {
+	public MainScreen(IdealTeam idealTeam, String projectLeader, String architect, String programmer, String tester) {
+		
+		this.cantProjectLeader = Integer.parseInt(projectLeader);
+		this.cantArchitect = Integer.parseInt(architect);
+		this.cantProgrammer = Integer.parseInt(programmer);
+		this.cantTester = Integer.parseInt(tester);
+		
 		setTitle("Programacion III - Equipo ideal - Constructor");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
@@ -84,7 +89,6 @@ public class MainScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		idealTeam = new IdealTeam();
 		employees = (ArrayList<Employee>) idealTeam.getEmployees();
 
 		JComboBox<String> listOfEmployee = new JComboBox<String>();
@@ -118,11 +122,6 @@ public class MainScreen extends JFrame {
 				}
 			}
 		}
-
-		cantProjectLeader = Integer.parseInt(projectLeader);
-		cantArchitect = Integer.parseInt(architect);
-		cantProgrammer = Integer.parseInt(programmer);
-		cantTester = Integer.parseInt(tester);
 
 		lblAddEmployee = createLabel("DATA OF NEW EMPLOYEE", 18, 70, 11, 242, 45);
 		lblDni = createLabel("DNI", 14, 47, 67, 99, 29);
@@ -379,7 +378,6 @@ public class MainScreen extends JFrame {
 							} catch (Exception ex) {
 								ex.printStackTrace();
 							}
-							worker.cancel(true);/////????????
 							button.setVisible(true);
 							progressBar.setVisible(false);
 						}		

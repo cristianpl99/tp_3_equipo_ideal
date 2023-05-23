@@ -1,11 +1,12 @@
-package tp.logic;
+package tp.gui;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import tp.gui.MainScreen;
+import tp.logic.Employee;
+import tp.logic.IteamUpdateListener;
 
-public class ScreenTeamUpdateListener implements TeamUpdateListener {
+public class ScreenTeamUpdateListener implements IteamUpdateListener {
 
 	@Override
 	public void onTeamGenerated(List<Employee> team, int combinations, long time) {
