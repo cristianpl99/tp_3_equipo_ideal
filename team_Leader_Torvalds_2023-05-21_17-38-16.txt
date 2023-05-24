@@ -1,7 +1,0 @@
-Equipo generado:
-Combinaciones generadas: 21805
-Tiempo del proceso: 19
-Employee{DNI='PL1003', firstName='Linus', lastName='Torvalds', rating=5, role=Project_Leader}
-Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
-Employee{DNI='T1010', firstName='Garry', lastName='Kasparov', rating=4, role=Tester}
-Employee{DNI='P1022', firstName='Anatoly', lastName='Lein', rating=4, role=Programmer}

@@ -32,4 +32,5 @@ public class HeuristicWorker extends SwingWorker<List<Employee>, Void> {
 		setProgress(progress);
 		return bestCombination;
 	}
+
 }

@@ -7,7 +7,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -67,18 +66,18 @@ public class MainScreen extends JFrame {
 	private JLabel lblAverageRating;
 	private ArrayList<Employee> employees;
 	private List<Employee> bestCombination;
-	
+
 	public static int combinations;
 	public static double time;
 	public static double averageRating;
 
 	public MainScreen(IdealTeam idealTeam, String projectLeader, String architect, String programmer, String tester) {
-		
+
 		this.cantProjectLeader = Integer.parseInt(projectLeader);
 		this.cantArchitect = Integer.parseInt(architect);
 		this.cantProgrammer = Integer.parseInt(programmer);
 		this.cantTester = Integer.parseInt(tester);
-		
+
 		setTitle("Programacion III - Equipo ideal - Constructor");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
@@ -139,7 +138,7 @@ public class MainScreen extends JFrame {
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAverageRating = createLabel("", 14, 284, 755, 452, 22);
 		lblAverageRating.setHorizontalAlignment(SwingConstants.CENTER);
-		
+
 		contentPane.add(lblAddEmployee);
 		contentPane.add(lblDni);
 		contentPane.add(lblFirstName);
@@ -168,14 +167,14 @@ public class MainScreen extends JFrame {
 		contentPane.add(textDni);
 		contentPane.add(textLastName);
 		contentPane.add(textRating);
-		
+
 		String[] columnNames = { "DNI", "Rol", "Nombre", "Apellido", "Rating" };
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
 		JTable table = new JTable(tableModel);
 		table.setBounds(344, 447, 392, 267);
 		table.setEnabled(true);
-		
+
 		table.setDefaultEditor(Object.class, null);
 		table.addMouseListener(new MouseAdapter() {
 			@Override
@@ -194,8 +193,8 @@ public class MainScreen extends JFrame {
 		TableColumnModel columnModel = table.getColumnModel();
 		int columnCount = columnModel.getColumnCount();
 		for (int columnIndex = 0; columnIndex < columnCount; columnIndex++) {
-		    TableColumn column = columnModel.getColumn(columnIndex);
-		    column.setResizable(false);
+			TableColumn column = columnModel.getColumn(columnIndex);
+			column.setResizable(false);
 		}
 
 		JScrollPane scrollPane = new JScrollPane(table);
@@ -228,8 +227,8 @@ public class MainScreen extends JFrame {
 						employees.add(employee);
 						idealTeam.addEmployee(employee);
 						showMessageDialog("Employee added successfully");
-						listOfEmployee.addItem(employee.getFirstName() + " " + employee.getLastName() + " - Role: " + employee.getRole()
-								+ ", Rating: " + employee.getRating());
+						listOfEmployee.addItem(employee.getFirstName() + " " + employee.getLastName() + " - Role: "
+								+ employee.getRole() + ", Rating: " + employee.getRating());
 						conflict_1.addItem(employee.getDni() + " - " + employee.getLastName());
 						conflict_2.addItem(employee.getDni() + " - " + employee.getLastName());
 						populateTable(table, employees);
@@ -240,8 +239,6 @@ public class MainScreen extends JFrame {
 		});
 		contentPane.add(btnAddEmployee);
 
-
-
 		JProgressBar progressBarBruteForce = new JProgressBar();
 		progressBarBruteForce.setBounds(17, 497, 148, 45);
 		progressBarBruteForce.setVisible(false);
@@ -249,9 +246,14 @@ public class MainScreen extends JFrame {
 		contentPane.add(progressBarBruteForce);
 
 		JButton btnBruteForce = new JButton("Run Brute Force");
-		configureButtonWithProgressBar(btnBruteForce, progressBarBruteForce,
-				new BruteForceWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
-		btnBruteForce.setBounds(17, 497, 148, 45);
+		btnBruteForce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				configureButtonWithProgressBar(btnBruteForce, progressBarBruteForce,
+						new BruteForceWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
+						table);
+			}
+		});
+		btnBruteForce.setBounds(17, 498, 148, 44);
 		contentPane.add(btnBruteForce);
 
 		JProgressBar progressBarBacktracking = new JProgressBar();
@@ -259,10 +261,15 @@ public class MainScreen extends JFrame {
 		progressBarBacktracking.setVisible(false);
 		progressBarBacktracking.setForeground(Color.RED);
 		contentPane.add(progressBarBacktracking);
-		
+
 		JButton btnBackTracking = new JButton("Run BackTracking");
-		configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
-				new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
+		btnBackTracking.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
+						new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
+						table);
+			}
+		});
 		btnBackTracking.setBounds(17, 576, 148, 44);
 		contentPane.add(btnBackTracking);
 
@@ -271,42 +278,52 @@ public class MainScreen extends JFrame {
 		progressBarHeuristics.setVisible(false);
 		progressBarHeuristics.setForeground(Color.BLUE);
 		contentPane.add(progressBarHeuristics);
-		
+
 		JButton btnHeuristics = new JButton("Run Heuristics");
-		configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
-				new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
-		btnHeuristics.setBounds(17,654, 148, 43);
+		btnHeuristics.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
+						new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
+						table);
+			}
+		});
+		btnHeuristics.setBounds(17, 654, 148, 43);
 		contentPane.add(btnHeuristics);
-		
+
+		// ---------------------------------------------------//
+
 		JProgressBar progressBarAlgorithms = new JProgressBar();
 		progressBarAlgorithms.setBounds(17, 720, 148, 45);
 		progressBarAlgorithms.setVisible(false);
 		progressBarAlgorithms.setForeground(Color.RED);
 		contentPane.add(progressBarAlgorithms);
-		
+
 		JButton btnAlgorithms = new JButton("Run Comparative");
 		btnAlgorithms.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                progressBarAlgorithms.setVisible(true);
-                progressBarAlgorithms.setIndeterminate(true);
-                AlgorithmsWorker worker = new AlgorithmsWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester);
-                worker.execute();
-                worker.addPropertyChangeListener(new PropertyChangeListener() {
+			public void actionPerformed(ActionEvent e) {
+				progressBarAlgorithms.setVisible(true);
+				progressBarAlgorithms.setIndeterminate(true);
+				AlgorithmsWorker worker = new AlgorithmsWorker(idealTeam, cantProjectLeader, cantArchitect,
+						cantProgrammer, cantTester);
+				worker.execute();
+				worker.addPropertyChangeListener(new PropertyChangeListener() {
 					@Override
 					public void propertyChange(PropertyChangeEvent evt) {
 						if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
 							btnAlgorithms.setVisible(true);
 							progressBarAlgorithms.setVisible(false);
-							
-						}		
+
+						}
 					}
 				});
-            }
-        });
-		
+			}
+		});
+
 		btnAlgorithms.setBounds(17, 720, 148, 43);
 		contentPane.add(btnAlgorithms);
-		
+
+		// ---------------------------------------------------//
+
 		JButton btnAddConflict = new JButton("Add conflict");
 		btnAddConflict.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -336,7 +353,7 @@ public class MainScreen extends JFrame {
 		});
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);
-		
+
 	}
 
 	private void showEmployee(int selectedRow) {
@@ -372,51 +389,46 @@ public class MainScreen extends JFrame {
 
 	private void configureButtonWithProgressBar(JButton button, JProgressBar progressBar,
 			SwingWorker<List<Employee>, Void> worker, JTable table) {
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				button.setVisible(false);
-				progressBar.setVisible(true);
-				progressBar.setIndeterminate(true);
+		button.setVisible(false);
+		progressBar.setVisible(true);
+		progressBar.setIndeterminate(true);
 
-				worker.addPropertyChangeListener(new PropertyChangeListener() {
-					@Override
-					public void propertyChange(PropertyChangeEvent evt) {
-						if ("progress".equals(evt.getPropertyName())) {
-							int progress = (int) evt.getNewValue();
-							progressBar.setIndeterminate(false);
-							progressBar.setValue(progress);
+		worker.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if ("progress".equals(evt.getPropertyName())) {
+					int progress = (int) evt.getNewValue();
+					progressBar.setIndeterminate(false);
+					progressBar.setValue(progress);
+				}
+			}
+		});
+
+		worker.execute();
+		worker.addPropertyChangeListener(new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
+					try {
+						bestCombination = worker.get();
+						if (bestCombination.size() != cantProjectLeader + cantArchitect + cantProgrammer + cantTester) {
+							showMessageDialog("There is no possible combination due to the employees "
+									+ "conflict configuration.");
+						} else {
+							populateTable(table, bestCombination);
+							lblCombinations.setText("Combinations " + String.valueOf(combinations));
+							lblTime.setText("Time " + String.valueOf(time) + " seconds");
+							lblAverageRating.setText("Average Team Rating " + String.valueOf(averageRating));
 						}
+					} catch (Exception ex) {
+						ex.printStackTrace();
 					}
-				});
-
-				worker.execute();
-				worker.addPropertyChangeListener(new PropertyChangeListener() {
-					@Override
-					public void propertyChange(PropertyChangeEvent evt) {
-						if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
-							try {
-								bestCombination = worker.get();
-								if(bestCombination.size() != cantProjectLeader + cantArchitect + cantProgrammer + cantTester){
-									showMessageDialog("There is no possible combination due to the employees "
-											+ "conflict configuration.");	
-								}else {
-								populateTable(table, bestCombination);
-								lblCombinations.setText("Combinations " + String.valueOf(combinations));
-								lblTime.setText("Time " + String.valueOf(time) + " seconds");
-								lblAverageRating.setText("Average Team Rating " + String.valueOf(averageRating));
-								}
-							} catch (Exception ex) {
-								ex.printStackTrace();
-							}
-							button.setVisible(true);
-							progressBar.setVisible(false);
-						}		
-					}
-				});
+					button.setVisible(true);
+					progressBar.setVisible(false);
+				}
 			}
 		});
 	}
-	
 
 	private void populateTable(JTable table, List<Employee> employees) {
 		this.bestCombination = employees;

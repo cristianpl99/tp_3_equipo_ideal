@@ -33,13 +33,4 @@ public class BruteForceWorker extends SwingWorker<List<Employee>, Void> {
 		return bestCombination;
 	}
 
-	@Override
-	protected void done() {
-		try {
-
-			List<Employee> bestCombination = get();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
 }

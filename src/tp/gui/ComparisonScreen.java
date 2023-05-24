@@ -1,6 +1,5 @@
 package tp.gui;
 
-import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Map;
@@ -19,9 +18,9 @@ import tp.logic.Employee;
 
 import java.util.List;
 
-
 public class ComparisonScreen extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private Map<String, Object[]> resultMap;
 
@@ -34,13 +33,13 @@ public class ComparisonScreen extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		String[] columnNames = { "DNI", "Rol", "Nombre", "Apellido", "Rating" };
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 
 		for (int i = 0; i < 3; i++) {
 			JTable table = new JTable(tableModel);
-			table.setEnabled(true);		
+			table.setEnabled(true);
 			table.setDefaultEditor(Object.class, null);
 			table.addMouseListener(new MouseAdapter() {
 				@Override
@@ -48,7 +47,7 @@ public class ComparisonScreen extends JFrame {
 					if (e.getClickCount() == 1) {
 						int selectedRow = table.getSelectedRow();
 						if (selectedRow != -1) {
-							//showEmployee(selectedRow);
+							// showEmployee(selectedRow);
 						}
 					}
 				}
@@ -68,19 +67,18 @@ public class ComparisonScreen extends JFrame {
 			contentPane.add(scrollPane);
 		}
 	}
-	
+
 	private void populateTable(JTable table) {
-	    DefaultTableModel model = (DefaultTableModel) table.getModel();
-	    model.setRowCount(0);
-	    for (Map.Entry<String, Object[]> entry : resultMap.entrySet()) {
-	        List<Employee> employees = (List<Employee>) entry.getValue()[0];
-	        for (Employee employee : employees) {
-	            model.addRow(new Object[] { employee.getDni(), employee.getRole(), employee.getFirstName(),
-	                    employee.getLastName(), employee.getRating() });
-	        }
-	    }
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.setRowCount(0);
+		for (Map.Entry<String, Object[]> entry : resultMap.entrySet()) {
+			@SuppressWarnings("unchecked")
+			List<Employee> employees = (List<Employee>) entry.getValue()[0];
+			for (Employee employee : employees) {
+				model.addRow(new Object[] { employee.getDni(), employee.getRole(), employee.getFirstName(),
+						employee.getLastName(), employee.getRating() });
+			}
+		}
 	}
 
-
 }
-
