@@ -63,7 +63,7 @@ public class IdealTeam {
 	    List<Employee> backTrackingBestCombination = backTracking.findBestCombination();
 	    int backTrackingCombinationCount = backTracking.getCombinationCount();
 	    long backTrackingExecutionTime = backTracking.getExecutionTime();
-	    resultMap.put("Back Tracking", new Object[]{ backTrackingBestCombination, backTrackingCombinationCount, backTrackingExecutionTime });
+	    resultMap.put("Backtracking", new Object[]{ backTrackingBestCombination, backTrackingCombinationCount, backTrackingExecutionTime });
 
 	    Comparator<Employee> customComparator = (e1, e2) -> {
 	        double coefficient1 = calculateCoefficient(e1);

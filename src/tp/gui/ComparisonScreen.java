@@ -62,23 +62,25 @@ public class ComparisonScreen extends JFrame {
 				column.setResizable(false);
 			}
 			JScrollPane scrollPane = new JScrollPane(table);
+			populateTable(table, i);
 			scrollPane.setBounds(10 + i * 263, 11, 248, 292);
-			populateTable(table);
 			contentPane.add(scrollPane);
 		}
 	}
 
-	private void populateTable(JTable table) {
-		DefaultTableModel model = (DefaultTableModel) table.getModel();
-		model.setRowCount(0);
-		for (Map.Entry<String, Object[]> entry : resultMap.entrySet()) {
-			@SuppressWarnings("unchecked")
-			List<Employee> employees = (List<Employee>) entry.getValue()[0];
-			for (Employee employee : employees) {
-				model.addRow(new Object[] { employee.getDni(), employee.getRole(), employee.getFirstName(),
-						employee.getLastName(), employee.getRating() });
-			}
-		}
-	}
+	private void populateTable(JTable table, int col) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        
+        String[] keys = {"Brute Force", "Backtracking", "Heuristic"};
+        String key = keys[col];
+        
+        List<Employee> employees = (List<Employee>) resultMap.get(key)[0];
+        for (Employee employee : employees) {
+            model.addRow(new Object[] { employee.getDni(), employee.getRole(), employee.getFirstName(),
+                    employee.getLastName(), employee.getRating() });
+        }
+    }
+
 
 }

@@ -293,7 +293,7 @@ public class MainScreen extends JFrame {
 		// ---------------------------------------------------//
 
 		JProgressBar progressBarAlgorithms = new JProgressBar();
-		progressBarAlgorithms.setBounds(17, 720, 148, 45);
+		progressBarAlgorithms.setBounds(17, 417, 148, 45);
 		progressBarAlgorithms.setVisible(false);
 		progressBarAlgorithms.setForeground(Color.RED);
 		contentPane.add(progressBarAlgorithms);
@@ -319,7 +319,7 @@ public class MainScreen extends JFrame {
 			}
 		});
 
-		btnAlgorithms.setBounds(17, 720, 148, 43);
+		btnAlgorithms.setBounds(17, 417, 148, 43);
 		contentPane.add(btnAlgorithms);
 
 		// ---------------------------------------------------//
