@@ -315,9 +315,7 @@ public class MainScreen extends JFrame {
 							btnAlgorithms.setVisible(true);
 							progressBarAlgorithms.setVisible(false);
 							ComparisonScreen launch = new ComparisonScreen(resultMap);
-							launch.setResizable(false);
-							launch.setVisible(true);
-							launch.setLocationRelativeTo(null);
+							launch.initialize();
 						}
 					}
 				});
@@ -326,8 +324,6 @@ public class MainScreen extends JFrame {
 
 		btnAlgorithms.setBounds(17, 417, 148, 43);
 		contentPane.add(btnAlgorithms);
-
-		// ---------------------------------------------------//
 
 		JButton btnAddConflict = new JButton("Add conflict");
 		btnAddConflict.addActionListener(new ActionListener() {
@@ -361,6 +357,12 @@ public class MainScreen extends JFrame {
 
 	}
 
+	public void initialize() {
+		setResizable(false);
+		setVisible(true);
+		setLocationRelativeTo(null);
+	}
+	
 	private void showEmployee(int selectedRow) {
 		EmployeeScreen launch;
 		launch = new EmployeeScreen(this.bestCombination.get(selectedRow));
@@ -486,4 +488,5 @@ public class MainScreen extends JFrame {
 			}
 		});
 	}
+
 }

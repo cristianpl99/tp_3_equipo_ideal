@@ -32,7 +32,7 @@ public class ComparisonScreen extends JFrame {
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 802, 506);
+		setBounds(100, 100, 842, 506);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -99,8 +99,12 @@ public class ComparisonScreen extends JFrame {
 	contentPane.setLayout(null);
 	}
 	
+	public void initialize() {
+        setResizable(false);
+        setVisible(true);
+        setLocationRelativeTo(null);
+    }
 	
-
 	private void populateTable(JTable table, int tab) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
@@ -130,6 +134,10 @@ public class ComparisonScreen extends JFrame {
 	        model.addRow(new Object[] { algorithm, combinations, executionTime, averageRating });
 	    }
 	}
+
+
+
+	
 	
 	/**
 	private void showEmployee(int selectedRow) {

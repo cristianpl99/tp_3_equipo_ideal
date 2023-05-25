@@ -36,6 +36,7 @@ public class HomeScreen extends JFrame {
 	private JLabel lblTester;
 
 	public HomeScreen(IdealTeam idealTeam) {
+		
 		setTitle("Programacion III - Ideal Team");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
@@ -84,9 +85,7 @@ public class HomeScreen extends JFrame {
 					dispose();
 					launch = new MainScreen(idealTeam, project_leader.getText(), architect.getText(), programmer.getText(),
 							tester.getText());
-					launch.setResizable(false);
-					launch.setVisible(true);
-					launch.setLocationRelativeTo(null);
+					launch.initialize();
 				}
 			}
 
@@ -94,7 +93,13 @@ public class HomeScreen extends JFrame {
 		btnAvanzar.setBounds(283, 227, 143, 50);
 		contentPane.add(btnAvanzar);
 	}
-
+	
+	public void initialize() {
+        setResizable(false);
+        setVisible(true);
+        setLocationRelativeTo(null);
+    }
+	
 	private JLabel createLabel(String text, int fontSize, int x, int y, int width, int height) {
 		JLabel label = new JLabel(text);
 		label.setForeground(Color.BLACK);

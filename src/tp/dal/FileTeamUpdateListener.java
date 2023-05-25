@@ -10,13 +10,13 @@ public class FileTeamUpdateListener implements IteamUpdateListener {
 	@Override
 	public void onTeamGenerated(List<Employee> team, int combinations, long time) {
 		SaveData saveData = new SaveData();
-		saveData.createFile(team, combinations, time);
+		saveData.writeLogFile(team, combinations, time);
 	}
 
 	@Override
 	public void onConmparativeGenerated(HashMap<String, Object[]> resultMap) {
-		// TODO Auto-generated method stub
-		
+		SaveData saveData = new SaveData();
+		saveData.createFile(resultMap);	
 	}
 
 }

@@ -30,9 +30,7 @@ public class Main {
 		idealTeam.setEmployees(data.readEmployeesFromJSON());
 			
 		HomeScreen launch = new HomeScreen(idealTeam);
-		launch.setResizable(false);
-		launch.setVisible(true);
-		launch.setLocationRelativeTo(null);
+		launch.initialize();
 	}
 
 }
