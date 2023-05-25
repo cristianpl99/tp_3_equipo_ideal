@@ -3,7 +3,9 @@ package tp.gui;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,6 +28,9 @@ public class ComparisonScreen extends JFrame {
 
 	public ComparisonScreen(Map<String, Object[]> resultMap) {
 		this.resultMap = resultMap;
+		setTitle("Programacion III - Team Comparison");
+		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
+		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 802, 506);
 		contentPane = new JPanel();
@@ -34,13 +39,14 @@ public class ComparisonScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		String[] columnNames = { "DNI", "Rol", "Nombre", "Apellido", "Rating" };
-		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+		String[] columnNames = { "DNI", "Role", "Name", "Lastname", "Rating" };
 
 		for (int i = 0; i < 3; i++) {
+			DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 			JTable table = new JTable(tableModel);
 			table.setEnabled(true);
 			table.setDefaultEditor(Object.class, null);
+			populateTable(table, i);
 			table.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -62,13 +68,13 @@ public class ComparisonScreen extends JFrame {
 				column.setResizable(false);
 			}
 			JScrollPane scrollPane = new JScrollPane(table);
-			populateTable(table, i);
+			
 			scrollPane.setBounds(10 + i * 263, 11, 248, 292);
 			contentPane.add(scrollPane);
 		}
 	
 	
-	String[] resultcolumnNames = { "Algorithm", "Combinations", "Excecution Time"};
+	String[] resultcolumnNames = { "Algorithm", "Combinations", "Execution Time", "Average Rating"};
 	DefaultTableModel tableModelResult = new DefaultTableModel(resultcolumnNames, 0);
 
 	JTable table = new JTable(tableModelResult);
@@ -76,17 +82,6 @@ public class ComparisonScreen extends JFrame {
 	table.setEnabled(true);
 
 	table.setDefaultEditor(Object.class, null);
-	table.addMouseListener(new MouseAdapter() {
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			if (e.getClickCount() == 1) {
-				int selectedRow = table.getSelectedRow();
-				if (selectedRow != -1) {
-					//showEmployee(selectedRow);
-				}
-			}
-		}
-	});
 	DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
 	renderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
 	table.setDefaultRenderer(Object.class, renderer);
@@ -106,12 +101,12 @@ public class ComparisonScreen extends JFrame {
 	
 	
 
-	private void populateTable(JTable table, int col) {
+	private void populateTable(JTable table, int tab) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         
         String[] keys = {"Brute Force", "Backtracking", "Heuristic"};
-        String key = keys[col];
+        String key = keys[tab];
         
         List<Employee> employees = (List<Employee>) resultMap.get(key)[0];
         for (Employee employee : employees) {
@@ -122,18 +117,28 @@ public class ComparisonScreen extends JFrame {
 	
 	private void populateResultsTable(JTable table) {
 	    DefaultTableModel model = (DefaultTableModel) table.getModel();
-	    model.setRowCount(0);
-	    
+	    model.setRowCount(0);    
 	    for (Map.Entry<String, Object[]> entry : resultMap.entrySet()) {
 	        String algorithm = entry.getKey();
 	        Object[] values = entry.getValue();
 	        String combinations = String.valueOf(values[1]);
-	        String executionTime = String.valueOf(values[2]);
-	        
-	        model.addRow(new Object[] { algorithm, combinations, executionTime });
+	        long time = (long) values[2];
+	        double executionTimeSeconds = (TimeUnit.MILLISECONDS.toSeconds(time)
+	                + (time % 1000) / 1000.0);
+	        String executionTime = String.format("%.3fs", executionTimeSeconds);
+	        String averageRating = String.format("%.3fs",values[3]);
+	        model.addRow(new Object[] { algorithm, combinations, executionTime, averageRating });
 	    }
 	}
-
-
+	
+	/**
+	private void showEmployee(int selectedRow) {
+		EmployeeScreen launch;
+		launch = new EmployeeScreen(this.bestCombination.get(selectedRow));
+		launch.setResizable(false);
+		launch.setVisible(true);
+		launch.setLocationRelativeTo(null);
+	}
+	**/
 
 }

@@ -1,5 +1,6 @@
 package tp.dal;
 
+import java.util.HashMap;
 import java.util.List;
 
 import tp.logic.Employee;
@@ -10,6 +11,12 @@ public class FileTeamUpdateListener implements IteamUpdateListener {
 	public void onTeamGenerated(List<Employee> team, int combinations, long time) {
 		SaveData saveData = new SaveData();
 		saveData.createFile(team, combinations, time);
+	}
+
+	@Override
+	public void onConmparativeGenerated(HashMap<String, Object[]> resultMap) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -36,7 +36,7 @@ public class HomeScreen extends JFrame {
 	private JLabel lblTester;
 
 	public HomeScreen(IdealTeam idealTeam) {
-		setTitle("Programacion III - Equipo ideal");
+		setTitle("Programacion III - Ideal Team");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

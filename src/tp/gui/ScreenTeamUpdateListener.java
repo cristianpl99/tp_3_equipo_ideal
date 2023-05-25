@@ -1,5 +1,6 @@
 package tp.gui;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -20,5 +21,10 @@ public class ScreenTeamUpdateListener implements IteamUpdateListener {
 		MainScreen.combinations = combinations;
 		MainScreen.time = executionTimeSeconds;
 		MainScreen.averageRating = average;
+	}
+
+	@Override
+	public void onConmparativeGenerated(HashMap<String, Object[]> resultMap) {
+		MainScreen.resultMap = resultMap;	
 	}
 }

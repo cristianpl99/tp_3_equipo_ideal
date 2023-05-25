@@ -30,17 +30,5 @@ public class AlgorithmsWorker extends SwingWorker<Map<String, Object[]>, Void> {
 		return resultMap;
 	}
 
-	@Override
-	protected void done() {
-		try {
-			Map<String, Object[]> resultMap = get();
-			ComparisonScreen launch = new ComparisonScreen(resultMap);
-			launch.setResizable(false);
-			launch.setVisible(true);
-			launch.setLocationRelativeTo(null);
-
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
+	
 }

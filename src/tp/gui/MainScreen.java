@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -70,6 +71,7 @@ public class MainScreen extends JFrame {
 	public static int combinations;
 	public static double time;
 	public static double averageRating;
+	public static HashMap<String, Object[]> resultMap;
 
 	public MainScreen(IdealTeam idealTeam, String projectLeader, String architect, String programmer, String tester) {
 
@@ -78,7 +80,7 @@ public class MainScreen extends JFrame {
 		this.cantProgrammer = Integer.parseInt(programmer);
 		this.cantTester = Integer.parseInt(tester);
 
-		setTitle("Programacion III - Equipo ideal - Constructor");
+		setTitle("Programacion III - Team Builder");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -312,7 +314,10 @@ public class MainScreen extends JFrame {
 						if ("state".equals(evt.getPropertyName()) && SwingWorker.StateValue.DONE == evt.getNewValue()) {
 							btnAlgorithms.setVisible(true);
 							progressBarAlgorithms.setVisible(false);
-
+							ComparisonScreen launch = new ComparisonScreen(resultMap);
+							launch.setResizable(false);
+							launch.setVisible(true);
+							launch.setLocationRelativeTo(null);
 						}
 					}
 				});

@@ -5,15 +5,15 @@ import java.util.List;
 
 public abstract class Algorithm {
 	
-    protected List<Employee> employees;
-    protected int projectLeaderCount;
-    protected int architectCount;
-    protected int programmerCount;
-    protected int testerCount;
-    protected List<Employee> bestCombination;
-    protected double bestAverageRating;
-    protected int combinationCount;
-    protected long executionTime;
+	private List<Employee> employees;
+    private int projectLeaderCount;
+    private int architectCount;
+    private int programmerCount;
+    private int testerCount;
+    private List<Employee> bestCombination;
+    private double bestAverageRating;
+    private int combinationCount;
+    private long executionTime;
 
     public Algorithm(List<Employee> employees, int projectLeaderCount, int architectCount,
                              int programmerCount, int testerCount) {
@@ -22,7 +22,6 @@ public abstract class Algorithm {
         this.architectCount = architectCount;
         this.programmerCount = programmerCount;
         this.testerCount = testerCount;
-        this.bestCombination = new ArrayList<>();
         this.bestAverageRating = 0;
         this.combinationCount = 0;
         this.executionTime = 0;
