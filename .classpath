@@ -6,6 +6,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jCommon"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jFreechart"/>
 	<classpathentry kind="lib" path="gson-2.2 (2).jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
