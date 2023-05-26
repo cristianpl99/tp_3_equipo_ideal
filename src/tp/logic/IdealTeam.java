@@ -52,7 +52,7 @@ public class IdealTeam {
 	// todo esto se puede refactorizar pasando directamente el objeto algorithm class
 	public HashMap<String, Object[]> generateComparative(int projectLeaderCount, int architectCount, int programmerCount, int testerCount) {
 	    HashMap<String, Object[]> resultMap = new HashMap<>();
-	    
+	  
 	    BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount, testerCount); 
 	    List<Employee> bruteForceBestCombination = bruteForce.findBestCombination();
 	    int bruteForceCombinationCount = bruteForce.getCombinationCount();
@@ -82,6 +82,7 @@ public class IdealTeam {
 	    resultMap.put("Heuristic", new Object[] { heuristicBestCombination, heuristicCombinationCount, 
 	    		heuristicExecutionTime, heuristicBestAverageRating });
 	    notifyComparativeGenerated(resultMap);
+	    
 	    return resultMap;
 	}
 	
