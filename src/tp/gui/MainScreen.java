@@ -67,18 +67,21 @@ public class MainScreen extends JFrame {
 	private JLabel lblAverageRating;
 	private ArrayList<Employee> employees;
 	private List<Employee> bestCombination;
+	private IdealTeam idealTeam;
 
 	public static int combinations;
 	public static double time;
 	public static double averageRating;
 	public static HashMap<String, Object[]> resultMap;
 
-	public MainScreen(IdealTeam idealTeam, String projectLeader, String architect, String programmer, String tester) {
+	public MainScreen(String projectLeader, String architect, String programmer, String tester) {
 
 		this.cantProjectLeader = Integer.parseInt(projectLeader);
 		this.cantArchitect = Integer.parseInt(architect);
 		this.cantProgrammer = Integer.parseInt(programmer);
 		this.cantTester = Integer.parseInt(tester);
+		
+		idealTeam = IdealTeam.getIdealTeam();
 
 		setTitle("Programacion III - Team Builder");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
@@ -251,7 +254,7 @@ public class MainScreen extends JFrame {
 		btnBruteForce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				configureButtonWithProgressBar(btnBruteForce, progressBarBruteForce,
-						new BruteForceWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
+						new BruteForceWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
 			}
 		});
@@ -268,7 +271,7 @@ public class MainScreen extends JFrame {
 		btnBackTracking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
-						new BackTrackingWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
+						new BackTrackingWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
 			}
 		});
@@ -285,7 +288,7 @@ public class MainScreen extends JFrame {
 		btnHeuristics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
-						new HeuristicWorker(idealTeam, cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
+						new HeuristicWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
 			}
 		});
@@ -303,7 +306,7 @@ public class MainScreen extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				progressBarAlgorithms.setVisible(true);
 				progressBarAlgorithms.setIndeterminate(true);
-				AlgorithmsWorker worker = new AlgorithmsWorker(idealTeam, cantProjectLeader, cantArchitect,
+				AlgorithmsWorker worker = new AlgorithmsWorker(cantProjectLeader, cantArchitect,
 						cantProgrammer, cantTester);
 				worker.execute();
 				worker.addPropertyChangeListener(new PropertyChangeListener() {
@@ -352,6 +355,7 @@ public class MainScreen extends JFrame {
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);
 	}
+
 
 	public void initialize() {
 		setResizable(false);

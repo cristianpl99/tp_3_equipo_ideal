@@ -14,20 +14,21 @@ public class BackTrackingWorker extends SwingWorker<List<Employee>, Void> {
 	private int architectCount;
 	private int programmerCount;
 	private int testerCount;
-	private IdealTeam idealT;
+	
 
-	public BackTrackingWorker(IdealTeam idealTeam, int projectLeaderCount, int architectCount, int programmerCount,
+	public BackTrackingWorker(int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
 		this.projectLeaderCount = projectLeaderCount;
 		this.architectCount = architectCount;
 		this.programmerCount = programmerCount;
 		this.testerCount = testerCount;
-		this.idealT = idealTeam;
+		
 	}
 
 	@Override
 	protected List<Employee> doInBackground() throws Exception {
-		List<Employee> bestCombination = idealT.generateTeamByBackTracking(projectLeaderCount, architectCount,
+		IdealTeam idealTeam = IdealTeam.getIdealTeam();
+		List<Employee> bestCombination = idealTeam.generateTeamByBackTracking(projectLeaderCount, architectCount,
 				programmerCount, testerCount);
 		int progress = 100;
 		setProgress(progress);

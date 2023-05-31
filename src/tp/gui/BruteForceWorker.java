@@ -14,20 +14,21 @@ public class BruteForceWorker extends SwingWorker<List<Employee>, Void> {
 	private int architectCount;
 	private int programmerCount;
 	private int testerCount;
-	private IdealTeam idealT;
+	
 
-	public BruteForceWorker(IdealTeam idealTeam, int projectLeaderCount, int architectCount, int programmerCount,
+	public BruteForceWorker(int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
 		this.projectLeaderCount = projectLeaderCount;
 		this.architectCount = architectCount;
 		this.programmerCount = programmerCount;
 		this.testerCount = testerCount;
-		this.idealT = idealTeam;
+		
 	}
 
 	@Override
 	protected List<Employee> doInBackground() throws Exception {
-		List<Employee> bestCombination = idealT.generateTeamByBruteForce(projectLeaderCount, architectCount,
+		IdealTeam idealTeam = IdealTeam.getIdealTeam();
+		List<Employee> bestCombination = idealTeam.generateTeamByBruteForce(projectLeaderCount, architectCount,
 				programmerCount, testerCount);
 		int progress = 100;
 		setProgress(progress);

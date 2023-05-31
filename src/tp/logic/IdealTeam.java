@@ -10,8 +10,17 @@ public class IdealTeam {
 
 	private List<IteamUpdateListener> listeners;
 	private List<Employee> employees;
+	private static IdealTeam idealTeam;
+	
+	public static synchronized IdealTeam getIdealTeam() {
+        if (idealTeam == null) {
+        	idealTeam = new IdealTeam();
+        }
+        return idealTeam;
+    }
+   
 
-	public IdealTeam() {
+	private IdealTeam() {
 		employees = new ArrayList<>();
 		listeners = new ArrayList<>();
 	}

@@ -82,3 +82,39 @@ Employee{DNI='P1022', firstName='Anatoly', lastName='Lein', rating=4, role=Progr
 Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Programmer}
 
 -------------------------------------------------------------------
+team_Leader_Gates_2023-05-31_17-13-18
+Generated team for this configuration: 1 architects, 2 testers, 1 project_leaders, 2 programmers
+Combination generated: 1
+Process time: 0
+Employee{DNI='PL1001', firstName='Bill', lastName='Gates', rating=4, role=Project_Leader}
+Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
+Employee{DNI='T1012', firstName='Bobby', lastName='Fischer', rating=4, role=Tester}
+Employee{DNI='T1014', firstName='Viswanathan', lastName='Anand', rating=4, role=Tester}
+Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Programmer}
+Employee{DNI='P1022', firstName='Anatoly', lastName='Lein', rating=4, role=Programmer}
+
+-------------------------------------------------------------------
+team_Leader_Torvalds_2023-05-31_17-13-20
+Generated team for this configuration: 1 architects, 2 testers, 1 project_leaders, 2 programmers
+Combination generated: 345270
+Process time: 106
+Employee{DNI='PL1003', firstName='Linus', lastName='Torvalds', rating=5, role=Project_Leader}
+Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
+Employee{DNI='T1010', firstName='Garry', lastName='Kasparov', rating=4, role=Tester}
+Employee{DNI='T1012', firstName='Bobby', lastName='Fischer', rating=4, role=Tester}
+Employee{DNI='P1022', firstName='Anatoly', lastName='Lein', rating=4, role=Programmer}
+Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Programmer}
+
+-------------------------------------------------------------------
+team_Leader_Torvalds_2023-05-31_17-14-45
+Generated team for this configuration: 1 architects, 2 testers, 1 project_leaders, 2 programmers
+Combination generated: 1073741824
+Process time: 83089
+Employee{DNI='PL1003', firstName='Linus', lastName='Torvalds', rating=5, role=Project_Leader}
+Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
+Employee{DNI='T1010', firstName='Garry', lastName='Kasparov', rating=4, role=Tester}
+Employee{DNI='T1012', firstName='Bobby', lastName='Fischer', rating=4, role=Tester}
+Employee{DNI='P1022', firstName='Anatoly', lastName='Lein', rating=4, role=Programmer}
+Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Programmer}
+
+-------------------------------------------------------------------

@@ -11,6 +11,8 @@ import tp.logic.IdealTeam;
 
 public class Main {
 
+	private static IdealTeam idealTeam;
+
 	public static void main(String[] args) {
 
 		try {
@@ -18,7 +20,7 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		IdealTeam idealTeam = new IdealTeam();
+		idealTeam = IdealTeam.getIdealTeam();
 		FileTeamUpdateListener fileListener = new FileTeamUpdateListener();
 		ScreenTeamUpdateListener screenListener = new ScreenTeamUpdateListener();
 		idealTeam.addListener(fileListener);
@@ -26,7 +28,7 @@ public class Main {
 		IdataLoader data = new LoadData();
 		idealTeam.setEmployees(data.readEmployeesFromJSON());
 
-		HomeScreen launch = new HomeScreen(idealTeam);
+		HomeScreen launch = new HomeScreen();
 		launch.initialize();
 	}
 
