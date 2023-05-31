@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BruteForce {
+
 	private List<Employee> employees;
 	private int projectLeaderCount;
 	private int architectCount;
@@ -16,6 +17,7 @@ public class BruteForce {
 
 	public BruteForce(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
+
 		this.employees = employees;
 		this.projectLeaderCount = projectLeaderCount;
 		this.architectCount = architectCount;
@@ -24,7 +26,7 @@ public class BruteForce {
 		this.bestCombination = new ArrayList<>();
 		this.bestAverageRating = 0;
 		this.combinationCount = 0;
-		this.executionTime =0;
+		this.executionTime = 0;
 	}
 
 	public double getBestAverageRating() {
@@ -35,9 +37,8 @@ public class BruteForce {
 		long startTime = System.currentTimeMillis();
 		List<Employee> combination = new ArrayList<>();
 		generateCombination(combination, 0);
-		//System.out.println("En BruteForce, cantidad de combinaciones generadas: " + combinationCount);
 		long endTime = System.currentTimeMillis();
-	    executionTime = endTime - startTime;
+		executionTime = endTime - startTime;
 		return bestCombination;
 	}
 
@@ -73,11 +74,10 @@ public class BruteForce {
 		}
 		return false;
 	}
-	
+
 	public long getExecutionTime() {
-	    return executionTime;
+		return executionTime;
 	}
-	
 
 	private boolean combinationContainsConflictedEmployee(List<Employee> combination, Employee employee) {
 		for (Employee e : combination) {
@@ -130,5 +130,5 @@ public class BruteForce {
 	public List<Employee> getBestCombination() {
 		return bestCombination;
 	}
-}
 
+}

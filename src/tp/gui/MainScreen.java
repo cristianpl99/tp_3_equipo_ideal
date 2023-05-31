@@ -292,8 +292,6 @@ public class MainScreen extends JFrame {
 		btnHeuristics.setBounds(17, 654, 148, 43);
 		contentPane.add(btnHeuristics);
 
-		// ---------------------------------------------------//
-
 		JProgressBar progressBarAlgorithms = new JProgressBar();
 		progressBarAlgorithms.setBounds(17, 417, 148, 45);
 		progressBarAlgorithms.setVisible(false);
@@ -321,7 +319,6 @@ public class MainScreen extends JFrame {
 				});
 			}
 		});
-
 		btnAlgorithms.setBounds(17, 417, 148, 43);
 		contentPane.add(btnAlgorithms);
 
@@ -354,7 +351,6 @@ public class MainScreen extends JFrame {
 		});
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);
-
 	}
 
 	public void initialize() {
@@ -362,7 +358,7 @@ public class MainScreen extends JFrame {
 		setVisible(true);
 		setLocationRelativeTo(null);
 	}
-	
+
 	private void showEmployee(int selectedRow) {
 		EmployeeScreen launch;
 		launch = new EmployeeScreen(this.bestCombination.get(selectedRow));

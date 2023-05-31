@@ -11,13 +11,12 @@ public class ScreenTeamUpdateListener implements IteamUpdateListener {
 
 	@Override
 	public void onTeamGenerated(List<Employee> team, int combinations, long time) {
-		double executionTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(time)
-		        + (double) (time % 1000) / 1000.0;	
+		double executionTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(time) + (double) (time % 1000) / 1000.0;
 		int sum = 0;
-        for (Employee employee : team) {
-            sum += employee.getRating();
-        }   
-        double average = (double) sum / team.size();
+		for (Employee employee : team) {
+			sum += employee.getRating();
+		}
+		double average = (double) sum / team.size();
 		MainScreen.combinations = combinations;
 		MainScreen.time = executionTimeSeconds;
 		MainScreen.averageRating = average;
@@ -25,6 +24,7 @@ public class ScreenTeamUpdateListener implements IteamUpdateListener {
 
 	@Override
 	public void onConmparativeGenerated(HashMap<String, Object[]> resultMap) {
-		MainScreen.resultMap = resultMap;	
+		MainScreen.resultMap = resultMap;
 	}
+
 }

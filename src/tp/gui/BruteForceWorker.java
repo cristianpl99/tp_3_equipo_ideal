@@ -9,6 +9,7 @@ import tp.logic.Employee;
 import java.util.List;
 
 public class BruteForceWorker extends SwingWorker<List<Employee>, Void> {
+
 	private int projectLeaderCount;
 	private int architectCount;
 	private int programmerCount;

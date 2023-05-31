@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Heuristic {
+
 	private List<Employee> employees;
 	private int projectLeaderCount;
 	private int architectCount;
@@ -21,6 +22,7 @@ public class Heuristic {
 
 	public Heuristic(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount, Comparator<Employee> comparator) {
+
 		this.employees = employees;
 		this.projectLeaderCount = projectLeaderCount;
 		this.architectCount = architectCount;
@@ -31,8 +33,8 @@ public class Heuristic {
 		this.programmersAdded = 0;
 		this.testersAdded = 0;
 		this.combinationCount = 0;
-		this.executionTime =0;
-		this.bestAverageRating =0;
+		this.executionTime = 0;
+		this.bestAverageRating = 0;
 		this.comparator = comparator;
 
 	}
@@ -55,14 +57,15 @@ public class Heuristic {
 		}
 		combinationCount++;
 		long endTime = System.currentTimeMillis();
-	    executionTime = endTime - startTime;
-	    bestAverageRating = calculateAverageRating(finalTeam);
-	    return finalTeam;
+		executionTime = endTime - startTime;
+		bestAverageRating = calculateAverageRating(finalTeam);
+		return finalTeam;
 	}
-	
+
 	public long getExecutionTime() {
-	    return executionTime;
+		return executionTime;
 	}
+
 	public int getCombinationCount() {
 		return combinationCount;
 	}
@@ -109,7 +112,7 @@ public class Heuristic {
 		}
 		return false;
 	}
-	
+
 	private double calculateAverageRating(List<Employee> combination) {
 		int totalRating = 0;
 		for (Employee employee : combination) {
@@ -121,5 +124,5 @@ public class Heuristic {
 	public double getBestAverageRating() {
 		return this.bestAverageRating;
 	}
-}
 
+}

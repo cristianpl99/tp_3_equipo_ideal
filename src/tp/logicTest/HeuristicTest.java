@@ -15,6 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class HeuristicTest {
+
 	private Heuristic heuristic;
 	private List<Employee> employees;
 	private Comparator<Employee> customComparator;
@@ -28,8 +29,6 @@ public class HeuristicTest {
 		employees.add(new Employee("4", "Magnus", "Carlsen", 2, new HashSet<>(), Role.Tester, "photo4.jpg"));
 		employees.add(new Employee("5", "Judith", "Polgar", 2, new HashSet<>(Arrays.asList("1", "2", "3")), Role.Tester,
 				"photo4.jpg"));
-
-		
 
 		customComparator = (e1, e2) -> {
 			double coefficient1 = e1.getRating() - e1.getConflicts().size();
@@ -57,4 +56,5 @@ public class HeuristicTest {
 		boolean containsConflicted = heuristic.hasConflicts(combination, employees.get(0));
 		Assert.assertTrue(containsConflicted);
 	}
+
 }

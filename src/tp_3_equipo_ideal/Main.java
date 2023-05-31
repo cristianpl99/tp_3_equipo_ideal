@@ -5,7 +5,6 @@ import javax.swing.UIManager;
 import tp.dal.FileTeamUpdateListener;
 import tp.dal.IdataLoader;
 import tp.dal.LoadData;
-import tp.gui.ConsoleTeamUpdateListener;
 import tp.gui.HomeScreen;
 import tp.gui.ScreenTeamUpdateListener;
 import tp.logic.IdealTeam;
@@ -20,15 +19,13 @@ public class Main {
 			System.out.println(e);
 		}
 		IdealTeam idealTeam = new IdealTeam();
-		ConsoleTeamUpdateListener consoleListener = new ConsoleTeamUpdateListener();
 		FileTeamUpdateListener fileListener = new FileTeamUpdateListener();
 		ScreenTeamUpdateListener screenListener = new ScreenTeamUpdateListener();
-		idealTeam.addListener(consoleListener);
 		idealTeam.addListener(fileListener);
 		idealTeam.addListener(screenListener);
 		IdataLoader data = new LoadData();
 		idealTeam.setEmployees(data.readEmployeesFromJSON());
-			
+
 		HomeScreen launch = new HomeScreen(idealTeam);
 		launch.initialize();
 	}

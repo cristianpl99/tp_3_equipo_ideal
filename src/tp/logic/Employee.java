@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Employee {
+
 	private String dni;
 	private String firstName;
 	private String lastName;

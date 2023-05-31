@@ -37,11 +37,12 @@ public class SaveData {
 
 	public void createFile(HashMap<String, Object[]> resultMap) {
 		String timestamp = generateTimestamp();
-		String fileName = "algorithms_comparison_" + timestamp + ".txt";	
+		String fileName = "algorithms_comparison_" + timestamp + ".txt";
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
 			for (Map.Entry<String, Object[]> entry : resultMap.entrySet()) {
 				String algorithm = entry.getKey();
 				Object[] values = entry.getValue();
+				@SuppressWarnings("unchecked")
 				List<Employee> employees = (List<Employee>) values[0];
 				int combinations = (int) values[1];
 				long time = (long) values[2];
@@ -55,6 +56,7 @@ public class SaveData {
 				for (Employee employee : employees) {
 					writer.write(employee.toString() + "\n");
 				}
+
 				writer.write("\n");
 				writer.write("-------------------------------------------------------------");
 				writer.write("\n");
@@ -102,4 +104,5 @@ public class SaveData {
 
 		return countBuilder.toString();
 	}
+
 }

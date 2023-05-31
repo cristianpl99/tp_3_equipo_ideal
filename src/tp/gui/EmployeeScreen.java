@@ -25,6 +25,7 @@ public class EmployeeScreen extends JFrame {
 	private JLabel lblRole;
 
 	public EmployeeScreen(Employee employee) {
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 526, 297);
 		setTitle("Dni " + employee.getDni() + " - Employee Record");
@@ -71,4 +72,5 @@ public class EmployeeScreen extends JFrame {
 		label.setBounds(x, y, width, height);
 		return label;
 	}
+
 }

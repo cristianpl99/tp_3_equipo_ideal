@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BackTracking {
+
 	private List<Employee> employees;
 	private int projectLeaderCount;
 	private int architectCount;
@@ -16,6 +17,7 @@ public class BackTracking {
 
 	public BackTracking(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
+
 		this.employees = employees;
 		this.projectLeaderCount = projectLeaderCount;
 		this.architectCount = architectCount;
@@ -24,7 +26,7 @@ public class BackTracking {
 		this.bestCombination = new ArrayList<>();
 		this.bestAverageRating = 0;
 		this.combinationCount = 0;
-		this.executionTime =0;
+		this.executionTime = 0;
 	}
 
 	public double getBestAverageRating() {
@@ -36,7 +38,7 @@ public class BackTracking {
 		List<Employee> combination = new ArrayList<>();
 		generateCombination(combination, 0);
 		long endTime = System.currentTimeMillis();
-	    executionTime = endTime - startTime;
+		executionTime = endTime - startTime;
 		return bestCombination;
 	}
 
@@ -132,8 +134,9 @@ public class BackTracking {
 	public int getCombinationCount() {
 		return combinationCount;
 	}
+
 	public long getExecutionTime() {
-	    return executionTime;
+		return executionTime;
 	}
 
 	public List<Employee> getBestCombination() {

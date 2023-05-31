@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class AlgorithmsWorker extends SwingWorker<Map<String, Object[]>, Void> {
+
 	private int projectLeaderCount;
 	private int architectCount;
 	private int programmerCount;
@@ -30,5 +31,4 @@ public class AlgorithmsWorker extends SwingWorker<Map<String, Object[]>, Void> {
 		return resultMap;
 	}
 
-	
 }
