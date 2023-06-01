@@ -9,7 +9,7 @@ import tp.logic.IteamUpdateObserver;
 public class FileTeamUpdateObserver implements IteamUpdateObserver {
 
 	@Override
-	public void onTeamGenerated(List<Employee> team, int combinations, long time) {
+	public void onTeamGenerated(List<Employee> team, double combinations, long time) {
 		SaveData saveData = new SaveData();
 		saveData.writeLogFile(team, combinations, time);
 	}

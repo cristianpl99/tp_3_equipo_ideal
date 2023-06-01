@@ -131,7 +131,7 @@ public class BackTracking {
 		return (double) totalRating / combination.size();
 	}
 
-	public int getCombinationCount() {
+	public double getCombinationCount() {
 		return combinationCount;
 	}
 

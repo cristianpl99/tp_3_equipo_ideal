@@ -1,6 +1,7 @@
 package tp.logic;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 
 import java.util.Comparator;
@@ -11,6 +12,7 @@ public class IdealTeam {
 	private List<IteamUpdateObserver> observers;
 	private List<Employee> employees;
 	private static IdealTeam idealTeam;
+	private HashMap<String, Object[]> resultMap;
 	
 	public static synchronized IdealTeam getIdealTeam() {
         if (idealTeam == null) {
@@ -19,7 +21,6 @@ public class IdealTeam {
         return idealTeam;
     }
    
-
 	private IdealTeam() {
 		employees = new ArrayList<>();
 		observers = new ArrayList<>();
@@ -58,22 +59,22 @@ public class IdealTeam {
 		return bestCombination;
 	}
 
-	private void notifyTeamGenerated(List<Employee> team, int combinations, long time) {
+	private void notifyTeamGenerated(List<Employee> team, double combinations, long time) {
 		if (observers != null) {
-			for (IteamUpdateObserver listener : observers) {
-				listener.onTeamGenerated(team, combinations, time);
+			for (IteamUpdateObserver observer : observers) {
+				observer.onTeamGenerated(team, combinations, time);
 			}
 		}
 	}
 
-	public HashMap<String, Object[]> generateComparative(int projectLeaderCount, int architectCount,
+	public Map<String, Object[]> generateComparative(int projectLeaderCount, int architectCount,
 			int programmerCount, int testerCount) {
+		
+		this.resultMap = new HashMap<>();
 
-		HashMap<String, Object[]> resultMap = new HashMap<>();
+		bruteForceInComparator(projectLeaderCount, architectCount, programmerCount, testerCount);
 
-		bruteForceInComparator(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
-
-		backtrackingInComparator(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
+		backtrackingInComparator(projectLeaderCount, architectCount, programmerCount, testerCount);
 
 		Comparator<Employee> customComparator = (e1, e2) -> {
 			double coefficient1 = calculateCoefficient(e1);
@@ -81,61 +82,60 @@ public class IdealTeam {
 			return Double.compare(coefficient2, coefficient1);
 		};
 
-		heuristicInComparator(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap,
+		heuristicInComparator(projectLeaderCount, architectCount, programmerCount, testerCount,
 				customComparator);
-
-		notifyComparativeGenerated(resultMap);
-
-		return resultMap;
+		
+		notifyComparativeGenerated(this.resultMap);
+		return this.resultMap;
 	}
 
 	private void notifyComparativeGenerated(HashMap<String, Object[]> resultMap) {
 		if (observers != null) {
-			for (IteamUpdateObserver listener : observers) {
-				listener.onConmparativeGenerated(resultMap);
+			for (IteamUpdateObserver observer : observers) {
+				observer.onConmparativeGenerated(resultMap);
 			}
 		}
 	}
 
 	private void bruteForceInComparator(int projectLeaderCount, int architectCount, int programmerCount,
-			int testerCount, HashMap<String, Object[]> resultMap) {
+			int testerCount) {
 		BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
-				testerCount);/*
+				testerCount);
 		List<Employee> bruteForceBestCombination = bruteForce.findBestCombination();
 		double bruteForceCombinationCount = bruteForce.getCombinationCount();
 		long bruteForceExecutionTime = bruteForce.getExecutionTime();
 		double bruteForceBestAverageRating = bruteForce.getBestAverageRating();
-		*/
-		resultMap.put("Brute Force", new Object[] { bruteForce.findBestCombination(), bruteForce.getCombinationCount(),
-				bruteForce.getExecutionTime(), bruteForce.getBestAverageRating() });
+		
+		this.resultMap.put("Brute Force", new Object[] { bruteForceBestCombination, bruteForceCombinationCount,
+				bruteForceExecutionTime, bruteForceBestAverageRating });
 	}
 
 	private void backtrackingInComparator(int projectLeaderCount, int architectCount, int programmerCount,
-			int testerCount, HashMap<String, Object[]> resultMap) {
+			int testerCount) {
 		BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
-		/*
+	
 		List<Employee> backTrackingBestCombination = backTracking.findBestCombination();
 		double backTrackingCombinationCount = backTracking.getCombinationCount();
 		long backTrackingExecutionTime = backTracking.getExecutionTime();
 		double backTrackingBestAverageRating = backTracking.getBestAverageRating();
-		*/
-		resultMap.put("Backtracking", new Object[] { backTracking.findBestCombination(), backTracking.getCombinationCount(),
-				backTracking.getExecutionTime(), backTracking.getBestAverageRating() });
+	
+		this.resultMap.put("Backtracking", new Object[] { backTrackingBestCombination, backTrackingCombinationCount,
+				backTrackingExecutionTime, backTrackingBestAverageRating });
 	}
 
-	private void heuristicInComparator(int projectLeaderCount, int architectCount, int programmerCount, int testerCount,
-			HashMap<String, Object[]> resultMap, Comparator<Employee> customComparator) {
+	private void heuristicInComparator(int projectLeaderCount, int architectCount, int programmerCount, int testerCount, 
+			Comparator<Employee> customComparator) {
 		Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount,
 				customComparator);
-		/*
+	
 		List<Employee> heuristicBestCombination = heuristic.findBestCombination();
 		double heuristicCombinationCount = heuristic.getCombinationCount();
 		long heuristicExecutionTime = heuristic.getExecutionTime();
 		double heuristicBestAverageRating = heuristic.getBestAverageRating();
-		*/
-		resultMap.put("Heuristic", new Object[] { heuristic.findBestCombination(), heuristic.getCombinationCount(),
-				heuristic.getExecutionTime(), heuristic.getBestAverageRating() });
+	
+		this.resultMap.put("Heuristic", new Object[] { heuristicBestCombination, heuristicCombinationCount,
+				heuristicExecutionTime, heuristicBestAverageRating });
 	}
 
 	public void addObserver(IteamUpdateObserver listener) {

@@ -13,7 +13,7 @@ import tp.logic.Employee;
 
 public class SaveData {
 
-	public void writeLogFile(List<Employee> team, int combinations, long time) {
+	public void writeLogFile(List<Employee> team, double combinations, long time) {
 		String fileName = "work_log.txt";
 		String headliner = generateHeadLiner(team);
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {

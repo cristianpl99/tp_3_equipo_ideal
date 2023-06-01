@@ -66,7 +66,7 @@ public class Heuristic {
 		return executionTime;
 	}
 
-	public int getCombinationCount() {
+	public double getCombinationCount() {
 		return combinationCount;
 	}
 

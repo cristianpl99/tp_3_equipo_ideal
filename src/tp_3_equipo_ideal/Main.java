@@ -21,10 +21,10 @@ public class Main {
 			System.out.println(e);
 		}
 		idealTeam = IdealTeam.getIdealTeam();
-		FileTeamUpdateObserver fileListener = new FileTeamUpdateObserver();
-		ScreenTeamUpdateObserver screenListener = new ScreenTeamUpdateObserver();
-		idealTeam.addObserver(fileListener);
-		idealTeam.addObserver(screenListener);
+		FileTeamUpdateObserver fileObserver= new FileTeamUpdateObserver();
+		ScreenTeamUpdateObserver screenObserver = new ScreenTeamUpdateObserver();
+		idealTeam.addObserver(fileObserver);
+		idealTeam.addObserver(screenObserver);
 		IdataLoader data = new LoadData();
 		idealTeam.setEmployees(data.readEmployeesFromJSON());
 
