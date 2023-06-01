@@ -47,7 +47,7 @@ public class ComparisonScreen extends JFrame {
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 900, 520);
+		setBounds(100, 100, 900, 570);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -104,13 +104,13 @@ public class ComparisonScreen extends JFrame {
 		}
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(422, 367, 452, 89);
+		scrollPane.setBounds(417, 380, 452, 89);
 		contentPane.add(scrollPane);
 		populateResultsTable(table);
 		contentPane.setLayout(null);
 
 		JPanel graphPanel = new JPanel();
-		graphPanel.setBounds(20, 319, 387, 137);
+		graphPanel.setBounds(20, 319, 387, 170);
 		contentPane.add(graphPanel);
 		createBarChart(resultMap, graphPanel);
 	}
