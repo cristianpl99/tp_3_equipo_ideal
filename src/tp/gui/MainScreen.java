@@ -298,7 +298,7 @@ public class MainScreen extends JFrame {
 		JProgressBar progressBarAlgorithms = new JProgressBar();
 		progressBarAlgorithms.setBounds(17, 417, 148, 45);
 		progressBarAlgorithms.setVisible(false);
-		progressBarAlgorithms.setForeground(Color.RED);
+		progressBarAlgorithms.setForeground(Color.YELLOW);
 		contentPane.add(progressBarAlgorithms);
 
 		JButton btnAlgorithms = new JButton("Run Comparative");
