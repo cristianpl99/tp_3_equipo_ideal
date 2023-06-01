@@ -68,8 +68,9 @@ public class MainScreen extends JFrame {
 	private ArrayList<Employee> employees;
 	private List<Employee> bestCombination;
 	private IdealTeam idealTeam;
+	private JLabel lblAlgorithmtitle;
 
-	public static int combinations;
+	public static double combinations;
 	public static double time;
 	public static double averageRating;
 	public static HashMap<String, Object[]> resultMap;
@@ -137,13 +138,15 @@ public class MainScreen extends JFrame {
 		lblListOfEmployees = createLabel("LIST OF EMPLOYEES", 14, 117, 319, 159, 29);
 		lblConflicts = createLabel("CONFLICTS", 18, 612, 11, 130, 45);
 		lblListOfConflicts = createLabel("LIST OF CONFLICTS", 14, 592, 321, 152, 22);
-		lblCombinations = createLabel("COMPLETE LIST OF EMPLOYEES", 14, 284, 715, 452, 22);
+		lblCombinations = createLabel("", 14, 284, 715, 452, 22);
 		lblCombinations.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTime = createLabel("", 14, 284, 735, 452, 22);
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAverageRating = createLabel("", 14, 284, 755, 452, 22);
-		lblAverageRating.setHorizontalAlignment(SwingConstants.CENTER);
-
+		lblAverageRating.setHorizontalAlignment(SwingConstants.CENTER);	
+		lblAlgorithmtitle = createLabel("", 15, 414, 409, 193, 22);
+		lblAlgorithmtitle.setHorizontalAlignment(SwingConstants.CENTER);
+		
 		contentPane.add(lblAddEmployee);
 		contentPane.add(lblDni);
 		contentPane.add(lblFirstName);
@@ -157,6 +160,7 @@ public class MainScreen extends JFrame {
 		contentPane.add(lblTime);
 		contentPane.add(lblCombinations);
 		contentPane.add(lblAverageRating);
+		contentPane.add(lblAlgorithmtitle);
 
 		textDni = createTextField(176, 67, 148, 29, 10, JTextField.CENTER);
 		textFirstName = createTextField(176, 107, 148, 29, 10, JTextField.CENTER);
@@ -256,6 +260,7 @@ public class MainScreen extends JFrame {
 				configureButtonWithProgressBar(btnBruteForce, progressBarBruteForce,
 						new BruteForceWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
+						lblAlgorithmtitle.setText("BRUTE FORCE SEARCH");
 			}
 		});
 		btnBruteForce.setBounds(17, 498, 148, 44);
@@ -273,6 +278,7 @@ public class MainScreen extends JFrame {
 				configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
 						new BackTrackingWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
+						lblAlgorithmtitle.setText("BACKTRACKING SEARCH");
 			}
 		});
 		btnBackTracking.setBounds(17, 576, 148, 44);
@@ -284,12 +290,13 @@ public class MainScreen extends JFrame {
 		progressBarHeuristics.setForeground(Color.BLUE);
 		contentPane.add(progressBarHeuristics);
 
-		JButton btnHeuristics = new JButton("Run Heuristics");
+		JButton btnHeuristics = new JButton("Run Heuristic");
 		btnHeuristics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
 						new HeuristicWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
+				lblAlgorithmtitle.setText("HEURISTIC SEARCH");
 			}
 		});
 		btnHeuristics.setBounds(17, 654, 148, 43);
@@ -354,6 +361,8 @@ public class MainScreen extends JFrame {
 		});
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);
+		
+		
 	}
 
 
@@ -424,8 +433,10 @@ public class MainScreen extends JFrame {
 						} else {
 							populateTable(table, bestCombination);
 							lblCombinations.setText("Combinations " + String.valueOf(combinations));
-							lblTime.setText("Time " + String.valueOf(time) + " seconds");
-							lblAverageRating.setText("Average Team Rating " + String.valueOf(averageRating));
+							String executionTime = String.format("%.4fs", time);
+							String rating = String.format("%.4f", averageRating);
+							lblTime.setText("Time " + executionTime + " seconds");
+							lblAverageRating.setText("Average Team Rating " + rating);
 						}
 					} catch (Exception ex) {
 						ex.printStackTrace();
@@ -488,5 +499,4 @@ public class MainScreen extends JFrame {
 			}
 		});
 	}
-
 }

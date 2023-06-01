@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import tp.logic.Employee;
-import tp.logic.IteamUpdateListener;
+import tp.logic.IteamUpdateObserver;
 
-public class ScreenTeamUpdateListener implements IteamUpdateListener {
+public class ScreenTeamUpdateObserver implements IteamUpdateObserver {
 
 	@Override
-	public void onTeamGenerated(List<Employee> team, int combinations, long time) {
+	public void onTeamGenerated(List<Employee> team, double combinations, long time) {
 		double executionTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(time) + (double) (time % 1000) / 1000.0;
 		int sum = 0;
 		for (Employee employee : team) {

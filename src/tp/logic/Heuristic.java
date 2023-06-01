@@ -15,7 +15,7 @@ public class Heuristic {
 	private int architectsAdded;
 	private int programmersAdded;
 	private int testersAdded;
-	private int combinationCount;
+	private double combinationCount;
 	private long executionTime;
 	private double bestAverageRating;
 	private Comparator<Employee> comparator;
