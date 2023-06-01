@@ -47,16 +47,16 @@ public class ComparisonScreen extends JFrame {
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 900, 570);
+		setBounds(100, 100, 900, 520);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		lblBruteForce = createLabel("Brute Froce", 14, 76, 11, 123, 22);
-		lblBacktracking = createLabel("Backtracking", 14, 389, 11, 123, 22);
-		lblHeuristic = createLabel("Heuristic", 14, 663, 11, 123, 22);
+		lblBruteForce = createLabel("BruteFroce", 14, 76, 11, 123, 22);
+		lblBacktracking = createLabel("BruteFroce", 14, 389, 11, 123, 22);
+		lblHeuristic = createLabel("BruteFroce", 14, 663, 11, 123, 22);
 
 		contentPane.add(lblBruteForce);
 		contentPane.add(lblBacktracking);
@@ -104,13 +104,13 @@ public class ComparisonScreen extends JFrame {
 		}
 
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setBounds(417, 380, 452, 89);
+		scrollPane.setBounds(422, 367, 452, 89);
 		contentPane.add(scrollPane);
 		populateResultsTable(table);
 		contentPane.setLayout(null);
 
 		JPanel graphPanel = new JPanel();
-		graphPanel.setBounds(20, 319, 387, 170);
+		graphPanel.setBounds(20, 319, 387, 137);
 		contentPane.add(graphPanel);
 		createBarChart(resultMap, graphPanel);
 	}

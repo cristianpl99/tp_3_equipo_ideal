@@ -1,8 +1,8 @@
 Algorithm: Backtracking
 Generated Combinations: 846870
-Process Time: 126ms
+Process Time: 147ms
 Average Rating: 4.285714285714286
-Generated team for this configuration: 2 architects, 2 testers, 1 project_leaders, 2 programmers
+Generated team for this configuration: 2 testers, 2 programmers, 1 project_leaders, 2 architects
 Employee{DNI='PL1003', firstName='Linus', lastName='Torvalds', rating=5, role=Project_Leader}
 Employee{DNI='A1006', firstName='Sergey', lastName='Brin', rating=4, role=Architect}
 Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
@@ -14,9 +14,9 @@ Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Prog
 -------------------------------------------------------------
 Algorithm: Brute Force
 Generated Combinations: 1073741824
-Process Time: 113108ms
+Process Time: 80731ms
 Average Rating: 4.285714285714286
-Generated team for this configuration: 2 architects, 2 testers, 1 project_leaders, 2 programmers
+Generated team for this configuration: 2 testers, 2 programmers, 1 project_leaders, 2 architects
 Employee{DNI='PL1003', firstName='Linus', lastName='Torvalds', rating=5, role=Project_Leader}
 Employee{DNI='A1006', firstName='Sergey', lastName='Brin', rating=4, role=Architect}
 Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
@@ -28,9 +28,9 @@ Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Prog
 -------------------------------------------------------------
 Algorithm: Heuristic
 Generated Combinations: 1
-Process Time: 1ms
+Process Time: 2ms
 Average Rating: 4.142857142857143
-Generated team for this configuration: 2 architects, 2 testers, 1 project_leaders, 2 programmers
+Generated team for this configuration: 2 testers, 2 programmers, 1 project_leaders, 2 architects
 Employee{DNI='PL1001', firstName='Bill', lastName='Gates', rating=4, role=Project_Leader}
 Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
 Employee{DNI='T1012', firstName='Bobby', lastName='Fischer', rating=4, role=Tester}

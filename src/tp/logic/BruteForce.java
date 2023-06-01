@@ -12,7 +12,7 @@ public class BruteForce {
 	private int testerCount;
 	private List<Employee> bestCombination;
 	private double bestAverageRating;
-	private double combinationCount;
+	private int combinationCount;
 	private long executionTime;
 
 	public BruteForce(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
@@ -123,7 +123,7 @@ public class BruteForce {
 		return (double) totalRating / combination.size();
 	}
 
-	public double getCombinationCount() {
+	public int getCombinationCount() {
 		return combinationCount;
 	}
 

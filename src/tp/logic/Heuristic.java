@@ -15,7 +15,7 @@ public class Heuristic {
 	private int architectsAdded;
 	private int programmersAdded;
 	private int testersAdded;
-	private double combinationCount;
+	private int combinationCount;
 	private long executionTime;
 	private double bestAverageRating;
 	private Comparator<Employee> comparator;
@@ -66,7 +66,7 @@ public class Heuristic {
 		return executionTime;
 	}
 
-	public double getCombinationCount() {
+	public int getCombinationCount() {
 		return combinationCount;
 	}
 

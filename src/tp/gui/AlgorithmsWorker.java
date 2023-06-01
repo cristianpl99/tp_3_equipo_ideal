@@ -28,8 +28,8 @@ public class AlgorithmsWorker extends SwingWorker<Map<String, Object[]>, Void> {
 	protected Map<String, Object[]> doInBackground() throws Exception {
 		Map<String, Object[]> resultMap = new HashMap<>();
 		IdealTeam idealTeam = IdealTeam.getIdealTeam();
-		return idealTeam.generateComparative(projectLeaderCount, architectCount, programmerCount, testerCount);
-		
+		resultMap = idealTeam.generateComparative(projectLeaderCount, architectCount, programmerCount, testerCount);
+		return resultMap;
 	}
 
 }

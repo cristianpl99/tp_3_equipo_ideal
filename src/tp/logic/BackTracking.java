@@ -12,7 +12,7 @@ public class BackTracking {
 	private int testerCount;
 	private List<Employee> bestCombination;
 	private double bestAverageRating;
-	private double combinationCount;
+	private int combinationCount;
 	private long executionTime;
 
 	public BackTracking(List<Employee> employees, int projectLeaderCount, int architectCount, int programmerCount,
@@ -131,7 +131,7 @@ public class BackTracking {
 		return (double) totalRating / combination.size();
 	}
 
-	public double getCombinationCount() {
+	public int getCombinationCount() {
 		return combinationCount;
 	}
 

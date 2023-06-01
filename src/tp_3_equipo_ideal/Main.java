@@ -2,11 +2,11 @@ package tp_3_equipo_ideal;
 
 import javax.swing.UIManager;
 
-import tp.dal.FileTeamUpdateObserver;
+import tp.dal.FileTeamUpdateListener;
 import tp.dal.IdataLoader;
 import tp.dal.LoadData;
 import tp.gui.HomeScreen;
-import tp.gui.ScreenTeamUpdateObserver;
+import tp.gui.ScreenTeamUpdateListener;
 import tp.logic.IdealTeam;
 
 public class Main {
@@ -21,10 +21,10 @@ public class Main {
 			System.out.println(e);
 		}
 		idealTeam = IdealTeam.getIdealTeam();
-		FileTeamUpdateObserver fileObserver= new FileTeamUpdateObserver();
-		ScreenTeamUpdateObserver screenObserver = new ScreenTeamUpdateObserver();
-		idealTeam.addObserver(fileObserver);
-		idealTeam.addObserver(screenObserver);
+		FileTeamUpdateListener fileListener = new FileTeamUpdateListener();
+		ScreenTeamUpdateListener screenListener = new ScreenTeamUpdateListener();
+		idealTeam.addListener(fileListener);
+		idealTeam.addListener(screenListener);
 		IdataLoader data = new LoadData();
 		idealTeam.setEmployees(data.readEmployeesFromJSON());
 
