@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import tp.logic.Employee;
-import tp.logic.IteamUpdateListener;
+import tp.logic.IteamUpdateObserver;
 
-public class FileTeamUpdateListener implements IteamUpdateListener {
+public class FileTeamUpdateObserver implements IteamUpdateObserver {
 
 	@Override
 	public void onTeamGenerated(List<Employee> team, int combinations, long time) {

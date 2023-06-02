@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class IdealTeam {
 
-	private List<IteamUpdateListener> listeners;
+	private List<IteamUpdateObserver> observers;
 	private List<Employee> employees;
 	private static IdealTeam idealTeam;
 	
@@ -19,10 +19,9 @@ public class IdealTeam {
         return idealTeam;
     }
    
-
 	private IdealTeam() {
 		employees = new ArrayList<>();
-		listeners = new ArrayList<>();
+		observers = new ArrayList<>();
 	}
 
 	public List<Employee> generateTeamByBruteForce(int projectLeaderCount, int architectCount, int programmerCount,
@@ -58,14 +57,6 @@ public class IdealTeam {
 		return bestCombination;
 	}
 
-	private void notifyTeamGenerated(List<Employee> team, int combinations, long time) {
-		if (listeners != null) {
-			for (IteamUpdateListener listener : listeners) {
-				listener.onTeamGenerated(team, combinations, time);
-			}
-		}
-	}
-
 	public HashMap<String, Object[]> generateComparative(int projectLeaderCount, int architectCount,
 			int programmerCount, int testerCount) {
 
@@ -87,14 +78,6 @@ public class IdealTeam {
 		notifyComparativeGenerated(resultMap);
 
 		return resultMap;
-	}
-
-	private void notifyComparativeGenerated(HashMap<String, Object[]> resultMap) {
-		if (listeners != null) {
-			for (IteamUpdateListener listener : listeners) {
-				listener.onConmparativeGenerated(resultMap);
-			}
-		}
 	}
 
 	private void bruteForceInComparator(int projectLeaderCount, int architectCount, int programmerCount,
@@ -132,17 +115,33 @@ public class IdealTeam {
 		resultMap.put("Heuristic", new Object[] { heuristicBestCombination, heuristicCombinationCount,
 				heuristicExecutionTime, heuristicBestAverageRating });
 	}
-
-	public void addListener(IteamUpdateListener listener) {
-		if (listeners == null) {
-			listeners = new ArrayList<>();
+	
+	private void notifyTeamGenerated(List<Employee> team, int combinations, long time) {
+		if (observers != null) {
+			for (IteamUpdateObserver listener : observers) {
+				listener.onTeamGenerated(team, combinations, time);
+			}
 		}
-		listeners.add(listener);
 	}
 
-	public void removeListener(IteamUpdateListener listener) {
-		if (listeners != null) {
-			listeners.remove(listener);
+	private void notifyComparativeGenerated(HashMap<String, Object[]> resultMap) {
+		if (observers != null) {
+			for (IteamUpdateObserver listener : observers) {
+				listener.onConmparativeGenerated(resultMap);
+			}
+		}
+	}
+
+	public void addObserver(IteamUpdateObserver listener) {
+		if (observers == null) {
+			observers = new ArrayList<>();
+		}
+		observers.add(listener);
+	}
+
+	public void removeObserver(IteamUpdateObserver listener) {
+		if (observers != null) {
+			observers.remove(listener);
 		}
 	}
 
@@ -160,14 +159,14 @@ public class IdealTeam {
 		return (List<Employee>) ((ArrayList<Employee>) employees).clone();
 	}
 
-	public void addEmployee(Employee em) {
-		employees.add(em);
+	public void addEmployee(Employee employee) {
+		employees.add(employee);
 	}
 
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
-
+	
 	private double calculateCoefficient(Employee employee) {
 		int conflictCount = employee.getConflicts().size();
 		double rating = employee.getRating();

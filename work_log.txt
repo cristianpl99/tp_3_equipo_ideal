@@ -118,3 +118,33 @@ Employee{DNI='P1022', firstName='Anatoly', lastName='Lein', rating=4, role=Progr
 Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Programmer}
 
 -------------------------------------------------------------------
+team_Leader_Torvalds_2023-06-01_21-36-16
+Generated team for this configuration: 1 project_leaders, 1 architects, 1 testers, 1 programmers
+Combination generated: 21805
+Process time: 8
+Employee{DNI='PL1003', firstName='Linus', lastName='Torvalds', rating=5, role=Project_Leader}
+Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
+Employee{DNI='T1010', firstName='Garry', lastName='Kasparov', rating=4, role=Tester}
+Employee{DNI='P1022', firstName='Anatoly', lastName='Lein', rating=4, role=Programmer}
+
+-------------------------------------------------------------------
+team_Leader_Torvalds_2023-06-01_21-37-34
+Generated team for this configuration: 1 project_leaders, 1 architects, 1 testers, 1 programmers
+Combination generated: 1073741824
+Process time: 75365
+Employee{DNI='PL1003', firstName='Linus', lastName='Torvalds', rating=5, role=Project_Leader}
+Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
+Employee{DNI='T1010', firstName='Garry', lastName='Kasparov', rating=4, role=Tester}
+Employee{DNI='P1022', firstName='Anatoly', lastName='Lein', rating=4, role=Programmer}
+
+-------------------------------------------------------------------
+team_Leader_Gates_2023-06-01_21-39-11
+Generated team for this configuration: 1 project_leaders, 1 architects, 1 testers, 1 programmers
+Combination generated: 1
+Process time: 0
+Employee{DNI='PL1001', firstName='Bill', lastName='Gates', rating=4, role=Project_Leader}
+Employee{DNI='A1009', firstName='Satya', lastName='Nadella', rating=5, role=Architect}
+Employee{DNI='T1012', firstName='Bobby', lastName='Fischer', rating=4, role=Tester}
+Employee{DNI='P1026', firstName='Judith', lastName='Polgar', rating=4, role=Programmer}
+
+-------------------------------------------------------------------

@@ -54,9 +54,9 @@ public class ComparisonScreen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		lblBruteForce = createLabel("BruteFroce", 14, 76, 11, 123, 22);
-		lblBacktracking = createLabel("BruteFroce", 14, 389, 11, 123, 22);
-		lblHeuristic = createLabel("BruteFroce", 14, 663, 11, 123, 22);
+		lblBruteForce = createLabel("Brute Force", 14, 76, 11, 123, 22);
+		lblBacktracking = createLabel("Backtracking", 14, 389, 11, 123, 22);
+		lblHeuristic = createLabel("Heuristic", 14, 663, 11, 123, 22);
 
 		contentPane.add(lblBruteForce);
 		contentPane.add(lblBacktracking);

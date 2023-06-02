@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import tp.logic.Employee;
-import tp.logic.IteamUpdateListener;
+import tp.logic.IteamUpdateObserver;
 
-public class ScreenTeamUpdateListener implements IteamUpdateListener {
+public class ScreenTeamUpdateObserver implements IteamUpdateObserver {
 
 	@Override
 	public void onTeamGenerated(List<Employee> team, int combinations, long time) {
