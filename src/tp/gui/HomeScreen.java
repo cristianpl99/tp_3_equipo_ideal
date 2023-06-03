@@ -60,7 +60,7 @@ public class HomeScreen extends JFrame {
 		contentPane.add(programmer);
 		contentPane.add(tester);
 
-		lblTitulo = createLabel("TEAM REQUIREMENTS", 20, 39, 23, 411, 50);
+		lblTitulo = createLabel("REQUIRED TEAM CONFIGURATION", 20, 39, 23, 411, 50);
 		lblLeader = createLabel("Project Leaders", 14, 53, 103, 191, 20);
 		lblArch = createLabel("Architects", 14, 53, 134, 191, 20);
 		lblProgrammer = createLabel("Programmers", 14, 53, 165, 191, 20);
@@ -72,7 +72,8 @@ public class HomeScreen extends JFrame {
 		contentPane.add(lblProgrammer);
 		contentPane.add(lblTester);
 
-		JButton btnAvanzar = new JButton("Go to creator");
+		JButton btnAvanzar = new JButton("GO TO TEAM BUILDER");
+		btnAvanzar.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnAvanzar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MainScreen launch;
@@ -88,7 +89,7 @@ public class HomeScreen extends JFrame {
 			}
 
 		});
-		btnAvanzar.setBounds(283, 227, 143, 50);
+		btnAvanzar.setBounds(163, 250, 165, 50);
 		contentPane.add(btnAvanzar);
 	}
 

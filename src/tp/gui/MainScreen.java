@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
+import java.text.DecimalFormat;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -65,6 +67,7 @@ public class MainScreen extends JFrame {
 	private JLabel lblCombinations;
 	private JLabel lblTime;
 	private JLabel lblAverageRating;
+	private JLabel lblTitle;
 	private ArrayList<Employee> employees;
 	private List<Employee> bestCombination;
 	private IdealTeam idealTeam;
@@ -127,7 +130,7 @@ public class MainScreen extends JFrame {
 				}
 			}
 		}
-
+		
 		lblAddEmployee = createLabel("DATA OF NEW EMPLOYEE", 18, 70, 11, 242, 45);
 		lblDni = createLabel("DNI", 14, 47, 67, 99, 29);
 		lblFirstName = createLabel("First name", 14, 47, 107, 99, 29);
@@ -137,12 +140,15 @@ public class MainScreen extends JFrame {
 		lblListOfEmployees = createLabel("LIST OF EMPLOYEES", 14, 117, 319, 159, 29);
 		lblConflicts = createLabel("CONFLICTS", 18, 612, 11, 130, 45);
 		lblListOfConflicts = createLabel("LIST OF CONFLICTS", 14, 592, 321, 152, 22);
-		lblCombinations = createLabel("COMPLETE LIST OF EMPLOYEES", 14, 284, 715, 452, 22);
+		lblCombinations = createLabel("", 14, 284, 715, 452, 22);
 		lblCombinations.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTime = createLabel("", 14, 284, 735, 452, 22);
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAverageRating = createLabel("", 14, 284, 755, 452, 22);
 		lblAverageRating.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		lblTitle = createLabel("COMPLETE LIST OF EMPLOYEES", 14, 372, 400, 269, 22);
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 
 		contentPane.add(lblAddEmployee);
 		contentPane.add(lblDni);
@@ -157,6 +163,7 @@ public class MainScreen extends JFrame {
 		contentPane.add(lblTime);
 		contentPane.add(lblCombinations);
 		contentPane.add(lblAverageRating);
+		contentPane.add(lblTitle);
 
 		textDni = createTextField(176, 67, 148, 29, 10, JTextField.CENTER);
 		textFirstName = createTextField(176, 107, 148, 29, 10, JTextField.CENTER);
@@ -256,6 +263,7 @@ public class MainScreen extends JFrame {
 				configureButtonWithProgressBar(btnBruteForce, progressBarBruteForce,
 						new BruteForceWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
+				lblTitle.setText("Brute Force");
 			}
 		});
 		btnBruteForce.setBounds(17, 498, 148, 44);
@@ -273,6 +281,7 @@ public class MainScreen extends JFrame {
 				configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
 						new BackTrackingWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
+				lblTitle.setText("Backtracking");
 			}
 		});
 		btnBackTracking.setBounds(17, 576, 148, 44);
@@ -290,6 +299,7 @@ public class MainScreen extends JFrame {
 				configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
 						new HeuristicWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
 						table);
+				lblTitle.setText("Heuristic");
 			}
 		});
 		btnHeuristics.setBounds(17, 654, 148, 43);
@@ -354,6 +364,8 @@ public class MainScreen extends JFrame {
 		});
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);
+		
+		
 	}
 
 
@@ -425,7 +437,8 @@ public class MainScreen extends JFrame {
 							populateTable(table, bestCombination);
 							lblCombinations.setText("Combinations " + String.valueOf(combinations));
 							lblTime.setText("Time " + String.valueOf(time) + " seconds");
-							lblAverageRating.setText("Average Team Rating " + String.valueOf(averageRating));
+							DecimalFormat decimalFormat = new DecimalFormat("#.###");
+							lblAverageRating.setText("Average Team Rating: " + decimalFormat.format(averageRating));
 						}
 					} catch (Exception ex) {
 						ex.printStackTrace();
@@ -488,5 +501,4 @@ public class MainScreen extends JFrame {
 			}
 		});
 	}
-
 }
