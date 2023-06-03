@@ -62,9 +62,9 @@ public class IdealTeam {
 
 		HashMap<String, Object[]> resultMap = new HashMap<>();
 
-		bruteForceInComparator(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
+		bruteForceComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
 
-		backtrackingInComparator(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
+		backtrackingComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
 
 		Comparator<Employee> customComparator = (e1, e2) -> {
 			double coefficient1 = calculateCoefficient(e1);
@@ -72,7 +72,7 @@ public class IdealTeam {
 			return Double.compare(coefficient2, coefficient1);
 		};
 
-		heuristicInComparator(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap,
+		heuristicInComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap,
 				customComparator);
 
 		notifyComparativeGenerated(resultMap);
@@ -80,7 +80,7 @@ public class IdealTeam {
 		return resultMap;
 	}
 
-	private void bruteForceInComparator(int projectLeaderCount, int architectCount, int programmerCount,
+	private void bruteForceComparative(int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount, HashMap<String, Object[]> resultMap) {
 		BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
@@ -92,7 +92,7 @@ public class IdealTeam {
 				bruteForceExecutionTime, bruteForceBestAverageRating });
 	}
 
-	private void backtrackingInComparator(int projectLeaderCount, int architectCount, int programmerCount,
+	private void backtrackingComparative(int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount, HashMap<String, Object[]> resultMap) {
 		BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
@@ -104,7 +104,7 @@ public class IdealTeam {
 				backTrackingExecutionTime, backTrackingBestAverageRating });
 	}
 
-	private void heuristicInComparator(int projectLeaderCount, int architectCount, int programmerCount, int testerCount,
+	private void heuristicInComparative(int projectLeaderCount, int architectCount, int programmerCount, int testerCount,
 			HashMap<String, Object[]> resultMap, Comparator<Employee> customComparator) {
 		Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount,
 				customComparator);

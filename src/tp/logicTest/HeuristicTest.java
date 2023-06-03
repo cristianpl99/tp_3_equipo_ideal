@@ -53,7 +53,7 @@ public class HeuristicTest {
 		combination.add(employees.get(2));
 		combination.add(employees.get(3));
 
-		boolean containsConflicted = heuristic.hasConflicts(combination, employees.get(0));
+		boolean containsConflicted = heuristic.hasConflictedEmployees(combination, employees.get(0));
 		Assert.assertTrue(containsConflicted);
 	}
 
