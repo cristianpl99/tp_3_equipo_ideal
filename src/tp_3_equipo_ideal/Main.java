@@ -27,7 +27,6 @@ public class Main {
 		idealTeam.addObserver(screenObserver);
 		IdataLoader data = new LoadData();
 		idealTeam.setEmployees(data.readEmployeesFromJSON());
-
 		HomeScreen launch = new HomeScreen();
 		launch.initialize();
 	}

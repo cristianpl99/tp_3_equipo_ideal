@@ -118,8 +118,8 @@ public class IdealTeam {
 	
 	private void notifyTeamGenerated(List<Employee> team, int combinations, long time) {
 		if (observers != null) {
-			for (IteamUpdateObserver listener : observers) {
-				listener.onTeamGenerated(team, combinations, time);
+			for (IteamUpdateObserver observer : observers) {
+				observer.onTeamGenerated(team, combinations, time);
 			}
 		}
 	}
