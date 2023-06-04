@@ -73,7 +73,7 @@ public class MainScreen extends JFrame {
 	private List<Employee> bestCombination;
 	private IdealTeam idealTeam;
 
-	public static int combinations;
+	public static double combinations;
 	public static double time;
 	public static double averageRating;
 	public static HashMap<String, Object[]> resultMap;
@@ -84,17 +84,17 @@ public class MainScreen extends JFrame {
 		this.cantArchitect = Integer.parseInt(architect);
 		this.cantProgrammer = Integer.parseInt(programmer);
 		this.cantTester = Integer.parseInt(tester);
-		
+
 		idealTeam = IdealTeam.getIdealTeam();
 
 		setTitle("Programacion III - Team Builder");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
-		
+
 		Icon backgroundIcon = new ImageIcon("src/tp/dal/images/fondo2.png");
 		JLabel backgroundLabel = new JLabel(backgroundIcon);
 		backgroundLabel.setBounds(0, 0, 1000, 1000);
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 818);
 		contentPane = new JPanel();
@@ -136,7 +136,7 @@ public class MainScreen extends JFrame {
 				}
 			}
 		}
-		
+
 		lblAddEmployee = createLabel("DATA OF NEW EMPLOYEE", 18, 70, 11, 242, 45);
 		lblDni = createLabel("DNI", 14, 47, 67, 99, 29);
 		lblFirstName = createLabel("First name", 14, 47, 107, 99, 29);
@@ -152,7 +152,7 @@ public class MainScreen extends JFrame {
 		lblTime.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAverageRating = createLabel("", 14, 284, 755, 452, 22);
 		lblAverageRating.setHorizontalAlignment(SwingConstants.CENTER);
-		
+
 		lblTitle = createLabel("COMPLETE LIST OF EMPLOYEES", 14, 372, 400, 269, 22);
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
 
@@ -267,8 +267,7 @@ public class MainScreen extends JFrame {
 		btnBruteForce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				configureButtonWithProgressBar(btnBruteForce, progressBarBruteForce,
-						new BruteForceWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
-						table);
+						new BruteForceWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
 				lblTitle.setText("Brute Force");
 			}
 		});
@@ -285,8 +284,7 @@ public class MainScreen extends JFrame {
 		btnBackTracking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				configureButtonWithProgressBar(btnBackTracking, progressBarBacktracking,
-						new BackTrackingWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
-						table);
+						new BackTrackingWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
 				lblTitle.setText("Backtracking");
 			}
 		});
@@ -303,8 +301,7 @@ public class MainScreen extends JFrame {
 		btnHeuristics.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				configureButtonWithProgressBar(btnHeuristics, progressBarHeuristics,
-						new HeuristicWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester),
-						table);
+						new HeuristicWorker(cantProjectLeader, cantArchitect, cantProgrammer, cantTester), table);
 				lblTitle.setText("Heuristic");
 			}
 		});
@@ -322,8 +319,8 @@ public class MainScreen extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				progressBarAlgorithms.setVisible(true);
 				progressBarAlgorithms.setIndeterminate(true);
-				AlgorithmsWorker worker = new AlgorithmsWorker(cantProjectLeader, cantArchitect,
-						cantProgrammer, cantTester);
+				AlgorithmsWorker worker = new AlgorithmsWorker(cantProjectLeader, cantArchitect, cantProgrammer,
+						cantTester);
 				worker.execute();
 				worker.addPropertyChangeListener(new PropertyChangeListener() {
 					@Override
@@ -370,11 +367,10 @@ public class MainScreen extends JFrame {
 		});
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);
-		
-		contentPane.add(backgroundLabel);
-		
-	}
 
+		contentPane.add(backgroundLabel);
+
+	}
 
 	public void initialize() {
 		setResizable(false);

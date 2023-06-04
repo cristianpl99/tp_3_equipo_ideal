@@ -11,14 +11,14 @@ public class IdealTeam {
 	private List<IteamUpdateObserver> observers;
 	private List<Employee> employees;
 	private static IdealTeam idealTeam;
-	
+
 	public static synchronized IdealTeam getIdealTeam() {
-        if (idealTeam == null) {
-        	idealTeam = new IdealTeam();
-        }
-        return idealTeam;
-    }
-   
+		if (idealTeam == null) {
+			idealTeam = new IdealTeam();
+		}
+		return idealTeam;
+	}
+
 	private IdealTeam() {
 		employees = new ArrayList<>();
 		observers = new ArrayList<>();
@@ -80,12 +80,12 @@ public class IdealTeam {
 		return resultMap;
 	}
 
-	private void bruteForceComparative(int projectLeaderCount, int architectCount, int programmerCount,
-			int testerCount, HashMap<String, Object[]> resultMap) {
+	private void bruteForceComparative(int projectLeaderCount, int architectCount, int programmerCount, int testerCount,
+			HashMap<String, Object[]> resultMap) {
 		BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
 		List<Employee> bruteForceBestCombination = bruteForce.findBestCombination();
-		int bruteForceCombinationCount = bruteForce.getCombinationCount();
+		double bruteForceCombinationCount = bruteForce.getCombinationCount();
 		long bruteForceExecutionTime = bruteForce.getExecutionTime();
 		double bruteForceBestAverageRating = bruteForce.getBestAverageRating();
 		resultMap.put("Brute Force", new Object[] { bruteForceBestCombination, bruteForceCombinationCount,
@@ -97,26 +97,26 @@ public class IdealTeam {
 		BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
 		List<Employee> backTrackingBestCombination = backTracking.findBestCombination();
-		int backTrackingCombinationCount = backTracking.getCombinationCount();
+		double backTrackingCombinationCount = backTracking.getCombinationCount();
 		long backTrackingExecutionTime = backTracking.getExecutionTime();
 		double backTrackingBestAverageRating = backTracking.getBestAverageRating();
 		resultMap.put("Backtracking", new Object[] { backTrackingBestCombination, backTrackingCombinationCount,
 				backTrackingExecutionTime, backTrackingBestAverageRating });
 	}
 
-	private void heuristicInComparative(int projectLeaderCount, int architectCount, int programmerCount, int testerCount,
-			HashMap<String, Object[]> resultMap, Comparator<Employee> customComparator) {
+	private void heuristicInComparative(int projectLeaderCount, int architectCount, int programmerCount,
+			int testerCount, HashMap<String, Object[]> resultMap, Comparator<Employee> customComparator) {
 		Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount,
 				customComparator);
 		List<Employee> heuristicBestCombination = heuristic.findBestCombination();
-		int heuristicCombinationCount = heuristic.getCombinationCount();
+		double heuristicCombinationCount = heuristic.getCombinationCount();
 		long heuristicExecutionTime = heuristic.getExecutionTime();
 		double heuristicBestAverageRating = heuristic.getBestAverageRating();
 		resultMap.put("Heuristic", new Object[] { heuristicBestCombination, heuristicCombinationCount,
 				heuristicExecutionTime, heuristicBestAverageRating });
 	}
-	
-	private void notifyTeamGenerated(List<Employee> team, int combinations, long time) {
+
+	private void notifyTeamGenerated(List<Employee> team, double combinations, long time) {
 		if (observers != null) {
 			for (IteamUpdateObserver observer : observers) {
 				observer.onTeamGenerated(team, combinations, time);
@@ -166,7 +166,7 @@ public class IdealTeam {
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
-	
+
 	private double calculateCoefficient(Employee employee) {
 		int conflictCount = employee.getConflicts().size();
 		double rating = employee.getRating();

@@ -13,7 +13,7 @@ import tp.logic.Employee;
 
 public class SaveData {
 
-	public void writeLogFile(List<Employee> team, int combinations, long time) {
+	public void writeLogFile(List<Employee> team, double combinations, long time) {
 		String fileName = "work_log.txt";
 		String headliner = generateHeadLiner(team);
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
@@ -44,7 +44,7 @@ public class SaveData {
 				Object[] values = entry.getValue();
 				@SuppressWarnings("unchecked")
 				List<Employee> employees = (List<Employee>) values[0];
-				int combinations = (int) values[1];
+				double combinations = (double) values[1];
 				long time = (long) values[2];
 				double averageRating = (double) values[3];
 
