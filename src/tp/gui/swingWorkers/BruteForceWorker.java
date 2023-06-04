@@ -1,4 +1,4 @@
-package tp.gui;
+package tp.gui.swingWorkers;
 
 import javax.swing.SwingWorker;
 
@@ -8,25 +8,27 @@ import tp.logic.Employee;
 
 import java.util.List;
 
-public class HeuristicWorker extends SwingWorker<List<Employee>, Void> {
+public class BruteForceWorker extends SwingWorker<List<Employee>, Void> {
+
 	private int projectLeaderCount;
 	private int architectCount;
 	private int programmerCount;
 	private int testerCount;
 	
 
-	public HeuristicWorker(int projectLeaderCount, int architectCount, int programmerCount,
+	public BruteForceWorker(int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
 		this.projectLeaderCount = projectLeaderCount;
 		this.architectCount = architectCount;
 		this.programmerCount = programmerCount;
 		this.testerCount = testerCount;
+		
 	}
 
 	@Override
 	protected List<Employee> doInBackground() throws Exception {
 		IdealTeam idealTeam = IdealTeam.getIdealTeam();
-		List<Employee> bestCombination = idealTeam.generateTeamByHeuristic(projectLeaderCount, architectCount,
+		List<Employee> bestCombination = idealTeam.generateTeamByBruteForce(projectLeaderCount, architectCount,
 				programmerCount, testerCount);
 		int progress = 100;
 		setProgress(progress);

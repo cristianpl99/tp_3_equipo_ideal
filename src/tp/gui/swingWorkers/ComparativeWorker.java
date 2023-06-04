@@ -1,4 +1,4 @@
-package tp.gui;
+package tp.gui.swingWorkers;
 
 import javax.swing.SwingWorker;
 
@@ -7,7 +7,7 @@ import tp.logic.IdealTeam;
 import java.util.Map;
 import java.util.HashMap;
 
-public class AlgorithmsWorker extends SwingWorker<Map<String, Object[]>, Void> {
+public class ComparativeWorker extends SwingWorker<Map<String, Object[]>, Void> {
 
 	private int projectLeaderCount;
 	private int architectCount;
@@ -15,7 +15,7 @@ public class AlgorithmsWorker extends SwingWorker<Map<String, Object[]>, Void> {
 	private int testerCount;
 	
 
-	public AlgorithmsWorker(int projectLeaderCount, int architectCount, int programmerCount,
+	public ComparativeWorker(int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount) {
 		this.projectLeaderCount = projectLeaderCount;
 		this.architectCount = architectCount;

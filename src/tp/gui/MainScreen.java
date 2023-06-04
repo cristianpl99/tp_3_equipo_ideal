@@ -24,6 +24,10 @@ import javax.swing.JProgressBar;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import tp.gui.swingWorkers.BackTrackingWorker;
+import tp.gui.swingWorkers.BruteForceWorker;
+import tp.gui.swingWorkers.ComparativeWorker;
+import tp.gui.swingWorkers.HeuristicWorker;
 import tp.logic.Employee;
 import tp.logic.IdealTeam;
 import tp.logic.Employee.Role;
@@ -319,7 +323,7 @@ public class MainScreen extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				progressBarAlgorithms.setVisible(true);
 				progressBarAlgorithms.setIndeterminate(true);
-				AlgorithmsWorker worker = new AlgorithmsWorker(cantProjectLeader, cantArchitect, cantProgrammer,
+				ComparativeWorker worker = new ComparativeWorker(cantProjectLeader, cantArchitect, cantProgrammer,
 						cantTester);
 				worker.execute();
 				worker.addPropertyChangeListener(new PropertyChangeListener() {

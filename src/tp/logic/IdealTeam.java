@@ -62,19 +62,14 @@ public class IdealTeam {
 
 		HashMap<String, Object[]> resultMap = new HashMap<>();
 
-		bruteForceComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
-
-		backtrackingComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
-
 		Comparator<Employee> customComparator = (e1, e2) -> {
 			double coefficient1 = calculateCoefficient(e1);
 			double coefficient2 = calculateCoefficient(e2);
 			return Double.compare(coefficient2, coefficient1);
 		};
-
-		heuristicInComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap,
-				customComparator);
-
+		bruteForceComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
+		backtrackingComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap);
+		heuristicInComparative(projectLeaderCount, architectCount, programmerCount, testerCount, resultMap, customComparator);
 		notifyComparativeGenerated(resultMap);
 
 		return resultMap;
@@ -84,36 +79,24 @@ public class IdealTeam {
 			HashMap<String, Object[]> resultMap) {
 		BruteForce bruteForce = new BruteForce(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
-		List<Employee> bruteForceBestCombination = bruteForce.findBestCombination();
-		double bruteForceCombinationCount = bruteForce.getCombinationCount();
-		long bruteForceExecutionTime = bruteForce.getExecutionTime();
-		double bruteForceBestAverageRating = bruteForce.getBestAverageRating();
-		resultMap.put("Brute Force", new Object[] { bruteForceBestCombination, bruteForceCombinationCount,
-				bruteForceExecutionTime, bruteForceBestAverageRating });
+		resultMap.put("Brute Force", new Object[] { bruteForce.findBestCombination(), bruteForce.getCombinationCount(),
+				bruteForce.getExecutionTime(), bruteForce.getBestAverageRating() });
 	}
 
 	private void backtrackingComparative(int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount, HashMap<String, Object[]> resultMap) {
 		BackTracking backTracking = new BackTracking(employees, projectLeaderCount, architectCount, programmerCount,
 				testerCount);
-		List<Employee> backTrackingBestCombination = backTracking.findBestCombination();
-		double backTrackingCombinationCount = backTracking.getCombinationCount();
-		long backTrackingExecutionTime = backTracking.getExecutionTime();
-		double backTrackingBestAverageRating = backTracking.getBestAverageRating();
-		resultMap.put("Backtracking", new Object[] { backTrackingBestCombination, backTrackingCombinationCount,
-				backTrackingExecutionTime, backTrackingBestAverageRating });
+		resultMap.put("Backtracking", new Object[] { backTracking.findBestCombination(), backTracking.getCombinationCount(),
+				backTracking.getExecutionTime(), backTracking.getBestAverageRating() });
 	}
 
 	private void heuristicInComparative(int projectLeaderCount, int architectCount, int programmerCount,
 			int testerCount, HashMap<String, Object[]> resultMap, Comparator<Employee> customComparator) {
 		Heuristic heuristic = new Heuristic(employees, projectLeaderCount, architectCount, programmerCount, testerCount,
 				customComparator);
-		List<Employee> heuristicBestCombination = heuristic.findBestCombination();
-		double heuristicCombinationCount = heuristic.getCombinationCount();
-		long heuristicExecutionTime = heuristic.getExecutionTime();
-		double heuristicBestAverageRating = heuristic.getBestAverageRating();
-		resultMap.put("Heuristic", new Object[] { heuristicBestCombination, heuristicCombinationCount,
-				heuristicExecutionTime, heuristicBestAverageRating });
+		resultMap.put("Heuristic", new Object[] { heuristic.findBestCombination(), heuristic.getCombinationCount(),
+				heuristic.getExecutionTime(), heuristic.getBestAverageRating() });
 	}
 
 	private void notifyTeamGenerated(List<Employee> team, double combinations, long time) {
