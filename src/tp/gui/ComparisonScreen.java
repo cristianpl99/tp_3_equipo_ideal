@@ -3,6 +3,7 @@ package tp.gui;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -46,6 +47,11 @@ public class ComparisonScreen extends JFrame {
 		setTitle("Programacion III - Team Comparison");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
+		
+		Icon backgroundIcon = new ImageIcon("src/tp/dal/images/fondo4.png");
+		JLabel backgroundLabel = new JLabel(backgroundIcon);
+		backgroundLabel.setBounds(0, 0, 1000, 600);
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 900, 520);
 		contentPane = new JPanel();
@@ -113,6 +119,8 @@ public class ComparisonScreen extends JFrame {
 		graphPanel.setBounds(20, 319, 387, 137);
 		contentPane.add(graphPanel);
 		createBarChart(resultMap, graphPanel);
+		
+		contentPane.add(backgroundLabel);
 	}
 
 	public void initialize() {

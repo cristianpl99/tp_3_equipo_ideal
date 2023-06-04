@@ -13,6 +13,7 @@ import java.util.List;
 
 import java.text.DecimalFormat;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -89,6 +90,11 @@ public class MainScreen extends JFrame {
 		setTitle("Programacion III - Team Builder");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
+		
+		Icon backgroundIcon = new ImageIcon("src/tp/dal/images/fondo2.png");
+		JLabel backgroundLabel = new JLabel(backgroundIcon);
+		backgroundLabel.setBounds(0, 0, 1000, 1000);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 818);
 		contentPane = new JPanel();
@@ -365,6 +371,7 @@ public class MainScreen extends JFrame {
 		btnAddConflict.setBounds(588, 275, 148, 43);
 		contentPane.add(btnAddConflict);
 		
+		contentPane.add(backgroundLabel);
 		
 	}
 

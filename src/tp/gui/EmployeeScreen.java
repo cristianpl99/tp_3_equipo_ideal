@@ -1,5 +1,6 @@
 package tp.gui;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,6 +32,10 @@ public class EmployeeScreen extends JFrame {
 		setTitle("Dni " + employee.getDni() + " - Employee Record");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
+		
+		Icon backgroundIcon = new ImageIcon("src/tp/dal/images/fondo3.png");
+		JLabel backgroundLabel = new JLabel(backgroundIcon);
+		backgroundLabel.setBounds(0, 0, 600, 300);
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,6 +67,8 @@ public class EmployeeScreen extends JFrame {
 				lblPhoto.setIcon(scaledPhotoIcon);
 			}
 		}
+		
+		contentPane.add(backgroundLabel);
 	}
 
 	private JLabel createLabel(String text, int fontSize, int x, int y, int width, int height) {

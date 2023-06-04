@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
@@ -38,6 +39,11 @@ public class HomeScreen extends JFrame {
 		setTitle("Programacion III - Ideal Team");
 		ImageIcon icon = new ImageIcon("src/tp/dal/images/icon.png");
 		setIconImage(icon.getImage());
+
+		Icon backgroundIcon = new ImageIcon("src/tp/dal/images/fondo1.png");
+		JLabel backgroundLabel = new JLabel(backgroundIcon);
+		backgroundLabel.setBounds(0, 0, 600, 400);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 505, 350);
 		contentPane = new JPanel();
@@ -82,8 +88,8 @@ public class HomeScreen extends JFrame {
 					showMessageDialog("Must complete all team requirements to advance");
 				} else {
 					dispose();
-					launch = new MainScreen(project_leader.getText(), architect.getText(),
-							programmer.getText(), tester.getText());
+					launch = new MainScreen(project_leader.getText(), architect.getText(), programmer.getText(),
+							tester.getText());
 					launch.initialize();
 				}
 			}
@@ -91,6 +97,8 @@ public class HomeScreen extends JFrame {
 		});
 		btnAvanzar.setBounds(163, 250, 165, 50);
 		contentPane.add(btnAvanzar);
+		
+		contentPane.add(backgroundLabel);
 	}
 
 	public void initialize() {
