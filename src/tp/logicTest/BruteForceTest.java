@@ -47,7 +47,7 @@ public class BruteForceTest {
 		List<Employee> combinations = new ArrayList<>();
 		bruteForce.generateCombination(combinations, 0);
 		// Las combinaciones posibles no contemplan a Judith Polgar por conflictos
-		Assert.assertEquals(32, bruteForce.getCombinationCount());
+		Assert.assertEquals(32, bruteForce.getCombinationCount(), 0);
 	}
 
 	@Test

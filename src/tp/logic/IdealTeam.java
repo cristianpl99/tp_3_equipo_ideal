@@ -117,19 +117,17 @@ public class IdealTeam {
 	}
 
 	private void notifyTeamGenerated(List<Employee> team, double combinations, long time) {
-		if (observers != null) {
-			for (IteamUpdateObserver observer : observers) {
-				observer.onTeamGenerated(team, combinations, time);
-			}
-		}
+	    if (observers != null) {
+	        observers.stream()
+	                .forEach(observer -> observer.onTeamGenerated(team, combinations, time));
+	    }
 	}
 
 	private void notifyComparativeGenerated(HashMap<String, Object[]> resultMap) {
-		if (observers != null) {
-			for (IteamUpdateObserver listener : observers) {
-				listener.onConmparativeGenerated(resultMap);
-			}
-		}
+	    if (observers != null) {
+	        observers.stream()
+	                .forEach(observer -> observer.onConmparativeGenerated(resultMap));
+	    }
 	}
 
 	public void addObserver(IteamUpdateObserver listener) {
@@ -146,12 +144,10 @@ public class IdealTeam {
 	}
 
 	public Employee findEmployeeByDni(String conflictedId) {
-		for (Employee employee : employees) {
-			if (employee.getDni().equals(conflictedId)) {
-				return employee;
-			}
-		}
-		return null;
+	    return employees.stream()
+	            .filter(employee -> employee.getDni().equals(conflictedId))
+	            .findFirst()
+	            .orElse(null);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -48,7 +48,8 @@ public class IdealTeamTest {
 	public void testGenerateTeamByBruteForce() {
 		List<Employee> team = idealTeam.generateTeamByBruteForce(projectLeaderCount, architectCount, programmerCount,
 				testerCount);
-
+		
+		Assert.assertNotNull(team);
 		Assert.assertEquals(projectLeaderCount, getEmployeeCountByRole(team, Employee.Role.Project_Leader));
 		Assert.assertEquals(architectCount, getEmployeeCountByRole(team, Employee.Role.Architect));
 		Assert.assertEquals(programmerCount, getEmployeeCountByRole(team, Employee.Role.Programmer));
@@ -59,7 +60,8 @@ public class IdealTeamTest {
 	public void testGenerateTeamByBackTracking() {
 		List<Employee> team = idealTeam.generateTeamByBackTracking(projectLeaderCount, architectCount, programmerCount,
 				testerCount);
-
+		
+		Assert.assertNotNull(team);
 		Assert.assertEquals(projectLeaderCount, getEmployeeCountByRole(team, Employee.Role.Project_Leader));
 		Assert.assertEquals(architectCount, getEmployeeCountByRole(team, Employee.Role.Architect));
 		Assert.assertEquals(programmerCount, getEmployeeCountByRole(team, Employee.Role.Programmer));
@@ -70,7 +72,8 @@ public class IdealTeamTest {
 	public void testGenerateTeamByHeuristic() {
 		List<Employee> team = idealTeam.generateTeamByHeuristic(projectLeaderCount, architectCount, programmerCount,
 				testerCount);
-
+		
+		Assert.assertNotNull(team);
 		Assert.assertEquals(projectLeaderCount, getEmployeeCountByRole(team, Employee.Role.Project_Leader));
 		Assert.assertEquals(architectCount, getEmployeeCountByRole(team, Employee.Role.Architect));
 		Assert.assertEquals(programmerCount, getEmployeeCountByRole(team, Employee.Role.Programmer));
@@ -103,11 +106,8 @@ public class IdealTeamTest {
 	public void testAddEmployee() {
 
 		Employee newEmployee = new Employee("9999", "I", "I", 3, null, Employee.Role.Programmer, null);
-
 		idealTeam.addEmployee(newEmployee);
-
 		List<Employee> employees = idealTeam.getEmployees();
-
 		Assert.assertTrue(employees.contains(newEmployee));
 	}
 

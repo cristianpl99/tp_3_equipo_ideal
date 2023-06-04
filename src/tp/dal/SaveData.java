@@ -11,7 +11,7 @@ import java.util.Map;
 
 import tp.logic.Employee;
 
-public class SaveData {
+public class SaveData implements ISaveData {
 
 	public void writeLogFile(List<Employee> team, double combinations, long time) {
 		String fileName = "work_log.txt";

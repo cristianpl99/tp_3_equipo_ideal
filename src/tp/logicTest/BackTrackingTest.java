@@ -47,7 +47,7 @@ public class BackTrackingTest {
 	public void testGenerateCombination() {
 		List<Employee> combinations = new ArrayList<>();
 		backTracking.generateCombination(combinations, 0);
-		Assert.assertEquals(54, backTracking.getCombinationCount());
+		Assert.assertEquals(54, backTracking.getCombinationCount(), 0);
 	}
 
 	@Test
