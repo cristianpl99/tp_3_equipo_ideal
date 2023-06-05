@@ -23,6 +23,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JProgressBar;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.math.RoundingMode;
 
 import tp.gui.swingWorkers.BackTrackingWorker;
 import tp.gui.swingWorkers.BruteForceWorker;
@@ -442,10 +443,13 @@ public class MainScreen extends JFrame {
 									+ "conflict configuration.");
 						} else {
 							populateTable(table, bestCombination);
-							lblCombinations.setText("Combinations " + String.valueOf(combinations));
+							DecimalFormat decimalFormat = new DecimalFormat("#");
+							decimalFormat.setRoundingMode(RoundingMode.DOWN);
+							lblCombinations.setText("Combinations " + decimalFormat.format(combinations));
+							
 							lblTime.setText("Time " + String.valueOf(time) + " seconds");
-							DecimalFormat decimalFormat = new DecimalFormat("#.###");
-							lblAverageRating.setText("Average Team Rating: " + decimalFormat.format(averageRating));
+							DecimalFormat decimalFormat2 = new DecimalFormat("#.###");
+							lblAverageRating.setText("Average Team Rating: " + decimalFormat2.format(averageRating));
 						}
 					} catch (Exception ex) {
 						ex.printStackTrace();

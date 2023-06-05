@@ -2,6 +2,7 @@ package tp.gui;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.text.DecimalFormat;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -31,6 +32,7 @@ import javax.swing.SwingConstants;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.math.RoundingMode;
 
 public class ComparisonScreen extends JFrame {
 
@@ -159,7 +161,11 @@ public class ComparisonScreen extends JFrame {
 		for (Map.Entry<String, Object[]> entry : resultMap.entrySet()) {
 			String algorithm = entry.getKey();
 			Object[] values = entry.getValue();
-			String combinations = String.valueOf(values[1]);
+			double value = (double) values[1];
+			DecimalFormat decimalFormat = new DecimalFormat("#");
+			decimalFormat.setRoundingMode(RoundingMode.DOWN);
+			String combinations = decimalFormat.format(value);
+
 			long time = (long) values[2];
 			double executionTimeSeconds = (TimeUnit.MILLISECONDS.toSeconds(time) + (time % 1000) / 1000.0);
 			String executionTime = String.format("%.4fs", executionTimeSeconds);
